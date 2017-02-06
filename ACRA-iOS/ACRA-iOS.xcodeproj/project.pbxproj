@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB918E4E1E492C8700599F87 /* amazon_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB918E4D1E492C8700599F87 /* amazon_logo.png */; };
 		EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD361E4841E200E22C3C /* AppDelegate.swift */; };
 		EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD381E4841E200E22C3C /* ViewController.swift */; };
 		EBE5AD3C1E4841E200E22C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3A1E4841E200E22C3C /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB918E4D1E492C8700599F87 /* amazon_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amazon_logo.png; sourceTree = "<group>"; };
 		EBE5AD331E4841E200E22C3C /* ACRA-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ACRA-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE5AD361E4841E200E22C3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE5AD381E4841E200E22C3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,9 +76,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB918E4F1E492CC800599F87 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				EB918E4D1E492C8700599F87 /* amazon_logo.png */,
+			);
+			name = Asset;
+			sourceTree = "<group>";
+		};
 		EBE5AD2A1E4841E200E22C3C = {
 			isa = PBXGroup;
 			children = (
+				EB918E4F1E492CC800599F87 /* Asset */,
 				EBE5AD351E4841E200E22C3C /* ACRA-iOS */,
 				EBE5AD4A1E4841E200E22C3C /* ACRA-iOSTests */,
 				EBE5AD551E4841E200E22C3C /* ACRA-iOSUITests */,
@@ -235,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB918E4E1E492C8700599F87 /* amazon_logo.png in Resources */,
 				EBE5AD411E4841E200E22C3C /* LaunchScreen.storyboard in Resources */,
 				EBE5AD3E1E4841E200E22C3C /* Assets.xcassets in Resources */,
 				EBE5AD3C1E4841E200E22C3C /* Main.storyboard in Resources */,
@@ -514,6 +526,7 @@
 				EBE5AD5D1E4841E200E22C3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EBE5AD5E1E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +535,7 @@
 				EBE5AD601E4841E200E22C3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EBE5AD611E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +544,7 @@
 				EBE5AD631E4841E200E22C3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
