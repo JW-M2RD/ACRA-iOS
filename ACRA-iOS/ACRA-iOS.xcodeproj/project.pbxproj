@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD361E4841E200E22C3C /* AppDelegate.swift */; };
+		EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD381E4841E200E22C3C /* ViewController.swift */; };
+		EBE5AD3C1E4841E200E22C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3A1E4841E200E22C3C /* Main.storyboard */; };
+		EBE5AD3E1E4841E200E22C3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3D1E4841E200E22C3C /* Assets.xcassets */; };
+		EBE5AD411E4841E200E22C3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3F1E4841E200E22C3C /* LaunchScreen.storyboard */; };
+		EBE5AD4C1E4841E200E22C3C /* ACRA_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD4B1E4841E200E22C3C /* ACRA_iOSTests.swift */; };
+		EBE5AD571E4841E200E22C3C /* ACRA_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD561E4841E200E22C3C /* ACRA_iOSUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EBE5AD481E4841E200E22C3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBE5AD2B1E4841E200E22C3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBE5AD321E4841E200E22C3C;
+			remoteInfo = "ACRA-iOS";
+		};
+		EBE5AD531E4841E200E22C3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBE5AD2B1E4841E200E22C3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBE5AD321E4841E200E22C3C;
+			remoteInfo = "ACRA-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EBE5AD331E4841E200E22C3C /* ACRA-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ACRA-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE5AD361E4841E200E22C3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EBE5AD381E4841E200E22C3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EBE5AD3B1E4841E200E22C3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EBE5AD3D1E4841E200E22C3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBE5AD401E4841E200E22C3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EBE5AD421E4841E200E22C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBE5AD471E4841E200E22C3C /* ACRA-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ACRA-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE5AD4B1E4841E200E22C3C /* ACRA_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACRA_iOSTests.swift; sourceTree = "<group>"; };
+		EBE5AD4D1E4841E200E22C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBE5AD521E4841E200E22C3C /* ACRA-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ACRA-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE5AD561E4841E200E22C3C /* ACRA_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACRA_iOSUITests.swift; sourceTree = "<group>"; };
+		EBE5AD581E4841E200E22C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EBE5AD301E4841E200E22C3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBE5AD441E4841E200E22C3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBE5AD4F1E4841E200E22C3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EBE5AD2A1E4841E200E22C3C = {
+			isa = PBXGroup;
+			children = (
+				EBE5AD351E4841E200E22C3C /* ACRA-iOS */,
+				EBE5AD4A1E4841E200E22C3C /* ACRA-iOSTests */,
+				EBE5AD551E4841E200E22C3C /* ACRA-iOSUITests */,
+				EBE5AD341E4841E200E22C3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EBE5AD341E4841E200E22C3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5AD331E4841E200E22C3C /* ACRA-iOS.app */,
+				EBE5AD471E4841E200E22C3C /* ACRA-iOSTests.xctest */,
+				EBE5AD521E4841E200E22C3C /* ACRA-iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBE5AD351E4841E200E22C3C /* ACRA-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5AD361E4841E200E22C3C /* AppDelegate.swift */,
+				EBE5AD381E4841E200E22C3C /* ViewController.swift */,
+				EBE5AD3A1E4841E200E22C3C /* Main.storyboard */,
+				EBE5AD3D1E4841E200E22C3C /* Assets.xcassets */,
+				EBE5AD3F1E4841E200E22C3C /* LaunchScreen.storyboard */,
+				EBE5AD421E4841E200E22C3C /* Info.plist */,
+			);
+			path = "ACRA-iOS";
+			sourceTree = "<group>";
+		};
+		EBE5AD4A1E4841E200E22C3C /* ACRA-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5AD4B1E4841E200E22C3C /* ACRA_iOSTests.swift */,
+				EBE5AD4D1E4841E200E22C3C /* Info.plist */,
+			);
+			path = "ACRA-iOSTests";
+			sourceTree = "<group>";
+		};
+		EBE5AD551E4841E200E22C3C /* ACRA-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5AD561E4841E200E22C3C /* ACRA_iOSUITests.swift */,
+				EBE5AD581E4841E200E22C3C /* Info.plist */,
+			);
+			path = "ACRA-iOSUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EBE5AD321E4841E200E22C3C /* ACRA-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBE5AD5B1E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOS" */;
+			buildPhases = (
+				EBE5AD2F1E4841E200E22C3C /* Sources */,
+				EBE5AD301E4841E200E22C3C /* Frameworks */,
+				EBE5AD311E4841E200E22C3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ACRA-iOS";
+			productName = "ACRA-iOS";
+			productReference = EBE5AD331E4841E200E22C3C /* ACRA-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBE5AD461E4841E200E22C3C /* ACRA-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBE5AD5E1E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOSTests" */;
+			buildPhases = (
+				EBE5AD431E4841E200E22C3C /* Sources */,
+				EBE5AD441E4841E200E22C3C /* Frameworks */,
+				EBE5AD451E4841E200E22C3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBE5AD491E4841E200E22C3C /* PBXTargetDependency */,
+			);
+			name = "ACRA-iOSTests";
+			productName = "ACRA-iOSTests";
+			productReference = EBE5AD471E4841E200E22C3C /* ACRA-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EBE5AD511E4841E200E22C3C /* ACRA-iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBE5AD611E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOSUITests" */;
+			buildPhases = (
+				EBE5AD4E1E4841E200E22C3C /* Sources */,
+				EBE5AD4F1E4841E200E22C3C /* Frameworks */,
+				EBE5AD501E4841E200E22C3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBE5AD541E4841E200E22C3C /* PBXTargetDependency */,
+			);
+			name = "ACRA-iOSUITests";
+			productName = "ACRA-iOSUITests";
+			productReference = EBE5AD521E4841E200E22C3C /* ACRA-iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBE5AD2B1E4841E200E22C3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Team Amazon";
+				TargetAttributes = {
+					EBE5AD321E4841E200E22C3C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6975J8AN47;
+						ProvisioningStyle = Automatic;
+					};
+					EBE5AD461E4841E200E22C3C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6975J8AN47;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EBE5AD321E4841E200E22C3C;
+					};
+					EBE5AD511E4841E200E22C3C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6975J8AN47;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EBE5AD321E4841E200E22C3C;
+					};
+				};
+			};
+			buildConfigurationList = EBE5AD2E1E4841E200E22C3C /* Build configuration list for PBXProject "ACRA-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBE5AD2A1E4841E200E22C3C;
+			productRefGroup = EBE5AD341E4841E200E22C3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBE5AD321E4841E200E22C3C /* ACRA-iOS */,
+				EBE5AD461E4841E200E22C3C /* ACRA-iOSTests */,
+				EBE5AD511E4841E200E22C3C /* ACRA-iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EBE5AD311E4841E200E22C3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBE5AD411E4841E200E22C3C /* LaunchScreen.storyboard in Resources */,
+				EBE5AD3E1E4841E200E22C3C /* Assets.xcassets in Resources */,
+				EBE5AD3C1E4841E200E22C3C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBE5AD451E4841E200E22C3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBE5AD501E4841E200E22C3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EBE5AD2F1E4841E200E22C3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */,
+				EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBE5AD431E4841E200E22C3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBE5AD4C1E4841E200E22C3C /* ACRA_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBE5AD4E1E4841E200E22C3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBE5AD571E4841E200E22C3C /* ACRA_iOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EBE5AD491E4841E200E22C3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBE5AD321E4841E200E22C3C /* ACRA-iOS */;
+			targetProxy = EBE5AD481E4841E200E22C3C /* PBXContainerItemProxy */;
+		};
+		EBE5AD541E4841E200E22C3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBE5AD321E4841E200E22C3C /* ACRA-iOS */;
+			targetProxy = EBE5AD531E4841E200E22C3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EBE5AD3A1E4841E200E22C3C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBE5AD3B1E4841E200E22C3C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EBE5AD3F1E4841E200E22C3C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBE5AD401E4841E200E22C3C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EBE5AD591E4841E200E22C3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBE5AD5A1E4841E200E22C3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBE5AD5C1E4841E200E22C3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6975J8AN47;
+				INFOPLIST_FILE = "ACRA-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JieWan.ACRA-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		EBE5AD5D1E4841E200E22C3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6975J8AN47;
+				INFOPLIST_FILE = "ACRA-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JieWan.ACRA-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		EBE5AD5F1E4841E200E22C3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6975J8AN47;
+				INFOPLIST_FILE = "ACRA-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JieWan.ACRA-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ACRA-iOS.app/ACRA-iOS";
+			};
+			name = Debug;
+		};
+		EBE5AD601E4841E200E22C3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6975J8AN47;
+				INFOPLIST_FILE = "ACRA-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JieWan.ACRA-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ACRA-iOS.app/ACRA-iOS";
+			};
+			name = Release;
+		};
+		EBE5AD621E4841E200E22C3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 6975J8AN47;
+				INFOPLIST_FILE = "ACRA-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JieWan.ACRA-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "ACRA-iOS";
+			};
+			name = Debug;
+		};
+		EBE5AD631E4841E200E22C3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 6975J8AN47;
+				INFOPLIST_FILE = "ACRA-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JieWan.ACRA-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "ACRA-iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EBE5AD2E1E4841E200E22C3C /* Build configuration list for PBXProject "ACRA-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBE5AD591E4841E200E22C3C /* Debug */,
+				EBE5AD5A1E4841E200E22C3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBE5AD5B1E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBE5AD5C1E4841E200E22C3C /* Debug */,
+				EBE5AD5D1E4841E200E22C3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EBE5AD5E1E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBE5AD5F1E4841E200E22C3C /* Debug */,
+				EBE5AD601E4841E200E22C3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EBE5AD611E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBE5AD621E4841E200E22C3C /* Debug */,
+				EBE5AD631E4841E200E22C3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EBE5AD2B1E4841E200E22C3C /* Project object */;
+}
