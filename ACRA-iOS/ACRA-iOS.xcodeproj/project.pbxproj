@@ -430,7 +430,7 @@
 				DEVELOPMENT_TEAM = 6975J8AN47;
 				INFOPLIST_FILE = "ACRA-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "JieWan.ACRA-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spring2017amazon.msu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -443,7 +443,7 @@
 				DEVELOPMENT_TEAM = 6975J8AN47;
 				INFOPLIST_FILE = "ACRA-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "JieWan.ACRA-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spring2017amazon.msu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
