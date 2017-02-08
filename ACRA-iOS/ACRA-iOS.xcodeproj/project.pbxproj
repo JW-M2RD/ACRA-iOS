@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB918E4D1E492C8700599F87 /* amazon_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amazon_logo.png; sourceTree = "<group>"; };
+		EB918E4D1E492C8700599F87 /* amazon_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = amazon_logo.png; path = Asset/amazon_logo.png; sourceTree = "<group>"; };
 		EBE5AD331E4841E200E22C3C /* ACRA-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ACRA-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE5AD361E4841E200E22C3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE5AD381E4841E200E22C3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
