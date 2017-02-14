@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var testField: UITextView!
+    @IBOutlet weak var searchInput: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,6 +23,9 @@ class ViewController: UIViewController {
     }
     
     //testing commit..
+    @IBAction func searchButton(_ sender: UIButton) {
+        testField.text = searchInput.text
+    }
 
 
 }
