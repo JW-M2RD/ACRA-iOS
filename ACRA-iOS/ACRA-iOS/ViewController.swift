@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
+    //MARK: Properties
     @IBOutlet weak var testField: UITextView!
     @IBOutlet weak var searchInput: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        searchInput.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,7 +25,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //testing commit..
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Hide keyborad
+        testField.resignFirstResponder()
+        return true
+    }
+    //MARK: Actions
     @IBAction func searchButton(_ sender: UIButton) {
         testField.text = searchInput.text
     }
