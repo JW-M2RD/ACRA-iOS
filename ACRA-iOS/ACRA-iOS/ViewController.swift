@@ -28,13 +28,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //Hide keyborad
-        testField.resignFirstResponder()
+        searchInput.resignFirstResponder()
         return true
     }
     //MARK: Actions
     @IBAction func searchButton(_ sender: UIButton) {
         //commenting out the update of text on screen when search pressed
-        testField.text = searchInput.text
+        //testField.text = searchInput.text
     }
 
 
