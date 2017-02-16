@@ -71,7 +71,7 @@
         <!--Product Page-->
         <scene sceneID="8K8-Hs-h22">
             <objects>
-                <viewController id="fp5-q0-DD1" customClass="ProductViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fp5-q0-DD1" customClass="ProductViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XVb-P1-z9y"/>
                         <viewControllerLayoutGuide type="bottom" id="CtZ-6Y-d1l"/>
@@ -79,13 +79,20 @@
                     <view key="view" contentMode="scaleToFill" id="Eni-cN-Wlx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EmK-ej-RJh">
+                                <rect key="frame" x="16" y="72" width="343" height="575"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Product Page" id="ajR-wK-MJk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWF-fW-OVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2697" y="-225"/>
+            <point key="canvasLocation" x="2696.8000000000002" y="-225.33733133433284"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fqm-9x-u9Z">
