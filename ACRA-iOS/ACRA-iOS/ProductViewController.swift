@@ -16,7 +16,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var names = ["Samsung QN55Q7F Flat 55-Inch 4K Ultra HD Smart QLED TV (2017 Model)", "Samsung QN55Q8C Curved 55-Inch 4K Ultra HD Smart QLED TV (2017 Model)", "Samsung UN65KS8000 65-Inch 4K Ultra HD Smart LED TV (2016 Model)", "Samsung UN40J6200 40-Inch 1080p Smart LED TV (2015 Model)"]
     var prices = ["$2499.99", "$3499.99", "$1597.99", "$347.99"]
-    //var images = [UIImage(named: "Samsung1"), UIImage(named: "Samsung2"), UIImage(named: "Samsung3"), UIImage(named: "Samsung4")]
+    var images = [UIImage(named: "Samsung1"), UIImage(named: "Samsung2"), UIImage(named: "Samsung3"), UIImage(named: "Samsung4")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         
-        //cell.photo.image = images[indexPath.row]
+        cell.photo.image = images[indexPath.row]
         cell.name.text = names[indexPath.row]
         cell.price.text = prices[indexPath.row]
         
