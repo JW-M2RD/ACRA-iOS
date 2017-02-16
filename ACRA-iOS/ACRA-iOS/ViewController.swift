@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     //MARK: Actions
     @IBAction func searchButton(_ sender: UIButton) {
+        //commenting out the update of text on screen when search pressed
         testField.text = searchInput.text
     }
 
