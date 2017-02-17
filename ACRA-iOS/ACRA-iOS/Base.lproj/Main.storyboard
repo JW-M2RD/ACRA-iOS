@@ -130,6 +130,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Product Page" id="ajR-wK-MJk"/>
                     <connections>
+                        <outlet property="navigationTitle" destination="ajR-wK-MJk" id="rTW-Pa-b3d"/>
                         <outlet property="tableView" destination="EmK-ej-RJh" id="0pc-FF-g2m"/>
                     </connections>
                 </viewController>

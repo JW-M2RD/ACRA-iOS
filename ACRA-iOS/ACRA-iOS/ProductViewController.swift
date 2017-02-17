@@ -13,6 +13,10 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navigationTitle: UINavigationItem!
+    
+    var SearchLabel = String()
+    
     
     var names = ["Samsung QN55Q7F Flat 55-Inch 4K Ultra HD Smart QLED TV (2017 Model)", "Samsung QN55Q8C Curved 55-Inch 4K Ultra HD Smart QLED TV (2017 Model)", "Samsung UN65KS8000 65-Inch 4K Ultra HD Smart LED TV (2016 Model)", "Samsung UN40J6200 40-Inch 1080p Smart LED TV (2015 Model)"]
     var prices = ["$2499.99", "$3499.99", "$1597.99", "$347.99"]
@@ -20,6 +24,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationTitle.title = SearchLabel
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,5 +45,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
     }
+
     
 }

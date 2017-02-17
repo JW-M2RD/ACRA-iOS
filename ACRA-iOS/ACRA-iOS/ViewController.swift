@@ -36,6 +36,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //commenting out the update of text on screen when search pressed
         //testField.text = searchInput.text
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestViewController: ProductViewController = segue.destination as! ProductViewController
+        
+        DestViewController.SearchLabel = searchInput.text!
+        
+    }
 
 
 }
