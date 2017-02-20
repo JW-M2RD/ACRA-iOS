@@ -27,7 +27,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         navigationTitle.title = SearchLabel
         tableView.tableFooterView = UIView()
     }
-    
+       
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,6 +46,4 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
     }
-
-    
 }

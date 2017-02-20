@@ -18,7 +18,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationTitle.title = SearchLabel
+        //self.navigationController?.navigationItem.prompt= "This is the subtitle";
+        //self.navBar.navigationItem.prompt = "This is the subtitle";
         tableView.tableFooterView = UIView()
         categories = ["Product Quality", "Irrelevant"]
     }
@@ -29,8 +30,9 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let backItem = UIBarButtonItem
+//        let backItem = UIBarButtonItem()
 //        backItem.title = "Back"
+//        navigationItem.backBarButtonItem = backItem
 //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,10 +40,15 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell")
-        cell?.textLabel?.text = categories[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        cell.textLabel?.text = categories[indexPath.row]
         
-        return cell!
+        return cell
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "Products"
+    }
+    
+    
 }
