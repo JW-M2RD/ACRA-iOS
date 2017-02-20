@@ -2,7 +2,7 @@
 //  ProductTableViewCell.swift
 //  ACRA-iOS
 //
-//  Created by Team Amazon on 2/16/17.
+//  Created by Ankit Luthra on 2/16/17.
 //  Copyright © 2017 Team Amazon. All rights reserved.
 //
 

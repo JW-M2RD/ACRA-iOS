@@ -25,6 +25,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationTitle.title = SearchLabel
+        tableView.tableFooterView = UIView()
     }
     
     override func didReceiveMemoryWarning() {

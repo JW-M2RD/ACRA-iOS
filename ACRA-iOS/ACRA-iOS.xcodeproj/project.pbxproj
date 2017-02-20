@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4611E5587C0006EBBB8 /* ProductViewController.swift */; };
 		8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */; };
+		84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */; };
 		EB918E4E1E492C8700599F87 /* amazon_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB918E4D1E492C8700599F87 /* amazon_logo.png */; };
 		EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD361E4841E200E22C3C /* AppDelegate.swift */; };
 		EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD381E4841E200E22C3C /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		8464B4611E5587C0006EBBB8 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCategoryViewController.swift; sourceTree = "<group>"; };
 		EB918E4D1E492C8700599F87 /* amazon_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = amazon_logo.png; path = Asset/amazon_logo.png; sourceTree = "<group>"; };
 		EBE5AD331E4841E200E22C3C /* ACRA-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ACRA-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE5AD361E4841E200E22C3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				EBE5AD381E4841E200E22C3C /* ViewController.swift */,
 				8464B4611E5587C0006EBBB8 /* ProductViewController.swift */,
 				8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */,
+				84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */,
 				EBE5AD3A1E4841E200E22C3C /* Main.storyboard */,
 				EBE5AD3D1E4841E200E22C3C /* Assets.xcassets */,
 				EBE5AD3F1E4841E200E22C3C /* LaunchScreen.storyboard */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */,
+				84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */,
 				8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */,
 				EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */,
 				EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */,
