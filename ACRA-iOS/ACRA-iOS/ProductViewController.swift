@@ -18,8 +18,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var SearchLabel = String()
     
     
-    var names = ["Samsung QN55Q7F Flat 55-Inch 4K Ultra HD Smart QLED TV (2017 Model)", "Samsung QN55Q8C Curved 55-Inch 4K Ultra HD Smart QLED TV (2017 Model)", "Samsung UN65KS8000 65-Inch 4K Ultra HD Smart LED TV (2016 Model)", "Samsung UN40J6200 40-Inch 1080p Smart LED TV (2015 Model)"]
-    var prices = ["$2499.99", "$3499.99", "$1597.99", "$347.99"]
+    var names = ["Samsung 55-Inch", "Samsung Curved 4K", "Samsung 65-Inch 4K", "Samsung 40-Inch 1080p"]
+    var prices = ["$2,499.99", "$3,499.99", "$1,597.99", "$3,47.99"]
     var images = [UIImage(named: "Samsung1"), UIImage(named: "Samsung2"), UIImage(named: "Samsung3"), UIImage(named: "Samsung4")]
     
     override func viewDidLoad() {
