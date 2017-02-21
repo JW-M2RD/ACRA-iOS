@@ -39,6 +39,8 @@ class APIModel: NSObject {
                 return
             }
             
+            Products.sharedProducts.clearProducts()
+            
             if let result = response.result.value {
                 if let json = result as? NSDictionary {
                     if let hits = json["hits"] as? NSDictionary{
