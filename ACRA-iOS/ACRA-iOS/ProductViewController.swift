@@ -50,6 +50,10 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
+        if self.names.count < 1 {
+            // Dog
+        }
+        
         navigationTitle.title = SearchLabel
         tableView.tableFooterView = UIView()
 
