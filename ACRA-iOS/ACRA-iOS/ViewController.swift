@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
     //MARK: UITextFieldDelegate
@@ -38,7 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func searchButton(_ sender: UIButton) {
         //commenting out the update of text on screen when search pressed
-        testField.text = searchInput.text
+        //testField.text = searchInput.text
         //escaping string to send in an HTTP request
         let escapedString = searchInput.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
@@ -48,17 +49,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // Throw error in here
             return
         }
-      
-        APIModel.sharedInstance.getData(escape: escapedString!) { (success:Bool) in
-            if success {
-                print("Fuck yeah")
-            } else {
-                print("Nope")
-            }
-        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
         let DestViewController: ProductViewController = segue.destination as! ProductViewController
         
         DestViewController.SearchLabel = searchInput.text!

@@ -18,17 +18,60 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var SearchLabel = String()
     
+    var names = [String]()
+    var prices = [String]()
+    var images = [UIImage]()
     
-    var names = ["Samsung 55-Inch", "Samsung Curved 4K", "Samsung 65-Inch 4K", "Samsung 40-Inch 1080p"]
-    var prices = ["$2,499.99", "$3,499.99", "$1,597.99", "$3,47.99"]
-    var images = [UIImage(named: "Samsung1"), UIImage(named: "Samsung2"), UIImage(named: "Samsung3"), UIImage(named: "Samsung4")]
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Products.sharedProducts.clearProducts()
+    
+
+//        tableView.reloadData()
+//        for product in Products.sharedProducts.products {
+//            names.append(product.title)
+//            prices.append(product.price_string)
+//            images.append(get_image(product.image_url))
+//        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let escapedString = self.SearchLabel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        
+        APIModel.sharedInstance.getData(escape: escapedString!) { (success:Bool) in
+            if success {
+                print("Fuck yeah")
+                DispatchQueue.main.async {
+                    for product in Products.sharedProducts.products {
+                        self.names.append(product.title)
+                        self.prices.append(product.price_string)
+                        self.images.append(self.get_image(product.image_url))
+                    }
+                    self.tableView.reloadData()
+                }
+                
+            } else {
+                print("Nope")
+            }
+        }
+        
         navigationTitle.title = SearchLabel
-        tableView.tableFooterView = UIView()
+//        tableView.tableFooterView = UIView()
+
+
     }
-       
+    
+    func get_image(_ urlString:String) -> UIImage {
+        let strurl = NSURL(string: urlString)!
+        let dtinternet = NSData(contentsOf:strurl as URL)!
+        return UIImage(data: dtinternet as Data)!
+        //        let bongtuyet:UIImageView = UIImageView(frame:CGRectMake(CGFloat(160),CGFloat(130),60,60))
+        //        bongtuyet.image = UIImage(data:dtinternet as Data)
+        //        self.view.addSubview(bongtuyet)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,6 +83,14 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
+        
+//        cell.name.text = Products.sharedProducts.products[indexPath.row].title
+//        cell.photo.image = get_image(Products.sharedProducts.products[indexPath.row].image_url)
+//        cell.price.text = Products.sharedProducts.products[indexPath.row].price_string
+//        
+        
+        print("aaaaaaaaaaa")
+        print(Products.sharedProducts.products[indexPath.row].title)
         
         cell.photo.image = images[indexPath.row]
         cell.name.text = names[indexPath.row]

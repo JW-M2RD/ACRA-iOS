@@ -10,8 +10,9 @@
 		8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4611E5587C0006EBBB8 /* ProductViewController.swift */; };
 		8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */; };
 		84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */; };
-		84B6936C1E5BC728008E098C /* ACRAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6936B1E5BC728008E098C /* ACRAModel.swift */; };
-		84B693721E5BC821008E098C /* ACRAProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B693711E5BC821008E098C /* ACRAProducts.swift */; };
+		84B6936C1E5BC728008E098C /* ACRAAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6936B1E5BC728008E098C /* ACRAAPIModel.swift */; };
+		84B693721E5BC821008E098C /* ACRAProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B693711E5BC821008E098C /* ACRAProduct.swift */; };
+		84DECC151E5BE7A300331F33 /* ACRAProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DECC141E5BE7A300331F33 /* ACRAProducts.swift */; };
 		EB918E4E1E492C8700599F87 /* amazon_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB918E4D1E492C8700599F87 /* amazon_logo.png */; };
 		EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD361E4841E200E22C3C /* AppDelegate.swift */; };
 		EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD381E4841E200E22C3C /* ViewController.swift */; };
@@ -44,8 +45,9 @@
 		8464B4611E5587C0006EBBB8 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCategoryViewController.swift; sourceTree = "<group>"; };
-		84B6936B1E5BC728008E098C /* ACRAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAModel.swift; sourceTree = "<group>"; };
-		84B693711E5BC821008E098C /* ACRAProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAProducts.swift; sourceTree = "<group>"; };
+		84B6936B1E5BC728008E098C /* ACRAAPIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAAPIModel.swift; sourceTree = "<group>"; };
+		84B693711E5BC821008E098C /* ACRAProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAProduct.swift; sourceTree = "<group>"; };
+		84DECC141E5BE7A300331F33 /* ACRAProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAProducts.swift; sourceTree = "<group>"; };
 		8A2AE8A1F4346E21302E3BEE /* Pods-ACRA-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRA-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACRA-iOS/Pods-ACRA-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D06DC3869981D23382B117CC /* Pods_ACRA_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACRA_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFBBC06BAB78A9CC8E7CEAC6 /* Pods-ACRA-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRA-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACRA-iOS/Pods-ACRA-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,8 +106,9 @@
 		84B6936E1E5BC738008E098C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84B693711E5BC821008E098C /* ACRAProducts.swift */,
-				84B6936B1E5BC728008E098C /* ACRAModel.swift */,
+				84B693711E5BC821008E098C /* ACRAProduct.swift */,
+				84B6936B1E5BC728008E098C /* ACRAAPIModel.swift */,
+				84DECC141E5BE7A300331F33 /* ACRAProducts.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -395,10 +398,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DECC151E5BE7A300331F33 /* ACRAProducts.swift in Sources */,
 				8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */,
-				84B693721E5BC821008E098C /* ACRAProducts.swift in Sources */,
+				84B693721E5BC821008E098C /* ACRAProduct.swift in Sources */,
 				84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */,
-				84B6936C1E5BC728008E098C /* ACRAModel.swift in Sources */,
+				84B6936C1E5BC728008E098C /* ACRAAPIModel.swift in Sources */,
 				8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */,
 				EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */,
 				EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */,
