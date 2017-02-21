@@ -14,6 +14,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationTitle: UINavigationItem!
+  
     
     var SearchLabel = String()
     

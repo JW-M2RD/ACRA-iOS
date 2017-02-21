@@ -10,6 +10,8 @@
 		8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4611E5587C0006EBBB8 /* ProductViewController.swift */; };
 		8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */; };
 		84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */; };
+		84B6936C1E5BC728008E098C /* ACRAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6936B1E5BC728008E098C /* ACRAModel.swift */; };
+		84B693721E5BC821008E098C /* ACRAProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B693711E5BC821008E098C /* ACRAProducts.swift */; };
 		EB918E4E1E492C8700599F87 /* amazon_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB918E4D1E492C8700599F87 /* amazon_logo.png */; };
 		EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD361E4841E200E22C3C /* AppDelegate.swift */; };
 		EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD381E4841E200E22C3C /* ViewController.swift */; };
@@ -18,6 +20,7 @@
 		EBE5AD411E4841E200E22C3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3F1E4841E200E22C3C /* LaunchScreen.storyboard */; };
 		EBE5AD4C1E4841E200E22C3C /* ACRA_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD4B1E4841E200E22C3C /* ACRA_iOSTests.swift */; };
 		EBE5AD571E4841E200E22C3C /* ACRA_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD561E4841E200E22C3C /* ACRA_iOSUITests.swift */; };
+		EDB6E23497F5DF3C11284D5E /* Pods_ACRA_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06DC3869981D23382B117CC /* Pods_ACRA_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,11 @@
 		8464B4611E5587C0006EBBB8 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCategoryViewController.swift; sourceTree = "<group>"; };
+		84B6936B1E5BC728008E098C /* ACRAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAModel.swift; sourceTree = "<group>"; };
+		84B693711E5BC821008E098C /* ACRAProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAProducts.swift; sourceTree = "<group>"; };
+		8A2AE8A1F4346E21302E3BEE /* Pods-ACRA-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRA-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACRA-iOS/Pods-ACRA-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D06DC3869981D23382B117CC /* Pods_ACRA_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACRA_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFBBC06BAB78A9CC8E7CEAC6 /* Pods-ACRA-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRA-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACRA-iOS/Pods-ACRA-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		EB918E4D1E492C8700599F87 /* amazon_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = amazon_logo.png; path = Asset/amazon_logo.png; sourceTree = "<group>"; };
 		EBE5AD331E4841E200E22C3C /* ACRA-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ACRA-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE5AD361E4841E200E22C3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB6E23497F5DF3C11284D5E /* Pods_ACRA_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +91,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84B6936D1E5BC731008E098C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */,
+				EBE5AD381E4841E200E22C3C /* ViewController.swift */,
+				8464B4611E5587C0006EBBB8 /* ProductViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		84B6936E1E5BC738008E098C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84B693711E5BC821008E098C /* ACRAProducts.swift */,
+				84B6936B1E5BC728008E098C /* ACRAModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		84B6936F1E5BC73E008E098C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EBE5AD3A1E4841E200E22C3C /* Main.storyboard */,
+				EBE5AD3F1E4841E200E22C3C /* LaunchScreen.storyboard */,
+				84B693701E5BC747008E098C /* TableViewCells */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		84B693701E5BC747008E098C /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		B5E9041DFE78082B0DD3E1B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A2AE8A1F4346E21302E3BEE /* Pods-ACRA-iOS.debug.xcconfig */,
+				DFBBC06BAB78A9CC8E7CEAC6 /* Pods-ACRA-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E2878C4EEC8C4B31BA2EA3DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D06DC3869981D23382B117CC /* Pods_ACRA_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EB918E4F1E492CC800599F87 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +161,8 @@
 				EBE5AD4A1E4841E200E22C3C /* ACRA-iOSTests */,
 				EBE5AD551E4841E200E22C3C /* ACRA-iOSUITests */,
 				EBE5AD341E4841E200E22C3C /* Products */,
+				B5E9041DFE78082B0DD3E1B2 /* Pods */,
+				E2878C4EEC8C4B31BA2EA3DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,13 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				EBE5AD361E4841E200E22C3C /* AppDelegate.swift */,
-				EBE5AD381E4841E200E22C3C /* ViewController.swift */,
-				8464B4611E5587C0006EBBB8 /* ProductViewController.swift */,
-				8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */,
-				84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */,
-				EBE5AD3A1E4841E200E22C3C /* Main.storyboard */,
+				84B6936D1E5BC731008E098C /* View Controllers */,
+				84B6936E1E5BC738008E098C /* Model */,
+				84B6936F1E5BC73E008E098C /* Views */,
 				EBE5AD3D1E4841E200E22C3C /* Assets.xcassets */,
-				EBE5AD3F1E4841E200E22C3C /* LaunchScreen.storyboard */,
 				EBE5AD421E4841E200E22C3C /* Info.plist */,
 			);
 			path = "ACRA-iOS";
@@ -152,9 +214,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBE5AD5B1E4841E200E22C3C /* Build configuration list for PBXNativeTarget "ACRA-iOS" */;
 			buildPhases = (
+				22F27456DD26742079C7D333 /* [CP] Check Pods Manifest.lock */,
 				EBE5AD2F1E4841E200E22C3C /* Sources */,
 				EBE5AD301E4841E200E22C3C /* Frameworks */,
 				EBE5AD311E4841E200E22C3C /* Resources */,
+				7465F7E77E5C2B5B65672935 /* [CP] Embed Pods Frameworks */,
+				1735296C73314D2DE67A915E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,7 +278,6 @@
 				TargetAttributes = {
 					EBE5AD321E4841E200E22C3C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6975J8AN47;
 						ProvisioningStyle = Automatic;
 					};
 					EBE5AD461E4841E200E22C3C = {
@@ -278,13 +342,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1735296C73314D2DE67A915E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ACRA-iOS/Pods-ACRA-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		22F27456DD26742079C7D333 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7465F7E77E5C2B5B65672935 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ACRA-iOS/Pods-ACRA-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EBE5AD2F1E4841E200E22C3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */,
+				84B693721E5BC821008E098C /* ACRAProducts.swift in Sources */,
 				84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */,
+				84B6936C1E5BC728008E098C /* ACRAModel.swift in Sources */,
 				8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */,
 				EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */,
 				EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */,
@@ -437,9 +551,10 @@
 		};
 		EBE5AD5C1E4841E200E22C3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A2AE8A1F4346E21302E3BEE /* Pods-ACRA-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6975J8AN47;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "ACRA-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spring2017amazon.msu;
@@ -451,9 +566,10 @@
 		};
 		EBE5AD5D1E4841E200E22C3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFBBC06BAB78A9CC8E7CEAC6 /* Pods-ACRA-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6975J8AN47;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "ACRA-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spring2017amazon.msu;
