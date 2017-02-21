@@ -61,7 +61,6 @@
                     <navigationItem key="navigationItem" title="ACRA" id="hGu-2x-Q62"/>
                     <connections>
                         <outlet property="searchInput" destination="Kdt-Co-Oho" id="cjI-GL-qyv"/>
-                        <outlet property="testField" destination="aA9-fg-vei" id="3lX-If-StH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
