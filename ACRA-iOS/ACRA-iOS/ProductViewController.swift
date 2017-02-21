@@ -26,13 +26,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidAppear(animated)
         //Products.sharedProducts.clearProducts()
     
-
-//        tableView.reloadData()
-//        for product in Products.sharedProducts.products {
-//            names.append(product.title)
-//            prices.append(product.price_string)
-//            images.append(get_image(product.image_url))
-//        }
     }
     
     override func viewDidLoad() {
@@ -58,7 +51,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         navigationTitle.title = SearchLabel
-//        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView()
 
 
     }
