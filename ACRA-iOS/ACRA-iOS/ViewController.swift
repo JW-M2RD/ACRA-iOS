@@ -12,7 +12,6 @@ import Foundation
 class ViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: Properties
-    @IBOutlet weak var testField: UITextView!
     @IBOutlet weak var searchInput: UITextField!
     
     override func viewDidLoad() {
@@ -38,9 +37,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func searchButton(_ sender: UIButton) {
-        //commenting out the update of text on screen when search pressed
-        //testField.text = searchInput.text
-        //escaping string to send in an HTTP request
+         //escaping string to send in an HTTP request
         let escapedString = searchInput.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
         // Call the get data from model
