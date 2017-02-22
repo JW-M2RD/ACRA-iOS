@@ -25,7 +25,7 @@ class APIModel: NSObject {
     }
     
     
-    func getData (escape:String, completionHandler: @escaping(Bool) -> () ) {
+    func getProducts (escape:String, completionHandler: @escaping(Bool) -> () ) {
         
         var urlRequest = URLRequest(url: URL(string: "\(baseURL)product_search?search_string=\(escape)")!)
         urlRequest.httpMethod = "GET"
