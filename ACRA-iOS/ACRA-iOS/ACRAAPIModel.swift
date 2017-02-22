@@ -22,10 +22,83 @@ class APIModel: NSObject {
     override init() {
         
         super.init()
+        
+        
     }
     
     
-    func getData (escape:String, completionHandler: @escaping(Bool) -> () ) {
+    func getReviews (escape:String, completionHandler: @escaping(Bool) -> () ) {
+        
+        var urlRequest = URLRequest(url: URL(string: "\(baseURL)asin_search?asin=\(escape)")!)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+    
+        
+        
+        sessionManager.request(urlRequest).responseJSON { response in
+            guard response.result.isSuccess else {
+                // we failed for some reason
+                print("Error \(response.result.error)")
+                completionHandler(false)
+                return
+            }
+            
+            //clear review obj
+            
+            if let result = response.result.value {
+                if let json = result as? NSDictionary {
+                    
+                    Reviews.sharedReviews.clearReviews()
+                    
+                    //Get num Reivews 
+                    let numReviews = json["Count"] as! Int
+                    Reviews.sharedReviews.numReviews = numReviews
+                    
+                    
+                    if let reviews = json["Items"] as? [NSDictionary] {
+                        for review in reviews{
+                            let uid = review["uid"] as! String
+                            let asin = review["asin"] as! String
+                            let relevant = review["relevant"] as! Bool
+                            let reviewerName = review["reviewerName"] as! String
+                            let reviewerTime = review["reviewerTime"] as! String
+                            let reviewText = review["reviewText"] as! String
+                            let reviewerID = review["reviewerID"] as! String
+                            let overall = review["overall"] as! Int
+                            let unixReviewTime = review["unixReviewTime"] as! Int
+                            
+                            var newReview = Review()
+                            newReview.asin = asin
+                            newReview.uid = uid
+                            newReview.relevant = relevant
+                            newReview.reviewerName = reviewerName
+                            newReview.reviewerTime = reviewerTime
+                            newReview.reviewText = reviewText
+                            newReview.reviewerID = reviewerID
+                            newReview.overall = overall
+                            newReview.unixReviewTime = unixReviewTime
+                            
+                            Reviews.sharedReviews.addReview(review: newReview)
+                            
+                        
+                        }
+                        
+                    }
+                    else {
+                        completionHandler(false)
+                    }
+                    
+                    
+                    
+                    print(json)
+                }
+                completionHandler(true)
+            }
+        }
+    }
+    
+    func getProducts (escape:String, completionHandler: @escaping(Bool) -> () ) {
         
         var urlRequest = URLRequest(url: URL(string: "\(baseURL)product_search?search_string=\(escape)")!)
         urlRequest.httpMethod = "GET"

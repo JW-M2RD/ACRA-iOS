@@ -33,9 +33,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let escapedString = self.SearchLabel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
-        APIModel.sharedInstance.getData(escape: escapedString!) { (success:Bool) in
+        APIModel.sharedInstance.getProducts(escape: escapedString!) { (success:Bool) in
             if success {
-                print("Fuck yeah")
+                print("Successfully got products")
                 DispatchQueue.main.async {
                     for product in Products.sharedProducts.products {
                         self.names.append(product.title)
@@ -46,7 +46,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 
             } else {
-                print("Nope")
+                print("Product API call broke")
             }
         }
         
