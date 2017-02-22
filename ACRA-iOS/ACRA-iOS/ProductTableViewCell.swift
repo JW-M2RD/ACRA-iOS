@@ -12,7 +12,7 @@ import UIKit
 class ProductTableViewCell: UITableViewCell {
     //MARK: Properties
     @IBOutlet weak var photo: UIImageView!
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var price: UILabel!
     
     override func awakeFromNib() {

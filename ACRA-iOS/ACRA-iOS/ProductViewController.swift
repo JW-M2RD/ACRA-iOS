@@ -18,6 +18,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var SearchLabel = String()
     
+    var products: [Product] = []
+    
     var names = [String]()
     var prices = [String]()
     var images = [UIImage]()
@@ -38,9 +40,10 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
                 print("Successfully got products")
                 DispatchQueue.main.async {
                     for product in Products.sharedProducts.products {
-                        self.names.append(product.title)
-                        self.prices.append(product.price_string)
-                        self.images.append(self.get_image(product.image_url))
+//                        self.names.append(product.title)
+//                        self.prices.append(product.price_string)
+//                        self.images.append(self.get_image(product.image_url))
+                        self.products.append(product)
                     }
                     self.tableView.reloadData()
                 }
@@ -86,12 +89,15 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
 //        cell.price.text = Products.sharedProducts.products[indexPath.row].price_string
 //        
         
-        print("aaaaaaaaaaa")
-        print(Products.sharedProducts.products[indexPath.row].title)
+//        print("aaaaaaaaaaa")
+//        print(Products.sharedProducts.products[indexPath.row].title)
         
-        cell.photo.image = images[indexPath.row]
-        cell.name.text = names[indexPath.row]
-        cell.price.text = prices[indexPath.row]
+//        cell.photo.image = images[indexPath.row]
+//        cell.name.text = names[indexPath.row]
+//        cell.price.text = prices[indexPath.row]
+        cell.photo.image = get_image(products[indexPath.row].image_url)
+        cell.title.text = products[indexPath.row].title
+        cell.price.text = products[indexPath.row].price_string
         
         return cell
     }
