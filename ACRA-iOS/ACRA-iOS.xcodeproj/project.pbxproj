@@ -404,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F293B01E5C14DD0006E97D /* ReviewListTable.swift in Sources */,
 				84DECC151E5BE7A300331F33 /* ACRAProducts.swift in Sources */,
 				EBF6B1D81E5C427C00BDFDAF /* ReviewListCell.swift in Sources */,
 				8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */,
