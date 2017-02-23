@@ -49,14 +49,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // Send search text to product View table controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
         let DestViewController: ProductViewController = segue.destination as! ProductViewController
         
         DestViewController.SearchLabel = searchInput.text!
-     
-    
         
     }
 

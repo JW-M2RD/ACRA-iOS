@@ -68,7 +68,7 @@ class APIModel: NSObject {
                             let overall = review["overall"] as! Int
                             let unixReviewTime = review["unixReviewTime"] as! Int
                             
-                            var newReview = Review()
+                            let newReview = Review()
                             newReview.asin = asin
                             newReview.uid = uid
                             newReview.relevant = relevant
@@ -124,7 +124,7 @@ class APIModel: NSObject {
                                 let product = Product()
                                     
                                 let ratingg = obj["rating"] as! [String]
-                                let rating = Double(ratingg[0] as! String)
+                                let rating = Double(ratingg[0] )
                                 
                                 let asinn = obj["asin"] as! [String]
                                 let asin = asinn[0]
@@ -136,7 +136,7 @@ class APIModel: NSObject {
                                 let price_string = price_stringg[0]
                                     
                                 let price_intt = obj["numeric_price"] as! [String]
-                                let price_int = Int(price_intt[0] as! String)
+                                let price_int = Int(price_intt[0] )
                                     
                                 let titlee = obj["title"] as! [String]
                                 let title = titlee[0]

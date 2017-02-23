@@ -17,12 +17,12 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
   
     
     var SearchLabel = String()
-    
     var products: [Product] = []
+    var selectedAsin = String()
     
-    var names = [String]()
-    var prices = [String]()
-    var images = [UIImage]()
+//    var names = [String]()
+//    var prices = [String]()
+//    var images = [UIImage]()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -40,9 +40,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
                 print("Successfully got products")
                 DispatchQueue.main.async {
                     for product in Products.sharedProducts.products {
-                        self.names.append(product.title)
-                        self.prices.append(product.price_string)
-                        self.images.append(self.get_image(product.image_url))
+//                        self.names.append(product.title)
+//                        self.prices.append(product.price_string)
+//                        self.images.append(self.get_image(product.image_url))
                         
                         self.products.append(product)
                     }
@@ -54,7 +54,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        if self.names.count < 1 {
+        if self.products.count < 1 {
             // Dog
         }
         
@@ -79,15 +79,16 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return self.products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         
         
-        print("aaaaaaaaaaa")
+//        print("aaaaaaaaaaa")
         print(Products.sharedProducts.products[indexPath.row].title)
+        print(self.products[indexPath.row].asin)
         
 //        cell.photo.image = images[indexPath.row]
 //        cell.name.text = names[indexPath.row]
@@ -99,4 +100,29 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
     }
+    
+    // Get which selected from table
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let alert = UIAlertView()
+//        alert.delegate = self
+//        alert.title = "Selected Row"
+//        alert.message = "You selected row \(indexPath.row)"
+//        alert.addButton(withTitle: "OK")
+//        alert.show()
+        print("selected asin: " + self.products[indexPath.row].asin)
+        self.selectedAsin = self.products[indexPath.row].asin
+        print("self asin"+self.selectedAsin)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestViewController: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
+        
+        print("Prouct View Controller: "+self.selectedAsin)
+        
+        DestViewController.selectedAsin = self.selectedAsin
+        
+    }
+    
+    
 }

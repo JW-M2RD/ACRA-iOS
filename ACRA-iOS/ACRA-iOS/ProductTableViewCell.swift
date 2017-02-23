@@ -23,6 +23,8 @@ class ProductTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+//        print("C L I C K E FD")
+        
         // Configure the view for the selected state
     }
     

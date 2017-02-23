@@ -15,11 +15,13 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var tableView: UITableView!
     
     var categories = [String]()
+    var selectedAsin = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationController?.navigationItem.prompt= "This is the subtitle";
         //self.navBar.navigationItem.prompt = "This is the subtitle";
+        
         tableView.tableFooterView = UIView()
         categories = ["Product Quality", "Irrelevant"]
     }
@@ -43,6 +45,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         cell.textLabel?.text = categories[indexPath.row]
         
+        print("Reivew Category View: " + self.selectedAsin)
         return cell
     }
     
