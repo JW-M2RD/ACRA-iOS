@@ -18,7 +18,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var SearchLabel = String()
     var products: [Product] = []
-    var selectedAsin = String()
+    var selectedAsinProduct = String()
     
 //    var names = [String]()
 //    var prices = [String]()
@@ -110,18 +110,17 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
 //        alert.addButton(withTitle: "OK")
 //        alert.show()
         print("selected asin: " + self.products[indexPath.row].asin)
-        self.selectedAsin = self.products[indexPath.row].asin
-        print("self asin"+self.selectedAsin)
-        
-    }
+        self.selectedAsinProduct = self.products[indexPath.row].asin
+        print("self asin "+self.selectedAsinProduct)
+        }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let DestViewController: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
-        
-        print("Prouct View Controller: "+self.selectedAsin)
-        
-        DestViewController.selectedAsin = self.selectedAsin
-        
+        if (segue.identifier == "ProductToCategory"){
+            let DestViewController: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
+            DestViewController.selectedAsin = self.selectedAsinProduct
+            print("Prouct View Controller: " + DestViewController.selectedAsin)
+        }
     }
     
     

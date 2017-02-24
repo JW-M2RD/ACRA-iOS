@@ -19,11 +19,11 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.navigationItem.prompt= "This is the subtitle";
-        //self.navBar.navigationItem.prompt = "This is the subtitle";
+        //self.navigationController?.navigationItem.prompt = "This is the subtitle";
         
         tableView.tableFooterView = UIView()
         categories = ["Product Quality", "Irrelevant"]
+        print("Reivew Category View: " + self.selectedAsin)
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,8 +44,12 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         cell.textLabel?.text = categories[indexPath.row]
-        
-        print("Reivew Category View: " + self.selectedAsin)
+        if(cell.textLabel?.text == "Product Quality"){
+        cell.detailTextLabel?.text = "12"
+        }
+        else if(cell.textLabel?.text == "Irrelevant"){
+            cell.detailTextLabel?.text = "5"
+        }
         return cell
     }
     
