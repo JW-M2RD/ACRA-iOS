@@ -112,7 +112,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         print("selected asin: " + self.products[indexPath.row].asin)
         self.selectedAsinProduct = self.products[indexPath.row].asin
         print("self asin "+self.selectedAsinProduct)
+        self.performSegue(withIdentifier: "ProductToCategory", sender: nil)
         }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

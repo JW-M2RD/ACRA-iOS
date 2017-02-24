@@ -115,7 +115,6 @@
                                             <outlet property="name" destination="jPq-r2-QDN" id="Z5S-2K-aVE"/>
                                             <outlet property="photo" destination="mhT-RS-IjJ" id="96z-ZR-qzg"/>
                                             <outlet property="price" destination="yMu-47-V25" id="gLm-5z-Otf"/>
-                                            <segue destination="VHF-rc-PEY" kind="show" identifier="ProductToCategory" id="COy-sM-fwd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -134,6 +133,7 @@
                     <connections>
                         <outlet property="navigationTitle" destination="ajR-wK-MJk" id="rTW-Pa-b3d"/>
                         <outlet property="tableView" destination="EmK-ej-RJh" id="0pc-FF-g2m"/>
+                        <segue destination="VHF-rc-PEY" kind="show" identifier="ProductToCategory" id="ysF-Ix-745"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWF-fW-OVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
