@@ -79,7 +79,17 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.products.count
+        if(self.products.count == 0){
+            let image = UIImage(named: "dog")
+            let noDataImage = UIImageView(image: image)
+            tableView.backgroundView = noDataImage
+            tableView.separatorStyle = .none
+            return 0
+        }
+        else {
+            tableView.backgroundView = nil
+            return self.products.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
