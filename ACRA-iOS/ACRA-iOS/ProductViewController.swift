@@ -97,9 +97,10 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         
         
 //        print("aaaaaaaaaaa")
-        print(Products.sharedProducts.products[indexPath.row].title)
-        print(self.products[indexPath.row].asin)
-        
+        print("Title: " + Products.sharedProducts.products[indexPath.row].title)
+        print("ASIN: " + self.products[indexPath.row].asin)
+        print("Price: " + self.products[indexPath.row].price_string)
+//        print("Price: " + self.products[indexPath.row].rating)
 //        cell.photo.image = images[indexPath.row]
 //        cell.name.text = names[indexPath.row]
 //        cell.price.text = prices[indexPath.row]
@@ -107,7 +108,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.photo.image = get_image(self.products[indexPath.row].image_url)
         cell.name.text = self.products[indexPath.row].title
         cell.price.text = self.products[indexPath.row].price_string
-        
+        //self.products[indexPath.row].rating
         return cell
     }
     
@@ -122,6 +123,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         print("selected asin: " + self.products[indexPath.row].asin)
         self.selectedAsinProduct = self.products[indexPath.row].asin
         print("self asin "+self.selectedAsinProduct)
+        print("review: "+self.selectedAsinProduct)
         self.performSegue(withIdentifier: "ProductToCategory", sender: nil)
         }
     
