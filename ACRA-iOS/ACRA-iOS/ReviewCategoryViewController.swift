@@ -45,7 +45,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         cell.textLabel?.text = categories[indexPath.row]
         if(cell.textLabel?.text == "Product Quality"){
-        cell.detailTextLabel?.text = "472"
+            cell.detailTextLabel?.text = "472"
         }
         else if(cell.textLabel?.text == "Irrelevant"){
             cell.detailTextLabel?.text = "53"
