@@ -26,7 +26,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationTitle.title = "Product Quality "
+        navigationTitle.title = "Product Quality"
         tableView.tableFooterView = UIView()
     }
     
