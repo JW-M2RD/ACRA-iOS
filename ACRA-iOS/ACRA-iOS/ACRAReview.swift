@@ -16,7 +16,7 @@ class Review: NSObject {
     var reviewerTime: String! = nil
     var reviewText: String! = nil
     var reviewerID: String! = nil
-    var overall: Int! = nil
+    var overall: Int! = nil //rating
     var unixReviewTime: Int! = nil
     var summary: String! = nil
 
