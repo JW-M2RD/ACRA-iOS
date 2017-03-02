@@ -19,10 +19,26 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var SearchLabel = String()
     var products: [Product] = []
     var selectedAsinProduct = String()
-    
 //    var names = [String]()
 //    var prices = [String]()
 //    var images = [UIImage]()
+    let fullStarImage:  UIImage = UIImage(named: "starFull.png")!
+    let halfStarImage:  UIImage = UIImage(named: "starHalf.png")!
+    let emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
+    
+    var productRating = Double()
+    
+    
+    func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
+        if rating >= starNumber {
+            return fullStarImage
+        } else if rating + 1 > starNumber {
+            return halfStarImage
+        } else {
+            return emptyStarImage
+        }
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -68,9 +84,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         let strurl = NSURL(string: urlString)!
         let dtinternet = NSData(contentsOf:strurl as URL)!
         return UIImage(data: dtinternet as Data)!
-        //        let bongtuyet:UIImageView = UIImageView(frame:CGRectMake(CGFloat(160),CGFloat(130),60,60))
-        //        bongtuyet.image = UIImage(data:dtinternet as Data)
-        //        self.view.addSubview(bongtuyet)
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,11 +96,12 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             let image = UIImage(named: "dog")
             let noDataImage = UIImageView(image: image)
             tableView.backgroundView = noDataImage
-            tableView.separatorStyle = .none
+
             return 0
         }
         else {
             tableView.backgroundView = nil
+            
             return self.products.count
         }
     }
@@ -109,7 +123,17 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.photo.image = get_image(self.products[indexPath.row].image_url)
         cell.name.text = self.products[indexPath.row].title
         cell.price.text = self.products[indexPath.row].price_string
-        //self.products[indexPath.row].rating
+        if let productRating = self.products[indexPath.row].rating {
+            cell.star1.image = getStarImage(starNumber: 1, forRating: productRating)
+            cell.star2.image = getStarImage(starNumber: 2, forRating: productRating)
+            cell.star3.image = getStarImage(starNumber: 3, forRating: productRating)
+            cell.star4.image = getStarImage(starNumber: 4, forRating: productRating)
+            cell.star5.image = getStarImage(starNumber: 5, forRating: productRating)
+        }
+        let rounded_rating = Double(round(100*(self.products[indexPath.row].rating))/100)
+//        let y = Double(round(1000*x)/1000)
+        cell.ratingValue.text = "(" + String(rounded_rating) + ")"
+
         return cell
     }
     
