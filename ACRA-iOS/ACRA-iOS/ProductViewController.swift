@@ -55,7 +55,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             if success {
                 print("Successfully got products")
                 DispatchQueue.main.async {
-                    for product in Database.sharedProducts.products {
+                    for product in Products.sharedProducts.products {
 //                        self.names.append(product.title)
 //                        self.prices.append(product.price_string)
 //                        self.images.append(self.get_image(product.image_url))
