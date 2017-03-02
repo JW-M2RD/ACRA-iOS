@@ -10,7 +10,10 @@ import Foundation
 
 class Reviews: NSObject {
     
+    //Product quality reviews
     var reReviews: [Review] = []
+    
+    //Irrelvant reviews
     var irReview: [Review] = []
     var numReviews: Int! = nil 
     
@@ -27,6 +30,8 @@ class Reviews: NSObject {
 //        if !reviews.contains(review) {
 //            reviews.append(review)
 //        }
+        
+        // add to different list based on related or not
         if review.relevant! {
             if !reReviews.contains(review) {
                 reReviews.append(review)
