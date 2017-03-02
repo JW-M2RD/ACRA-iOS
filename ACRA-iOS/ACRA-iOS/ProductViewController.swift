@@ -70,12 +70,15 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        if self.products.count < 1 {
-            // Dog
-        }
-        
         navigationTitle.title = SearchLabel
         tableView.tableFooterView = UIView()
+        
+//        tableView.layoutMargins = UIEdgeInsets.zero
+        
+//        UIEdgeInsets layoutMargins = self.tableView.layoutMargins;
+//        layoutMargins.right = 20.0f;
+//        
+//        self.tableView.layoutMargins = layoutMargins;
 
 
     }
@@ -126,7 +129,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.star5.image = getStarImage(starNumber: 5, forRating: productRating)
         }
         let rounded_rating = Double(round(100*(self.products[indexPath.row].rating))/100)
-//        let y = Double(round(1000*x)/1000)
         cell.ratingValue.text = "(" + String(rounded_rating) + ")"
 
         return cell
@@ -134,16 +136,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // Get which selected from table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let alert = UIAlertView()
-//        alert.delegate = self
-//        alert.title = "Selected Row"
-//        alert.message = "You selected row \(indexPath.row)"
-//        alert.addButton(withTitle: "OK")
-//        alert.show()
         print("selected asin: " + self.products[indexPath.row].asin)
         self.selectedAsinProduct = self.products[indexPath.row].asin
-        print("self asin "+self.selectedAsinProduct)
-        print("review: "+self.selectedAsinProduct)
         self.performSegue(withIdentifier: "ProductToCategory", sender: nil)
         }
     
