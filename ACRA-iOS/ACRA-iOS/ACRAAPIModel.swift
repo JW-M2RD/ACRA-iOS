@@ -112,7 +112,10 @@ class APIModel: NSObject {
                 return
             }
             
-            Products.sharedProducts.clearProducts()
+            //Old Products
+//            Products.sharedProducts.clearProducts()
+            
+            Database.sharedProducts.clearProducts()
             
             if let result = response.result.value {
                 if let json = result as? NSDictionary {
@@ -148,7 +151,10 @@ class APIModel: NSObject {
                                 product.price_int=price_int
                                 product.title=title
                                     
-                                Products.sharedProducts.addProduct(product: product)
+//                                Products.sharedProducts.addProduct(product: product)
+                                
+                                //Can reuse products method
+                                Database.sharedProducts.addProduct(product: product)
                                     
                                 }
                             

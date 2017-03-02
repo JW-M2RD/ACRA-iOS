@@ -55,7 +55,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             if success {
                 print("Successfully got products")
                 DispatchQueue.main.async {
-                    for product in Products.sharedProducts.products {
+                    for product in Database.sharedProducts.products {
 //                        self.names.append(product.title)
 //                        self.prices.append(product.price_string)
 //                        self.images.append(self.get_image(product.image_url))
@@ -112,11 +112,16 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         
-        print("Title: " + Products.sharedProducts.products[indexPath.row].title)
+        
+//        print("aaaaaaaaaaa")
+//        print("Title: " + Products.sharedProducts.products[indexPath.row].title)
         print("ASIN: " + self.products[indexPath.row].asin)
         print("Price: " + self.products[indexPath.row].price_string)
-        print("Rating: ", self.products[indexPath.row].rating)
-        print ("")
+        print("Rating: ", +self.products[indexPath.row].rating)
+//        print("Price: " + self.products[indexPath.row].rating)
+//        cell.photo.image = images[indexPath.row]
+//        cell.name.text = names[indexPath.row]
+//        cell.price.text = prices[indexPath.row]
         
         cell.photo.image = get_image(self.products[indexPath.row].image_url)
         cell.name.text = self.products[indexPath.row].title
