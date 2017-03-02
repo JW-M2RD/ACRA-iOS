@@ -17,6 +17,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
 
     
     var SearchLabel = String()
+    var database = Database()
     
     
     var titleList = ["Very Happy", "Delighted with this!", "It has a good picture", "With normal HD stream"]

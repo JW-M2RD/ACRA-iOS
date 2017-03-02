@@ -16,6 +16,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     
     var categories = [String]()
     var selectedAsin = String()
+    var reviews = Reviews()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,26 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         tableView.tableFooterView = UIView()
         categories = ["Product Quality", "Irrelevant"]
         print("Reivew Category View: " + self.selectedAsin)
+        
+        APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
+            if success {
+                print("Successfully got reviews")
+                DispatchQueue.main.async {
+                    for review in Reviews.sharedReviews.reReviews {
+                        
+                        self.reviews.addReview(review: review)
+                    }
+                    for review in Reviews.sharedReviews.irReview {
+                        self.reviews.addReview(review: review)
+                    }
+                    self.tableView.reloadData()
+                }
+                
+            } else {
+                print("Product API call broke")
+            }
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,10 +66,12 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         cell.textLabel?.text = categories[indexPath.row]
         if(cell.textLabel?.text == "Product Quality"){
-            cell.detailTextLabel?.text = "472"
+//            cell.detailTextLabel?.text = "472"
+            cell.detailTextLabel?.text = String(self.reviews.reReviews.count)
         }
         else if(cell.textLabel?.text == "Irrelevant"){
-            cell.detailTextLabel?.text = "53"
+//            cell.detailTextLabel?.text = "53"
+            cell.detailTextLabel?.text = String(self.reviews.irReview.count)
         }
         return cell
     }
