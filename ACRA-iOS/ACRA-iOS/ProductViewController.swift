@@ -96,11 +96,12 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             let image = UIImage(named: "dog")
             let noDataImage = UIImageView(image: image)
             tableView.backgroundView = noDataImage
-            tableView.separatorStyle = .none
+
             return 0
         }
         else {
             tableView.backgroundView = nil
+            
             return self.products.count
         }
     }
