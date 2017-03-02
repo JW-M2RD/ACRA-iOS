@@ -152,6 +152,8 @@ class APIModel: NSObject {
                                 product.title=title
                                     
 //                                Products.sharedProducts.addProduct(product: product)
+                                
+                                //Can reuse products method
                                 Database.sharedProducts.addProduct(product: product)
                                     
                                 }

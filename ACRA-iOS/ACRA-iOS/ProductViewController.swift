@@ -98,8 +98,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         
 //        print("aaaaaaaaaaa")
 //        print("Title: " + Products.sharedProducts.products[indexPath.row].title)
-//        print("ASIN: " + self.products[indexPath.row].asin)
-//        print("Price: " + self.products[indexPath.row].price_string)
+        print("ASIN: " + self.products[indexPath.row].asin)
+        print("Price: " + self.products[indexPath.row].price_string)
+        print("Rating: ", +self.products[indexPath.row].rating)
 //        print("Price: " + self.products[indexPath.row].rating)
 //        cell.photo.image = images[indexPath.row]
 //        cell.name.text = names[indexPath.row]
