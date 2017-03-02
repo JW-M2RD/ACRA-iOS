@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8446307F1E677BE400B76877 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446307E1E677BE400B76877 /* ReviewDetailViewController.swift */; };
-		844630811E6781F100B76877 /* ReviewDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844630801E6781F100B76877 /* ReviewDetailCell.swift */; };
 		8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4611E5587C0006EBBB8 /* ProductViewController.swift */; };
 		8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */; };
+		84AD76A01E67C2AA000C9DF2 /* ReviewDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844630801E6781F100B76877 /* ReviewDetailCell.swift */; };
 		84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */; };
 		84B6936C1E5BC728008E098C /* ACRAAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6936B1E5BC728008E098C /* ACRAAPIModel.swift */; };
 		84B693721E5BC821008E098C /* ACRAProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B693711E5BC821008E098C /* ACRAProduct.swift */; };
@@ -426,6 +426,7 @@
 				8446307F1E677BE400B76877 /* ReviewDetailViewController.swift in Sources */,
 				8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */,
 				84B693721E5BC821008E098C /* ACRAProduct.swift in Sources */,
+				84AD76A01E67C2AA000C9DF2 /* ReviewDetailCell.swift in Sources */,
 				EB21984E1E5E4DE100E4F3A9 /* ACRAReview.swift in Sources */,
 				84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */,
 				84B6936C1E5BC728008E098C /* ACRAAPIModel.swift in Sources */,
