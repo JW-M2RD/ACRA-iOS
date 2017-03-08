@@ -30,7 +30,11 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             if success {
                 print("Successfully got reviews")
                 DispatchQueue.main.async {
-                    for review in Reviews.sharedReviews.reReviews {
+                    for review in Reviews.sharedReviews.posReviews {
+                        
+                        self.reviews.addReview(review: review)
+                    }
+                    for review in Reviews.sharedReviews.negReviews {
                         
                         self.reviews.addReview(review: review)
                     }
@@ -67,7 +71,11 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         cell.textLabel?.text = categories[indexPath.row]
         if(cell.textLabel?.text == "Product Quality"){
 //            cell.detailTextLabel?.text = "472"
-            cell.detailTextLabel?.text = String(self.reviews.reReviews.count)
+            let relCount = self.reviews.posReviews.count + self.reviews.negReviews.count
+            print("review number: ", relCount)
+            
+//            print("relevent number: ", self.reviews.reReviews.count)
+            cell.detailTextLabel?.text = String(relCount)
         }
         else if(cell.textLabel?.text == "Irrelevant"){
 //            cell.detailTextLabel?.text = "53"

@@ -91,7 +91,7 @@ class APIModel: NSObject {
                     
                     
                     
-                    print(json)
+//                    print(json)
                 }
                 completionHandler(true)
             }

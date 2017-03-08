@@ -12,6 +12,8 @@ class Reviews: NSObject {
     
     //Product quality reviews
     var reReviews: [Review] = []
+    var posReviews: [Review] = []
+    var negReviews: [Review] = []
     
     //Irrelvant reviews
     var irReview: [Review] = []
@@ -27,14 +29,22 @@ class Reviews: NSObject {
     
     
     func addReview(review: Review) {
-//        if !reviews.contains(review) {
-//            reviews.append(review)
-//        }
         
         // add to different list based on related or not
         if review.relevant! {
-            if !reReviews.contains(review) {
-                reReviews.append(review)
+//            if !reReviews.contains(review) {
+//                reReviews.append(review)
+//            }
+            
+            if review.overall >= 3 {
+                if posReviews.contains(review) {
+                    posReviews.append(review)
+                }
+            }
+            if review.overall <= 2 {
+                if !negReviews.contains(review) {
+                    negReviews.append(review)
+                }
             }
         }
         else {
