@@ -18,6 +18,7 @@ class Review: NSObject {
     var reviewerID: String! = nil
     var overall: Int! = nil
     var unixReviewTime: Int! = nil
+    var summary: String! = nil
 
     
     override init() {
@@ -29,6 +30,7 @@ class Review: NSObject {
         "asin: \(asin!)" +
         "uid: \(uid!)" +
         "relevant: \(relevant!)" +
+        "summary: \(summary!)" +
         "reviewerName: \(reviewerName!)" +
         "reviewerTime: \(reviewerTime!)" +
         "reviewerID: \(reviewerID!)" +

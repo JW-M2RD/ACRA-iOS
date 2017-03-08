@@ -88,5 +88,13 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationController?.navigationBar.topItem?.title = "Products"
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "ProductToCategory"){
+            let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
+            DestViewController.reviews = self.reviews
+//            print("Prouct View Controller: " + DestViewController.selectedAsin)
+//        }
+    }
+    
     
 }

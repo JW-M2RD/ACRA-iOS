@@ -56,7 +56,9 @@ class Reviews: NSObject {
     
     func clearReviews() {
 //        reviews.removeAll()
-        reReviews.removeAll()
+//        reReviews.removeAll()
+        posReviews.removeAll()
+        negReviews.removeAll()
         irReview.removeAll()
     }
 }

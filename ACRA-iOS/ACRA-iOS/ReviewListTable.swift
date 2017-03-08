@@ -18,11 +18,11 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     var SearchLabel = String()
 //    var database = Database()
+    var reviews = Reviews()
     
-    
-    var titleList = ["Very Happy", "Delighted with this!", "It has a good picture", "With normal HD stream"]
-    var reviewerList = ["quirt27", "JAL", "raz", "game_a_lot"]
-    var reviewText = ["Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large...", "While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went...", "Considering the price I paid which was a bit less than $1100.00, I will rate this 5 stars. It has a good crisp picture. With a larger screen I...", "Absolutely stunning 4K TV for the money. Put this TV next to an old HD Sony I was replacing. With normal HD streaming the upscaling gave a remarkably better picture. Of course its", "Very nice tv at good price. Great picture quality, very thin but sturdy. Def would recommend"]
+//    var titleList = ["Very Happy", "Delighted with this!", "It has a good picture", "With normal HD stream"]
+//    var reviewerList = ["quirt27", "JAL", "raz", "game_a_lot"]
+//    var reviewText = ["Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large...", "While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went...", "Considering the price I paid which was a bit less than $1100.00, I will rate this 5 stars. It has a good crisp picture. With a larger screen I...", "Absolutely stunning 4K TV for the money. Put this TV next to an old HD Sony I was replacing. With normal HD streaming the upscaling gave a remarkably better picture. Of course its", "Very nice tv at good price. Great picture quality, very thin but sturdy. Def would recommend"]
 
     
     override func viewDidLoad() {
@@ -37,15 +37,22 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleList.count
+        // use negative reiviews for now
+        return self.reviews.negReviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewListCell
         
-        cell.titleText.text = titleList[indexPath.row]
-        cell.reviewer.text = reviewerList[indexPath.row]
-        cell.ReviewText.text = reviewText[indexPath.row]
+//        cell.titleText.text = titleList[indexPath.row]
+//        cell.reviewer.text = reviewerList[indexPath.row]
+//        cell.ReviewText.text = reviewText[indexPath.row]
+        
+        
+        // use negative reiviews for now
+        cell.titleText.text = self.reviews.negReviews[indexPath.row].summary
+        cell.reviewer.text = self.reviews.negReviews[indexPath.row].reviewerName
+        cell.ReviewText.text = self.reviews.negReviews[indexPath.row].reviewText
         
         return cell
     }

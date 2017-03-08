@@ -67,6 +67,7 @@ class APIModel: NSObject {
                             let reviewerID = review["reviewerID"] as! String
                             let overall = review["overall"] as! Int
                             let unixReviewTime = review["unixReviewTime"] as! Int
+                            let summary = review["summary"] as! String
                             
                             let newReview = Review()
                             newReview.asin = asin
@@ -78,6 +79,7 @@ class APIModel: NSObject {
                             newReview.reviewerID = reviewerID
                             newReview.overall = overall
                             newReview.unixReviewTime = unixReviewTime
+                            newReview.summary = summary
                             
                             Reviews.sharedReviews.addReview(review: newReview)
                             
