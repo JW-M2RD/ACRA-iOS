@@ -23,7 +23,6 @@
 		EBE5AD3C1E4841E200E22C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3A1E4841E200E22C3C /* Main.storyboard */; };
 		EBE5AD3E1E4841E200E22C3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3D1E4841E200E22C3C /* Assets.xcassets */; };
 		EBE5AD411E4841E200E22C3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3F1E4841E200E22C3C /* LaunchScreen.storyboard */; };
-		EBE5AD4C1E4841E200E22C3C /* ACRA_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD4B1E4841E200E22C3C /* ACRA_iOSTests.swift */; };
 		EBE5AD571E4841E200E22C3C /* ACRA_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD561E4841E200E22C3C /* ACRA_iOSUITests.swift */; };
 		EBF6B1D81E5C427C00BDFDAF /* ReviewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6B1D71E5C427C00BDFDAF /* ReviewListCell.swift */; };
 		EBF6B1DA1E5C428800BDFDAF /* ReviewListTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6B1D91E5C428800BDFDAF /* ReviewListTable.swift */; };
@@ -70,8 +69,6 @@
 		EBE5AD401E4841E200E22C3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBE5AD421E4841E200E22C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBE5AD471E4841E200E22C3C /* ACRA-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ACRA-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBE5AD4B1E4841E200E22C3C /* ACRA_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACRA_iOSTests.swift; sourceTree = "<group>"; };
-		EBE5AD4D1E4841E200E22C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBE5AD521E4841E200E22C3C /* ACRA-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ACRA-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE5AD561E4841E200E22C3C /* ACRA_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACRA_iOSUITests.swift; sourceTree = "<group>"; };
 		EBE5AD581E4841E200E22C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -179,7 +176,6 @@
 			children = (
 				EB918E4F1E492CC800599F87 /* Asset */,
 				EBE5AD351E4841E200E22C3C /* ACRA-iOS */,
-				EBE5AD4A1E4841E200E22C3C /* ACRA-iOSTests */,
 				EBE5AD551E4841E200E22C3C /* ACRA-iOSUITests */,
 				EBE5AD341E4841E200E22C3C /* Products */,
 				B5E9041DFE78082B0DD3E1B2 /* Pods */,
@@ -208,15 +204,6 @@
 				EBE5AD421E4841E200E22C3C /* Info.plist */,
 			);
 			path = "ACRA-iOS";
-			sourceTree = "<group>";
-		};
-		EBE5AD4A1E4841E200E22C3C /* ACRA-iOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				EBE5AD4B1E4841E200E22C3C /* ACRA_iOSTests.swift */,
-				EBE5AD4D1E4841E200E22C3C /* Info.plist */,
-			);
-			path = "ACRA-iOSTests";
 			sourceTree = "<group>";
 		};
 		EBE5AD551E4841E200E22C3C /* ACRA-iOSUITests */ = {
@@ -438,7 +425,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBE5AD4C1E4841E200E22C3C /* ACRA_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
