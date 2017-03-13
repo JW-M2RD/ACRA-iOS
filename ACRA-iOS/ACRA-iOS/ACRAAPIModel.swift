@@ -23,7 +23,6 @@ class APIModel: NSObject {
         
         super.init()
         
-        
     }
     
     
@@ -32,9 +31,7 @@ class APIModel: NSObject {
         var urlRequest = URLRequest(url: URL(string: "\(baseURL)asin_search?asin=\(escape)")!)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-    
-        
+
         
         sessionManager.request(urlRequest).responseJSON { response in
             guard response.result.isSuccess else {
@@ -168,4 +165,72 @@ class APIModel: NSObject {
             }
         }
     }
+    /*
+    Commenting out until we can get POST to work
+    func storeMisclassified(uid: String, completionHandler: @escaping(Bool) -> ()) {
+        let parameters: Parameters = [
+            "uid": uid
+        ]
+        
+        var urlRequest = URLRequest(url: URL(string: "\(baseURL)misclassified?uid=\(uid)")!)
+        
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        
+        //add params
+        do {
+            try urlRequest.httpBody = JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch {
+            print(error)
+        }
+        
+        //make request
+        sessionManager.request(urlRequest).validate(statusCode: 200..<300).responseJSON { response in
+            
+            print(response.request)
+            print(response.response)
+            print(response.data)
+            print(response.result)
+            
+            if response.result.isSuccess {
+                completionHandler(true)
+                
+                print("breakpoint")
+                
+                return
+            } else {
+                // we failed for some reason
+                print("Error \(response.result.error)")
+                completionHandler(false)
+                return
+            }
+           
+        }
+    } //end store misclassified
+ */
+    
+    
+    func storeMisclassifiedGet(uid: String, completionHandler: @escaping(Bool) -> ()) {
+     
+        var urlRequest = URLRequest(url: URL(string: "\(baseURL)misclassified?uid=\(uid)")!)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+        
+        //make request
+        sessionManager.request(urlRequest).responseJSON { response in
+            guard response.result.isSuccess else {
+                // we failed for some reason
+                print("Error \(response.result.error)")
+                completionHandler(false)
+                return
+            }
+            print(response)
+            
+        completionHandler(true)
+        return
+        }
+        
+    } //end store misclassified
 }
