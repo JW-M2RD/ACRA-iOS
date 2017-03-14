@@ -2,28 +2,60 @@
 //  ReviewDetailViewController.swift
 //  ACRA-iOS
 //
-//  Created by Team Amazon on 3/1/17.
+//  Created by Ankit Luthra on 3/1/17.
 //  Copyright © 2017 Team Amazon. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class ReviewDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ReviewDetailViewController: UIViewController {
    
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var Star1: UIImageView!
+    @IBOutlet weak var Star2: UIImageView!
+    @IBOutlet weak var Star3: UIImageView!
+    @IBOutlet weak var Star4: UIImageView!
+    @IBOutlet weak var Star5: UIImageView!
     
-    var titleList = ["Very Happy"]
-    var reviewerList = ["quirt27"]
+    @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var reviewer: UILabel!
+    @IBOutlet weak var reviewDate: UILabel!
+    
+    let fullStarImage:  UIImage = UIImage(named: "starFull.png")!
+    let halfStarImage:  UIImage = UIImage(named: "starHalf.png")!
+    let emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
+
+    var productRating = Double()
+
+    
+    var titleList = "Very Happy"
+    var reviewerList = "quirt27"
     var reviewText = ["Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I paid which was a bit less than $1100.00, I will rate this 5 stars. It has a good crisp picture. With a larger screen I... Absolutely stunning 4K TV for the money. Put this TV next to an old HD Sony I was replacing. With normal HD streaming the upscaling gave a remarkably better picture. Of course its"]
-    var date = ["January 13, 2017"]
+    var date = "January 13, 2017"
     
+    func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
+        if rating >= starNumber {
+            return fullStarImage
+        } else if rating + 1 > starNumber {
+            return halfStarImage
+        } else {
+            return emptyStarImage
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.rowHeight = rev
-//        tableView.estimatedRowHeight = 40
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 140
+        
+        titleText.text = titleList;
+        reviewer.text = "By " + reviewerList;
+        reviewDate.text = "on " + date;
+        productRating = 4.5;
+        Star1.image = getStarImage(starNumber: 1, forRating: productRating)
+        Star2.image = getStarImage(starNumber: 2, forRating: productRating)
+        Star3.image = getStarImage(starNumber: 3, forRating: productRating)
+        Star4.image = getStarImage(starNumber: 4, forRating: productRating)
+        Star5.image = getStarImage(starNumber: 5, forRating: productRating)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,20 +63,4 @@ class ReviewDetailViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resoureces that can be recreated
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1;
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "ReviewDetailCell", for: indexPath) as! ReviewDetailCell
-        
-        cell.titleText.text = titleList[indexPath.row]
-        cell.reviewer.text = "By " + reviewerList[indexPath.row]
-        cell.reviewDate.text = "on " + date[indexPath.row]
-        cell.reviewFullText.text = reviewText[indexPath.row]
-        
-        return cell
-    }
-
 }

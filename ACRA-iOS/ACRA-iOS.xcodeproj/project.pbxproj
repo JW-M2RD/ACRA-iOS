@@ -17,7 +17,6 @@
 		EB21984E1E5E4DE100E4F3A9 /* ACRAReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21984C1E5E4DE100E4F3A9 /* ACRAReview.swift */; };
 		EB21984F1E5E4DE100E4F3A9 /* ACRAReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21984D1E5E4DE100E4F3A9 /* ACRAReviews.swift */; };
 		EB918E4E1E492C8700599F87 /* amazon_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB918E4D1E492C8700599F87 /* amazon_logo.png */; };
-		EB9F14091E67C1280040D4A3 /* ReviewDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844630801E6781F100B76877 /* ReviewDetailCell.swift */; };
 		EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD361E4841E200E22C3C /* AppDelegate.swift */; };
 		EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE5AD381E4841E200E22C3C /* ViewController.swift */; };
 		EBE5AD3C1E4841E200E22C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE5AD3A1E4841E200E22C3C /* Main.storyboard */; };
@@ -48,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		8446307E1E677BE400B76877 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
-		844630801E6781F100B76877 /* ReviewDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailCell.swift; sourceTree = "<group>"; };
 		8464B4611E5587C0006EBBB8 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCategoryViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			children = (
 				EBF6B1D71E5C427C00BDFDAF /* ReviewListCell.swift */,
 				8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */,
-				844630801E6781F100B76877 /* ReviewDetailCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				8446307F1E677BE400B76877 /* ReviewDetailViewController.swift in Sources */,
 				8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */,
 				84B693721E5BC821008E098C /* ACRAProduct.swift in Sources */,
-				EB9F14091E67C1280040D4A3 /* ReviewDetailCell.swift in Sources */,
 				EB21984E1E5E4DE100E4F3A9 /* ACRAReview.swift in Sources */,
 				84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */,
 				84B6936C1E5BC728008E098C /* ACRAAPIModel.swift in Sources */,
