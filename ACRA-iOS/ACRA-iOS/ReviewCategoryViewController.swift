@@ -104,7 +104,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.selectedCategory = self.categories[indexPath.row]
         print("Review category:         "+self.selectedCategory)
         self.performSegue(withIdentifier: "ReviewCategory", sender: nil)
-        self.perform
+//        self.perform
     }
     
     
