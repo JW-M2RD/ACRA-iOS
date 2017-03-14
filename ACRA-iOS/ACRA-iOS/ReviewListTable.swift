@@ -19,6 +19,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     var SearchLabel = String()
 //    var database = Database()
     var reviews = Reviews()
+    var selectedCategory = String()
     
 //    var titleList = ["Very Happy", "Delighted with this!", "It has a good picture", "With normal HD stream"]
 //    var reviewerList = ["quirt27", "JAL", "raz", "game_a_lot"]
@@ -27,7 +28,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationTitle.title = "Product Quality"
+        navigationTitle.title = "Review List"
         tableView.tableFooterView = UIView()
     }
     
@@ -37,8 +38,15 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // use negative reiviews for now
-        return self.reviews.negReviews.count
+        
+        if self.selectedCategory == "Product Quality" {
+            // use negative reiviews for now
+            return self.reviews.negReviews.count
+        }
+        else {
+            return self.reviews.irReview.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,11 +56,20 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
 //        cell.reviewer.text = reviewerList[indexPath.row]
 //        cell.ReviewText.text = reviewText[indexPath.row]
         
+        print(self.selectedCategory)
+        if self.selectedCategory == "Product Quality" {
+            // use negative reiviews for now
+            cell.titleText.text = self.reviews.negReviews[indexPath.row].summary
+            cell.reviewer.text = self.reviews.negReviews[indexPath.row].reviewerName
+            cell.ReviewText.text = self.reviews.negReviews[indexPath.row].reviewText
+        }
+        else{
+            // use negative reiviews for now
+            cell.titleText.text = self.reviews.irReview[indexPath.row].summary
+            cell.reviewer.text = self.reviews.irReview[indexPath.row].reviewerName
+            cell.ReviewText.text = self.reviews.irReview[indexPath.row].reviewText
+        }
         
-        // use negative reiviews for now
-        cell.titleText.text = self.reviews.negReviews[indexPath.row].summary
-        cell.reviewer.text = self.reviews.negReviews[indexPath.row].reviewerName
-        cell.ReviewText.text = self.reviews.negReviews[indexPath.row].reviewText
         
         return cell
     }

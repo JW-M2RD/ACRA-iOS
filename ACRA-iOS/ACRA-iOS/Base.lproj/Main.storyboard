@@ -215,7 +215,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Y43-BN-2yZ" kind="show" id="9nt-zm-JkG"/>
+                                            <segue destination="Y43-BN-2yZ" kind="show" identifier="ReviewCategory" id="9nt-zm-JkG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -256,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="1086" y="-225"/>
         </scene>
-        <!--Product Quality-->
+        <!--Review List-->
         <scene sceneID="e3P-Hu-G9z">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Y43-BN-2yZ" customClass="ReviewListTable" customModule="ACRA_iOS" sceneMemberID="viewController">
+                <viewController title="Review List" automaticallyAdjustsScrollViewInsets="NO" id="Y43-BN-2yZ" customClass="ReviewListTable" customModule="ACRA_iOS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="60H-tt-Oqr"/>
                         <viewControllerLayoutGuide type="bottom" id="hJ6-8G-5Wj"/>
@@ -327,7 +327,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Product Quality" id="R7L-CV-bui"/>
+                    <navigationItem key="navigationItem" title="Review List" id="R7L-CV-bui"/>
                     <connections>
                         <outlet property="navigationTitle" destination="R7L-CV-bui" id="AUX-ls-2I1"/>
                         <outlet property="tableView" destination="HeP-Cb-Q4n" id="Ecn-EN-k4t"/>

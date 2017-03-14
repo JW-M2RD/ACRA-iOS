@@ -113,11 +113,10 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         
         
-//        print("aaaaaaaaaaa")
 //        print("Title: " + Products.sharedProducts.products[indexPath.row].title)
-        print("ASIN: " + self.products[indexPath.row].asin)
-        print("Price: " + self.products[indexPath.row].price_string)
-        print("Rating: ", +self.products[indexPath.row].rating)
+//        print("ASIN: " + self.products[indexPath.row].asin)
+//        print("Price: " + self.products[indexPath.row].price_string)
+//        print("Rating: ", +self.products[indexPath.row].rating)
 //        print("Price: " + self.products[indexPath.row].rating)
 //        cell.photo.image = images[indexPath.row]
 //        cell.name.text = names[indexPath.row]
@@ -144,7 +143,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         print("selected asin: " + self.products[indexPath.row].asin)
         self.selectedAsinProduct = self.products[indexPath.row].asin
         self.performSegue(withIdentifier: "ProductToCategory", sender: nil)
-        }
+    }
     
     
     
