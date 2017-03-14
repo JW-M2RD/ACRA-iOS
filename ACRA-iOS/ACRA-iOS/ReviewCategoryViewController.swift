@@ -17,13 +17,14 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     var categories = [String]()
     var selectedAsin = String()
     var reviews = Reviews()
+    var selectedCategory = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationController?.navigationItem.prompt = "This is the subtitle";
         
         tableView.tableFooterView = UIView()
-        categories = ["Product Quality", "Irrelevant"]
+        categories = ["Product Quality", "None Product Quality"]
         print("Reivew Category View: " + self.selectedAsin)
         
         APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
@@ -77,7 +78,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 //            print("relevent number: ", self.reviews.reReviews.count)
             cell.detailTextLabel?.text = String(relCount)
         }
-        else if(cell.textLabel?.text == "Irrelevant"){
+        else if(cell.textLabel?.text == "None Product Quality"){
 //            cell.detailTextLabel?.text = "53"
             cell.detailTextLabel?.text = String(self.reviews.irReview.count)
         }
@@ -89,11 +90,21 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "ProductToCategory"){
+//        if (segue.identifier == "ReviewCategory"){
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
             DestViewController.reviews = self.reviews
+//            DestViewController.selectedCategory = self.selectedCategory
 //            print("Prouct View Controller: " + DestViewController.selectedAsin)
 //        }
+    }
+    
+    // Get which selected from table
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("selected asin: " + self.products[indexPath.row].asin)
+        self.selectedCategory = self.categories[indexPath.row]
+        print("Review category:         "+self.selectedCategory)
+        self.performSegue(withIdentifier: "ReviewCategory", sender: nil)
+        self.perform
     }
     
     

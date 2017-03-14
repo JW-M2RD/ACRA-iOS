@@ -214,7 +214,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Y43-BN-2yZ" kind="show" id="9nt-zm-JkG"/>
+                                            <segue destination="Y43-BN-2yZ" kind="show" identifier="ReviewCategory" id="9nt-zm-JkG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="1086" y="-225"/>
         </scene>
-        <!--Product Quality-->
+        <!--Review List-->
         <scene sceneID="e3P-Hu-G9z">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Y43-BN-2yZ" customClass="ReviewListTable" customModule="ACRA_iOS" sceneMemberID="viewController">
+                <viewController title="Review List" automaticallyAdjustsScrollViewInsets="NO" id="Y43-BN-2yZ" customClass="ReviewListTable" customModule="ACRA_iOS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="60H-tt-Oqr"/>
                         <viewControllerLayoutGuide type="bottom" id="hJ6-8G-5Wj"/>
@@ -314,7 +314,7 @@
                                             <outlet property="ReviewText" destination="7fl-om-EcF" id="XCd-cm-DWA"/>
                                             <outlet property="reviewer" destination="9Jx-gL-KzU" id="Fdq-Pa-xcE"/>
                                             <outlet property="titleText" destination="uT7-yM-ld9" id="oQt-OY-Qav"/>
-                                            <segue destination="pvO-gr-q6X" kind="show" id="VYV-DO-k04"/>
+                                            <segue destination="pvO-gr-q6X" kind="show" identifier="ReviewList" id="VYV-DO-k04"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -326,7 +326,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Product Quality" id="R7L-CV-bui"/>
+                    <navigationItem key="navigationItem" title="Review List" id="R7L-CV-bui"/>
                     <connections>
                         <outlet property="navigationTitle" destination="R7L-CV-bui" id="AUX-ls-2I1"/>
                         <outlet property="tableView" destination="HeP-Cb-Q4n" id="Ecn-EN-k4t"/>
