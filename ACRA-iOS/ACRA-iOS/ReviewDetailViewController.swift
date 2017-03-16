@@ -69,18 +69,37 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
 //        productRating = 4.5;
 //        reviewText.text = review;
         
+        setupToolbar()
+        
+        populateViewWithData()
+    
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: reviewText.frame.size.height + 100)
+        scrollView.addSubview(contentView);
+        
+    }
+    
+    private func setupToolbar() {
+        misclassifiedButton.title = "This Is Not Related To Product Quality"
+        
+    }
+    
+    private func populateViewWithData() {
         titleText.text = review.summary
         reviewer.text = "By " + review.reviewerName
         reviewDate.text = "on " + review.reviewerTime
         reviewText.text = review.reviewText
         productRating = Double(review.overall)
         
-        
         Star1.image = getStarImage(starNumber: 1, forRating: productRating)
         Star2.image = getStarImage(starNumber: 2, forRating: productRating)
         Star3.image = getStarImage(starNumber: 3, forRating: productRating)
         Star4.image = getStarImage(starNumber: 4, forRating: productRating)
         Star5.image = getStarImage(starNumber: 5, forRating: productRating)
+
     }
     
     override func didReceiveMemoryWarning() {
