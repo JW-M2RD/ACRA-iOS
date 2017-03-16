@@ -19,9 +19,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var SearchLabel = String()
     var products: [Product] = []
     var selectedAsinProduct = String()
-//    var names = [String]()
-//    var prices = [String]()
-//    var images = [UIImage]()
     let fullStarImage:  UIImage = UIImage(named: "starFull.png")!
     let halfStarImage:  UIImage = UIImage(named: "starHalf.png")!
     let emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!

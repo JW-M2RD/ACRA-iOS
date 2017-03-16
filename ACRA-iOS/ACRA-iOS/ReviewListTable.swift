@@ -61,10 +61,6 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewListCell
         
-//        cell.titleText.text = titleList[indexPath.row]
-//        cell.reviewer.text = reviewerList[indexPath.row]
-//        cell.ReviewText.text = reviewText[indexPath.row]
-        
 //        print(self.selectedCategory)
         
         
@@ -101,11 +97,6 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         else{
             DestViewController.review = self.reviews.irReview[selectedRow!]
         }
-//        DestViewController.selectedCategory = categories[selectedRow!]
-//        DestViewController.review =
-        //            DestViewController.selectedCategory = self.selectedCategory
-        //            print("Prouct View Controller: " + DestViewController.selectedAsin)
-        //        }
     }
     
     func setDogImg () {
