@@ -65,7 +65,9 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
 //        cell.reviewer.text = reviewerList[indexPath.row]
 //        cell.ReviewText.text = reviewText[indexPath.row]
         
-        print(self.selectedCategory)
+//        print(self.selectedCategory)
+        
+        
         if self.selectedCategory == "Product Quality" {
             // use negative reiviews for now
             
@@ -82,7 +84,28 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
         
         
+        
+        
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //        if (segue.identifier == "ReviewCategory"){
+        
+        let DestViewController: ReviewDetailViewController = segue.destination as! ReviewDetailViewController
+        let selectedRow = tableView.indexPathForSelectedRow?.row
+        
+        if self.selectedCategory == "Product Quality" {
+            DestViewController.review = self.reviews.negReviews[selectedRow!]
+        }
+        else{
+            DestViewController.review = self.reviews.irReview[selectedRow!]
+        }
+//        DestViewController.selectedCategory = categories[selectedRow!]
+//        DestViewController.review =
+        //            DestViewController.selectedCategory = self.selectedCategory
+        //            print("Prouct View Controller: " + DestViewController.selectedAsin)
+        //        }
     }
     
     func setDogImg () {

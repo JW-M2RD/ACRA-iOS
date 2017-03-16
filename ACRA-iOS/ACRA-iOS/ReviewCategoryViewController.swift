@@ -24,7 +24,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         //self.navigationController?.navigationItem.prompt = "This is the subtitle";
         
         tableView.tableFooterView = UIView()
-        categories = ["Product Quality", "None Product Quality"]
+        categories = ["Product Quality", "Non Product Quality"]
         print("Reivew Category View: " + self.selectedAsin)
         
         APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
@@ -73,7 +73,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 //            print("relevent number: ", self.reviews.reReviews.count)
             cell.detailTextLabel?.text = String(relCount)
         }
-        else if(cell.textLabel?.text == "None Product Quality"){
+        else if(cell.textLabel?.text == "Non Product Quality"){
 //            cell.detailTextLabel?.text = "53"
             cell.detailTextLabel?.text = String(self.reviews.irReview.count)
         }
