@@ -23,6 +23,17 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var reviewText: UILabel!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var misclassifiedToolbar: UIToolbar!
+    @IBOutlet weak var misclassifiedButton: UIBarButtonItem!
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Thanks For The Help!",                                                          message: "Your feedback helps improve ACRA. Are you sure this review is not related to product quality?",            preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.default,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Yes, I'm Sure", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     let fullStarImage:  UIImage = UIImage(named: "starFull.png")!
     let halfStarImage:  UIImage = UIImage(named: "starHalf.png")!
     let emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
@@ -30,6 +41,7 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     var review = Review()
 
     @IBOutlet weak var scrollView: UIScrollView!
+    
     var productRating = Double()
 
     
@@ -70,13 +82,6 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
         Star4.image = getStarImage(starNumber: 4, forRating: productRating)
         Star5.image = getStarImage(starNumber: 5, forRating: productRating)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: reviewText.frame.size.height + 100)
-        scrollView.addSubview(contentView);
-        
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
