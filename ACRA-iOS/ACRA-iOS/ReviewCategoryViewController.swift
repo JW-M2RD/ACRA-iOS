@@ -85,25 +85,15 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "ReviewCategory"){
-        
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
             let selectedRow = tableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = categories[selectedRow!]
             DestViewController.reviews = self.reviews
-//            DestViewController.selectedCategory = self.selectedCategory
-//            print("Prouct View Controller: " + DestViewController.selectedAsin)
-//        }
+
+
     }
     
-    // Get which selected from table
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-////        print("selected asin: " + self.products[indexPath.row].asin)
-//        self.selectedCategory = self.categories[indexPath.row]
-//        print("Review category:         "+self.selectedCategory)
-////        self.performSegue(withIdentifier: "ReviewCategory", sender: nil)
-////        self.perform
-//    }
+
     
     
 }
