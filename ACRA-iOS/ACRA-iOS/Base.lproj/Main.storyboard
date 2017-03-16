@@ -587,13 +587,6 @@
                                     <outlet property="delegate" destination="M2f-UA-Hb1" id="ESa-nq-rqh"/>
                                 </connections>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ue-P3-uQH">
-                                <rect key="frame" x="47" y="-7" width="58" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Review" id="0sF-2A-wgc"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -617,7 +610,6 @@
                         <outlet property="contentView" destination="yDo-3i-fh6" id="06v-Pf-cje"/>
                         <outlet property="misclassifiedButton" destination="Dpl-f9-fAe" id="MF2-WO-CwT"/>
                         <outlet property="misclassifiedToolbar" destination="rBh-Uu-gcB" id="NQg-tJ-MMc"/>
-                        <outlet property="navigationTitle" destination="0sF-2A-wgc" id="XlY-uR-eMN"/>
                         <outlet property="reviewDate" destination="2nT-Qf-ids" id="qVn-Xx-qUJ"/>
                         <outlet property="reviewText" destination="CrT-tv-GRQ" id="aoi-hF-3uf"/>
                         <outlet property="reviewer" destination="Bye-xI-AfK" id="07e-6p-JlD"/>
@@ -627,7 +619,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfp-rY-BaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5096.8000000000002" y="115.59220389805098"/>
+            <point key="canvasLocation" x="5153" y="118"/>
         </scene>
     </scenes>
     <resources>

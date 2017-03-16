@@ -11,7 +11,7 @@ import UIKit
 
 class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
    
-    @IBOutlet weak var navigationTitle: UINavigationItem!
+    
     @IBOutlet weak var Star1: UIImageView!
     @IBOutlet weak var Star2: UIImageView!
     @IBOutlet weak var Star3: UIImageView!
@@ -62,7 +62,6 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationTitle.title = "Review"
         scrollView.delegate = self;
         
         setupToolbar()
