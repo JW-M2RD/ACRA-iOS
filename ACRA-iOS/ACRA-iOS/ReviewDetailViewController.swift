@@ -23,17 +23,29 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var reviewText: UILabel!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var misclassifiedToolbar: UIToolbar!
+    @IBOutlet weak var misclassifiedButton: UIBarButtonItem!
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Thanks For The Help!",                                                          message: "Your feedback helps improve ACRA. Are you sure this review is not related to product quality?",            preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.default,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Yes, I'm Sure", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     let fullStarImage:  UIImage = UIImage(named: "starFull.png")!
     let halfStarImage:  UIImage = UIImage(named: "starHalf.png")!
     let emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
 
     @IBOutlet weak var scrollView: UIScrollView!
+    
     var productRating = Double()
 
     
     var titleList = "Very Happy"
     var reviewerList = "quirt27"
-    var review = "Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large... While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I"
+    var review = "Love the new TV. Picture is awesome and set up was quick and easy. Also love Amazon's enhanced delievery......was very nice to have such a large...While I watch a lot of TV, I'd never claim to be an expert on the differences between models. So when the time came to buy a new one, I went... Considering the price I paid which was a bit less than $1100.00, I will rate this 5 stars. It has a good crisp picture. With a larger screen I... Absolutely stunning 4K TV for the money. Put this TV next to an old HD Sony I was replacing. With normal HD streaming the upscaling gave a remarkably better picture. Of course its Very nice tv at good price. Great picture quality, very thin but sturdy. Def would recommend"
     var date = "January 13, 2017"
     
     func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
@@ -48,7 +60,26 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.delegate = self;
+        
+        setupToolbar()
+        
+        populateViewWithData()
+    
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: reviewText.frame.size.height + 100)
+        scrollView.addSubview(contentView);
+        
+    }
+    
+    private func setupToolbar() {
+        misclassifiedButton.title = "This Is Not Related To Product Quality"
+        
+    }
+    
+    private func populateViewWithData() {
         titleText.text = titleList;
         reviewer.text = "By " + reviewerList;
         reviewDate.text = "on " + date;
@@ -59,14 +90,8 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
         Star4.image = getStarImage(starNumber: 4, forRating: productRating)
         Star5.image = getStarImage(starNumber: 5, forRating: productRating)
         reviewText.text = review;
+
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: reviewText.frame.size.height + 100)
-        scrollView.addSubview(contentView);
-        
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
