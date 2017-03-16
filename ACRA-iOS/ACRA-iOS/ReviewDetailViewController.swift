@@ -26,8 +26,12 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var misclassifiedToolbar: UIToolbar!
     @IBOutlet weak var misclassifiedButton: UIBarButtonItem!
     
+    var reviewCategoryName = String()
+    
     @IBAction func buttonTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Thanks For The Help!",                                                          message: "Your feedback helps improve ACRA. Are you sure this review is not related to product quality?",            preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Thanks For The Help!",
+                                                message: "Your feedback helps improve ACRA. Are you sure this review is not related to " + self.reviewCategoryName.lowercased() + "?",
+                                                preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.default,handler: nil))
         alertController.addAction(UIAlertAction(title: "Yes, I'm Sure", style: UIAlertActionStyle.default,handler: nil))
         
@@ -39,10 +43,11 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     let emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
     
     var review = Review()
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     var productRating = Double()
+    
     
     func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
         if rating >= starNumber {
@@ -57,11 +62,6 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self;
-//        titleText.text = titleList;
-//        reviewer.text = "By " + reviewerList;
-//        reviewDate.text = "on " + date;
-//        productRating = 4.5;
-//        reviewText.text = review;
         
         setupToolbar()
         
@@ -77,7 +77,7 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     }
     
     private func setupToolbar() {
-        misclassifiedButton.title = "This Is Not Related To Product Quality"
+        misclassifiedButton.title = "This Is Not Related To " + self.reviewCategoryName
         
     }
     

@@ -93,9 +93,11 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         if self.selectedCategory == "Product Quality" {
             DestViewController.review = self.reviews.negReviews[selectedRow!]
+            DestViewController.reviewCategoryName = self.selectedCategory
         }
         else{
             DestViewController.review = self.reviews.irReview[selectedRow!]
+            DestViewController.reviewCategoryName = self.selectedCategory
         }
     }
     
