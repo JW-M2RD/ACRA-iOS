@@ -11,6 +11,7 @@ import UIKit
 
 class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
    
+    
     @IBOutlet weak var Star1: UIImageView!
     @IBOutlet weak var Star2: UIImageView!
     @IBOutlet weak var Star3: UIImageView!
