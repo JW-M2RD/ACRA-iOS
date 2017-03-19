@@ -27,7 +27,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.titleView.title = "Review Category"
         
         // Set the prompt(text above title) in navigation bar
-        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: setOffSet()))
+        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
         
         tableView.tableFooterView = UIView()
         
@@ -97,21 +97,5 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 
 
     }
-    
-    // function to set the offSet for the prompt
-    func setOffSet()  -> Int {
-        // variable that stores '55' which we are considerng as the maximum length of the title
-        let maxLength = 55
-        //if title is more than maxLength then return the max string length else returns string length (if shorter than maxlength
-        if (selectedProductTitle.characters.count >= maxLength) {
-            return maxLength
-        } else {
-            return selectedProductTitle.characters.count
-        }
-    }
-
-    
-
-    
     
 }

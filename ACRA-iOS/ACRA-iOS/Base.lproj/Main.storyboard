@@ -52,7 +52,7 @@
                                     <segue destination="fp5-q0-DD1" kind="show" identifier="" id="NRW-br-zie"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="ACRA is an app which can help customer classify and read reviews" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-fg-vei" userLabel="introText">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="ACRA is an app which can help customers classify and read reviews" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-fg-vei" userLabel="introText">
                                 <rect key="frame" x="67" y="287" width="240" height="59"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -445,10 +445,10 @@
             </objects>
             <point key="canvasLocation" x="4328.8000000000002" y="116.49175412293854"/>
         </scene>
-        <!--Review Detail View Controller-->
+        <!--Review-->
         <scene sceneID="NA7-4d-TFw">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="M2f-UA-Hb1" customClass="ReviewDetailViewController" customModule="ACRA_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Review" automaticallyAdjustsScrollViewInsets="NO" id="M2f-UA-Hb1" customClass="ReviewDetailViewController" customModule="ACRA_iOS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t48-I7-AoP"/>
                         <viewControllerLayoutGuide type="bottom" id="dC1-v6-aQM"/>
@@ -603,8 +603,7 @@
                             <constraint firstItem="JSd-G1-GTm" firstAttribute="top" secondItem="i50-BM-R7Z" secondAttribute="topMargin" constant="64" id="nae-Ge-Fgb"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationItem key="navigationItem" title="Review" id="i2z-oy-ZwY"/>
                     <connections>
                         <outlet property="Star1" destination="dWA-yA-ceb" id="esU-8K-wb4"/>
                         <outlet property="Star2" destination="krS-YT-PPP" id="1fD-j0-nIp"/>
@@ -614,6 +613,7 @@
                         <outlet property="contentView" destination="yDo-3i-fh6" id="06v-Pf-cje"/>
                         <outlet property="misclassifiedButton" destination="Dpl-f9-fAe" id="MF2-WO-CwT"/>
                         <outlet property="misclassifiedToolbar" destination="rBh-Uu-gcB" id="NQg-tJ-MMc"/>
+                        <outlet property="navigationTitle" destination="i2z-oy-ZwY" id="jkD-67-2xC"/>
                         <outlet property="reviewDate" destination="2nT-Qf-ids" id="qVn-Xx-qUJ"/>
                         <outlet property="reviewText" destination="CrT-tv-GRQ" id="aoi-hF-3uf"/>
                         <outlet property="reviewer" destination="Bye-xI-AfK" id="07e-6p-JlD"/>
@@ -623,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfp-rY-BaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5153" y="118"/>
+            <point key="canvasLocation" x="5194" y="116"/>
         </scene>
     </scenes>
     <resources>

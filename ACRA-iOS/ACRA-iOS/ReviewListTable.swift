@@ -27,7 +27,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         self.navigationTitle.title = "Review List (" + self.selectedCategory + ")"
         
         // Set the prompt(text above title) in navigation bar
-        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: setOffSet()))
+        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
 
         tableView.tableFooterView = UIView()
     }
@@ -94,7 +94,8 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         let DestViewController: ReviewDetailViewController = segue.destination as! ReviewDetailViewController
         let selectedRow = tableView.indexPathForSelectedRow?.row
-        
+        DestViewController.selectedProductTitle = self.selectedProductTitle
+
         if self.selectedCategory == "Product Quality" {
             DestViewController.review = self.reviews.negReviews[selectedRow!]
             DestViewController.reviewCategoryName = self.selectedCategory
@@ -111,16 +112,4 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         tableView.backgroundView = noDataImage
     }
     
-    // function to set the offSet for the prompt
-    func setOffSet()  -> Int {
-        // variable that stores '55' which we are considerng as the maximum length of the title
-        let maxLength = 55
-        //if title is more than maxLength then return the max string length
-        if (selectedProductTitle.characters.count >= maxLength) {
-            return maxLength
-        } else {
-            return selectedProductTitle.characters.count
-        }
-    }
-
 }

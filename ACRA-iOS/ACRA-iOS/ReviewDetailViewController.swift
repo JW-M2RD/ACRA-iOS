@@ -12,6 +12,7 @@ import UIKit
 class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
    
     
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     @IBOutlet weak var Star1: UIImageView!
     @IBOutlet weak var Star2: UIImageView!
     @IBOutlet weak var Star3: UIImageView!
@@ -28,6 +29,7 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var misclassifiedButton: UIBarButtonItem!
     
     var reviewCategoryName = String()
+    var selectedProductTitle = String()
     
     @IBAction func buttonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Thanks For The Help!",
@@ -62,6 +64,9 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set the prompt(text above title) in navigation bar
+        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
+        
         scrollView.delegate = self;
         
         setupToolbar()
@@ -102,4 +107,8 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
         // Dispose of any resoureces that can be recreated
     }
     
+   
+//    @IBAction func logout(_ sender: Any) {
+//        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+//    }
 }
