@@ -102,7 +102,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     func setOffSet()  -> Int {
         // variable that stores '55' which we are considerng as the maximum length of the title
         let maxLength = 55
-        //if title is more than maxLength then return the max string length
+        //if title is more than maxLength then return the max string length else returns string length (if shorter than maxlength
         if (selectedProductTitle.characters.count >= maxLength) {
             return maxLength
         } else {
