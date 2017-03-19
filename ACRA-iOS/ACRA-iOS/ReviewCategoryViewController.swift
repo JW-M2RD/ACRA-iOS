@@ -92,6 +92,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             let selectedRow = tableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = categories[selectedRow!]
             DestViewController.reviews = self.reviews
+            DestViewController.selectedProductTitle = self.selectedProductTitle
+
 
 
     }

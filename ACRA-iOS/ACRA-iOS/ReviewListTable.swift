@@ -20,11 +20,15 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
 //    var database = Database()
     var reviews = Reviews()
     var selectedCategory = String()
-
+    var selectedProductTitle = String ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationTitle.title = "Review List"
+        self.navigationTitle.title = "Review List"
+        
+        // Set the prompt(text above title) in navigation bar
+        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: setOffSet()))
+
         tableView.tableFooterView = UIView()
     }
     
@@ -106,4 +110,17 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         let noDataImage = UIImageView(image: image)
         tableView.backgroundView = noDataImage
     }
+    
+    // function to set the offSet for the prompt
+    func setOffSet()  -> Int {
+        // variable that stores '55' which we are considerng as the maximum length of the title
+        let maxLength = 55
+        //if title is more than maxLength then return the max string length
+        if (selectedProductTitle.characters.count >= maxLength) {
+            return maxLength
+        } else {
+            return selectedProductTitle.characters.count
+        }
+    }
+
 }

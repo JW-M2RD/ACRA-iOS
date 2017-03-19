@@ -233,6 +233,7 @@
                         <constraints>
                             <constraint firstItem="EmK-ej-RJh" firstAttribute="leading" secondItem="Eni-cN-Wlx" secondAttribute="leading" id="HUx-rW-CUq"/>
                             <constraint firstItem="CtZ-6Y-d1l" firstAttribute="top" secondItem="EmK-ej-RJh" secondAttribute="bottom" id="Jqy-T2-ZQx"/>
+                            <constraint firstItem="EmK-ej-RJh" firstAttribute="top" secondItem="XVb-P1-z9y" secondAttribute="bottom" id="Zpd-xW-E4z"/>
                             <constraint firstItem="EmK-ej-RJh" firstAttribute="top" secondItem="XVb-P1-z9y" secondAttribute="bottom" id="cYw-nn-uje"/>
                             <constraint firstAttribute="trailing" secondItem="EmK-ej-RJh" secondAttribute="trailing" id="egG-MO-aT4"/>
                         </constraints>
@@ -351,14 +352,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="BY1-E7-GGJ">
-                                <rect key="frame" x="16" y="72" width="343" height="29"/>
+                                <rect key="frame" x="7" y="72" width="361" height="29"/>
                                 <segments>
                                     <segment title="Positive"/>
                                     <segment title="Critical"/>
                                 </segments>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="119" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HeP-Cb-Q4n">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="101" width="375" height="566"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" rowHeight="119" id="7LW-d7-QrO" customClass="ReviewListCell" customModule="ACRA_iOS">
@@ -423,15 +424,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hJ6-8G-5Wj" firstAttribute="top" secondItem="HeP-Cb-Q4n" secondAttribute="bottom" id="5RJ-eQ-qLO"/>
-                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leadingMargin" id="6D2-cU-1D5"/>
-                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leading" id="G7E-6G-eU2"/>
-                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="trailing" secondItem="XPE-AY-MIc" secondAttribute="trailingMargin" id="TYY-U3-MVC"/>
+                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="top" secondItem="BY1-E7-GGJ" secondAttribute="bottom" constant="1" id="7Qu-CC-NCa"/>
+                            <constraint firstAttribute="trailing" secondItem="BY1-E7-GGJ" secondAttribute="trailing" constant="7" id="BKy-Ne-o3v"/>
+                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leading" id="Der-3I-VF6"/>
+                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="bottom" secondItem="hJ6-8G-5Wj" secondAttribute="top" id="Du9-c7-sXh"/>
+                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="centerX" secondItem="BY1-E7-GGJ" secondAttribute="centerX" id="Lcn-E6-5w1"/>
+                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="trailing" secondItem="XPE-AY-MIc" secondAttribute="trailingMargin" constant="9" id="TYY-U3-MVC"/>
                             <constraint firstItem="BY1-E7-GGJ" firstAttribute="top" secondItem="60H-tt-Oqr" secondAttribute="bottom" constant="8" id="bOX-vW-JRU"/>
-                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leadingMargin" id="eG3-h6-C0b"/>
-                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="trailing" secondItem="XPE-AY-MIc" secondAttribute="trailingMargin" id="iNf-5g-wZC"/>
-                            <constraint firstAttribute="trailing" secondItem="HeP-Cb-Q4n" secondAttribute="trailing" id="yfa-5F-yb3"/>
-                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="top" secondItem="BY1-E7-GGJ" secondAttribute="bottom" constant="8" id="yrj-w9-qbB"/>
+                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leadingMargin" constant="-9" id="eG3-h6-C0b"/>
+                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leading" constant="7" id="ovN-uW-SDJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Review List" id="R7L-CV-bui"/>
