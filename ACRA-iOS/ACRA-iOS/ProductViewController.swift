@@ -67,7 +67,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        navigationTitle.title = SearchLabel
+        navigationTitle.title = "Products"
         tableView.tableFooterView = UIView()
         
 //        tableView.layoutMargins = UIEdgeInsets.zero

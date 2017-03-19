@@ -14,6 +14,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var titleView: UINavigationItem!
     var categories = [String]()
     var selectedAsin = String()
     var reviews = Reviews()
@@ -22,6 +23,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationController?.navigationItem.prompt = "This is the subtitle";
+        self.titleView.title = "Review Category"
         
         tableView.tableFooterView = UIView()
         categories = ["Product Quality", "Non Product Quality"]
@@ -52,6 +54,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -80,9 +83,9 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.topItem?.title = "Products"
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.navigationBar.topItem?.title = "Products"
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
