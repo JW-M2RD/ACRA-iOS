@@ -14,6 +14,10 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationTitle: UINavigationItem!
+    @IBOutlet weak var positiveSegmentedController: UISegmentedControl!
+    @IBAction func SegmentedAction(_ sender: Any) {
+        self.tableView.reloadData()
+    }
 
     
     var SearchLabel = String()
@@ -26,6 +30,8 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         super.viewDidLoad()
         navigationTitle.title = "Review List"
         tableView.tableFooterView = UIView()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,49 +43,84 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         
         if self.selectedCategory == "Product Quality" {
-            
-            
-            if(self.reviews.negReviews.count == 0){
-                setDogImg()
-                return 0
-            }
-            // use negative reiviews for now
+
             tableView.backgroundView = nil
-            return self.reviews.negReviews.count
+            
+            switch self.positiveSegmentedController.selectedSegmentIndex {
+            case 0:
+                if(self.reviews.rePosReviews.count == 0){
+                    setDogImg()
+                    return 0
+                }
+                return self.reviews.rePosReviews.count
+            case 1:
+                if(self.reviews.reNegReviews.count == 0){
+                    setDogImg()
+                    return 0
+                }
+                return self.reviews.reNegReviews.count
+            default:
+                break
+            }
         }
         else {
-            if(self.reviews.irReview.count == 0){
-                setDogImg()
-                return 0
+            switch self.positiveSegmentedController.selectedSegmentIndex {
+            case 0:
+                if(self.reviews.irPosReviews.count == 0){
+                    setDogImg()
+                    return 0
+                }
+                return self.reviews.irPosReviews.count
+            case 1:
+                if(self.reviews.irNegReviews.count == 0){
+                    setDogImg()
+                    return 0
+                }
+                return self.reviews.irNegReviews.count
+            default:
+                break
             }
-            tableView.backgroundView = nil
-            return self.reviews.irReview.count
         }
         
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewListCell
         
-//        print(self.selectedCategory)
-        
         
         if self.selectedCategory == "Product Quality" {
-            // use negative reiviews for now
             
-            // another if to display positive or negative
-            cell.titleText.text = self.reviews.negReviews[indexPath.row].summary
-            cell.reviewer.text = self.reviews.negReviews[indexPath.row].reviewerName
-            cell.ReviewText.text = self.reviews.negReviews[indexPath.row].reviewText
+            
+            switch self.positiveSegmentedController.selectedSegmentIndex {
+            case 0:
+                cell.titleText.text = self.reviews.rePosReviews[indexPath.row].summary
+                cell.reviewer.text = self.reviews.rePosReviews[indexPath.row].reviewerName
+                cell.ReviewText.text = self.reviews.rePosReviews[indexPath.row].reviewText
+            case 1:
+                cell.titleText.text = self.reviews.reNegReviews[indexPath.row].summary
+                cell.reviewer.text = self.reviews.reNegReviews[indexPath.row].reviewerName
+                cell.ReviewText.text = self.reviews.reNegReviews[indexPath.row].reviewText
+            default:
+                break
+            }
+            
         }
         else{
             // None product quality
-            cell.titleText.text = self.reviews.irReview[indexPath.row].summary
-            cell.reviewer.text = self.reviews.irReview[indexPath.row].reviewerName
-            cell.ReviewText.text = self.reviews.irReview[indexPath.row].reviewText
+            switch self.positiveSegmentedController.selectedSegmentIndex {
+            case 0:
+                cell.titleText.text = self.reviews.irPosReviews[indexPath.row].summary
+                cell.reviewer.text = self.reviews.irPosReviews[indexPath.row].reviewerName
+                cell.ReviewText.text = self.reviews.irPosReviews[indexPath.row].reviewText
+            case 1:
+                cell.titleText.text = self.reviews.irNegReviews[indexPath.row].summary
+                cell.reviewer.text = self.reviews.irNegReviews[indexPath.row].reviewerName
+                cell.ReviewText.text = self.reviews.irNegReviews[indexPath.row].reviewText
+            default:
+                break
+            }
         }
-        
-        
         
         
         return cell
@@ -92,12 +133,28 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         let selectedRow = tableView.indexPathForSelectedRow?.row
         
         if self.selectedCategory == "Product Quality" {
-            DestViewController.review = self.reviews.negReviews[selectedRow!]
             DestViewController.reviewCategoryName = self.selectedCategory
+            
+            switch self.positiveSegmentedController.selectedSegmentIndex {
+            case 0:
+                DestViewController.review = self.reviews.rePosReviews[selectedRow!]
+            case 1:
+                DestViewController.review = self.reviews.reNegReviews[selectedRow!]
+            default:
+                break
+            }
         }
         else{
-            DestViewController.review = self.reviews.irReview[selectedRow!]
             DestViewController.reviewCategoryName = self.selectedCategory
+            
+            switch self.positiveSegmentedController.selectedSegmentIndex {
+            case 0:
+                DestViewController.review = self.reviews.irPosReviews[selectedRow!]
+            case 1:
+                DestViewController.review = self.reviews.irNegReviews[selectedRow!]
+            default:
+                break
+            }
         }
     }
     

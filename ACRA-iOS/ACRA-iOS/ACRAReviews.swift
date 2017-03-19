@@ -11,13 +11,14 @@ import Foundation
 class Reviews: NSObject {
     
     //Product quality reviews
-    var reReviews: [Review] = []
-    var posReviews: [Review] = []
-    var negReviews: [Review] = []
+//    var reReviews: [Review] = []
+    var rePosReviews: [Review] = []
+    var reNegReviews: [Review] = []
     
     //Irrelvant reviews
-    var irReview: [Review] = []
-    var numReviews: Int! = nil 
+    var irNegReviews: [Review] = []
+    var irPosReviews: [Review] = []
+    var numReviews: Int! = nil
     
     static let sharedReviews = Reviews()
     
@@ -32,24 +33,29 @@ class Reviews: NSObject {
         
         // add to different list based on related or not
         if review.relevant! {
-//            if !reReviews.contains(review) {
-//                reReviews.append(review)
-//            }
-            
+
             if review.overall >= 3 {
-                if posReviews.contains(review) {
-                    posReviews.append(review)
+                if !rePosReviews.contains(review) {
+                    rePosReviews.append(review)
                 }
             }
             if review.overall <= 2 {
-                if !negReviews.contains(review) {
-                    negReviews.append(review)
+                if !reNegReviews.contains(review) {
+                    reNegReviews.append(review)
                 }
             }
         }
         else {
-            if !irReview.contains(review) {
-                irReview.append(review)
+            
+            if review.overall >= 3 {
+                if !irPosReviews.contains(review) {
+                    irPosReviews.append(review)
+                }
+            }
+            if review.overall <= 2 {
+                if !irNegReviews.contains(review) {
+                    irNegReviews.append(review)
+                }
             }
         }
     }
@@ -57,8 +63,9 @@ class Reviews: NSObject {
     func clearReviews() {
 //        reviews.removeAll()
 //        reReviews.removeAll()
-        posReviews.removeAll()
-        negReviews.removeAll()
-        irReview.removeAll()
+        rePosReviews.removeAll()
+        reNegReviews.removeAll()
+        irPosReviews.removeAll()
+        irNegReviews.removeAll()
     }
 }

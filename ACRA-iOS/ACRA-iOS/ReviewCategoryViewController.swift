@@ -25,21 +25,24 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         
         tableView.tableFooterView = UIView()
         categories = ["Product Quality", "Non Product Quality"]
-        print("Reivew Category View: " + self.selectedAsin)
+        print("Review Category View: " + self.selectedAsin)
         
         APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
             if success {
                 print("Successfully got reviews")
                 DispatchQueue.main.async {
-                    for review in Reviews.sharedReviews.posReviews {
+                    for review in Reviews.sharedReviews.rePosReviews {
                         
                         self.reviews.addReview(review: review)
                     }
-                    for review in Reviews.sharedReviews.negReviews {
+                    for review in Reviews.sharedReviews.reNegReviews {
                         
                         self.reviews.addReview(review: review)
                     }
-                    for review in Reviews.sharedReviews.irReview {
+                    for review in Reviews.sharedReviews.irPosReviews {
+                        self.reviews.addReview(review: review)
+                    }
+                    for review in Reviews.sharedReviews.irNegReviews {
                         self.reviews.addReview(review: review)
                     }
                     self.tableView.reloadData()
@@ -59,6 +62,9 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        print("Review number: ", self.reviews.numReviews)
+        print("Positive Review number: ", self.reviews.rePosReviews.count)
+        print("Negative Review number: ", self.reviews.reNegReviews.count)
         return categories.count
     }
     
@@ -67,15 +73,14 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         cell.textLabel?.text = categories[indexPath.row]
         if(cell.textLabel?.text == "Product Quality"){
 //            cell.detailTextLabel?.text = "472"
-            let relCount = self.reviews.posReviews.count + self.reviews.negReviews.count
-            print("review number: ", relCount)
+//            let relCount = self.reviews.rePosReviews.count + self.reviews.reNegReviews.count
+            print("review number: ", self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
             
-//            print("relevent number: ", self.reviews.reReviews.count)
-            cell.detailTextLabel?.text = String(relCount)
+            cell.detailTextLabel?.text = String(self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
         }
         else if(cell.textLabel?.text == "Non Product Quality"){
 //            cell.detailTextLabel?.text = "53"
-            cell.detailTextLabel?.text = String(self.reviews.irReview.count)
+            cell.detailTextLabel?.text = String(self.reviews.irPosReviews.count + self.reviews.irNegReviews.count)
         }
         return cell
     }
