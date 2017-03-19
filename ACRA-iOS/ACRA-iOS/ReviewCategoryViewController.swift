@@ -17,15 +17,20 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var titleView: UINavigationItem!
     var categories = [String]()
     var selectedAsin = String()
+    var selectedProductTitle = String()
     var reviews = Reviews()
     var selectedCategory = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.navigationItem.prompt = "This is the subtitle";
+        // Set the title in navigation bar
         self.titleView.title = "Review Category"
         
+        // Set the prompt(text above title) in navigation bar
+        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: setOffSet()))
+        
         tableView.tableFooterView = UIView()
+        
         categories = ["Product Quality", "Non Product Quality"]
         print("Reivew Category View: " + self.selectedAsin)
         
@@ -72,7 +77,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 //            cell.detailTextLabel?.text = "472"
             let relCount = self.reviews.posReviews.count + self.reviews.negReviews.count
             print("review number: ", relCount)
-            
 //            print("relevent number: ", self.reviews.reReviews.count)
             cell.detailTextLabel?.text = String(relCount)
         }
@@ -83,10 +87,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.navigationController?.navigationBar.topItem?.title = "Products"
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
             let selectedRow = tableView.indexPathForSelectedRow?.row
@@ -95,6 +95,19 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 
 
     }
+    
+    // function to set the offSet for the prompt
+    func setOffSet()  -> Int {
+        // variable that stores '55' which we are considerng as the maximum length of the title
+        let maxLength = 55
+        //if title is more than maxLength then return the max string length
+        if (selectedProductTitle.characters.count >= maxLength) {
+            return maxLength
+        } else {
+            return selectedProductTitle.characters.count
+        }
+    }
+
     
 
     
