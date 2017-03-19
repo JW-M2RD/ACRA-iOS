@@ -19,6 +19,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var SearchLabel = String()
     var products: [Product] = []
     var selectedAsinProduct = String()
+    var selectedProductName = String()
     let fullStarImage:  UIImage = UIImage(named: "starFull.png")!
     let halfStarImage:  UIImage = UIImage(named: "starHalf.png")!
     let emptyStarImage: UIImage = UIImage(named: "starEmpty.png")!
@@ -67,7 +68,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        navigationTitle.title = SearchLabel
+        navigationTitle.title = "Products"
         tableView.tableFooterView = UIView()
         
 //        tableView.layoutMargins = UIEdgeInsets.zero
@@ -139,6 +140,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected asin: " + self.products[indexPath.row].asin)
         self.selectedAsinProduct = self.products[indexPath.row].asin
+        self.selectedProductName = self.products[indexPath.row].title
         self.performSegue(withIdentifier: "ProductToCategory", sender: nil)
     }
     
@@ -148,6 +150,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         if (segue.identifier == "ProductToCategory"){
             let DestViewController: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
             DestViewController.selectedAsin = self.selectedAsinProduct
+            DestViewController.selectedProductTitle = self.selectedProductName
             print("Prouct View Controller: " + DestViewController.selectedAsin)
         }
     }

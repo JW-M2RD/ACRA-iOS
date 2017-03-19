@@ -10,6 +10,7 @@
 		8446307F1E677BE400B76877 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446307E1E677BE400B76877 /* ReviewDetailViewController.swift */; };
 		8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4611E5587C0006EBBB8 /* ProductViewController.swift */; };
 		8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */; };
+		847D5D621E7F32D4007CDBBC /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D5D611E7F32D4007CDBBC /* CoreDataHelper.swift */; };
 		84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */; };
 		84B6936C1E5BC728008E098C /* ACRAAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6936B1E5BC728008E098C /* ACRAAPIModel.swift */; };
 		84B693721E5BC821008E098C /* ACRAProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B693711E5BC821008E098C /* ACRAProduct.swift */; };
@@ -49,6 +50,7 @@
 		8446307E1E677BE400B76877 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		8464B4611E5587C0006EBBB8 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		847D5D611E7F32D4007CDBBC /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		84B63C4B1E5A91B700F8C710 /* ReviewCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCategoryViewController.swift; sourceTree = "<group>"; };
 		84B6936B1E5BC728008E098C /* ACRAAPIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAAPIModel.swift; sourceTree = "<group>"; };
 		84B693711E5BC821008E098C /* ACRAProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACRAProduct.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				EBE5AD361E4841E200E22C3C /* AppDelegate.swift */,
+				847D5D611E7F32D4007CDBBC /* CoreDataHelper.swift */,
 				84B6936D1E5BC731008E098C /* View Controllers */,
 				84B6936E1E5BC738008E098C /* Model */,
 				84B6936F1E5BC73E008E098C /* Views */,
@@ -411,6 +414,7 @@
 				84B63C4C1E5A91B700F8C710 /* ReviewCategoryViewController.swift in Sources */,
 				84B6936C1E5BC728008E098C /* ACRAAPIModel.swift in Sources */,
 				8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */,
+				847D5D621E7F32D4007CDBBC /* CoreDataHelper.swift in Sources */,
 				EBE5AD391E4841E200E22C3C /* ViewController.swift in Sources */,
 				EBF6B1DA1E5C428800BDFDAF /* ReviewListTable.swift in Sources */,
 				EBE5AD371E4841E200E22C3C /* AppDelegate.swift in Sources */,

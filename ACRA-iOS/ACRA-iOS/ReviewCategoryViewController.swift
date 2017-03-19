@@ -14,16 +14,23 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var titleView: UINavigationItem!
     var categories = [String]()
     var selectedAsin = String()
+    var selectedProductTitle = String()
     var reviews = Reviews()
     var selectedCategory = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.navigationItem.prompt = "This is the subtitle";
+        // Set the title in navigation bar
+        self.titleView.title = "Review Category"
+        
+        // Set the prompt(text above title) in navigation bar
+        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
         
         tableView.tableFooterView = UIView()
+        
         categories = ["Product Quality", "Non Product Quality"]
         print("Review Category View: " + self.selectedAsin)
         
@@ -55,6 +62,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,20 +93,15 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.topItem?.title = "Products"
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
             let selectedRow = tableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = categories[selectedRow!]
             DestViewController.reviews = self.reviews
+            DestViewController.selectedProductTitle = self.selectedProductTitle
+
 
 
     }
-    
-
-    
     
 }

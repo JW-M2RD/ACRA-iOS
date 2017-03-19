@@ -52,7 +52,7 @@
                                     <segue destination="fp5-q0-DD1" kind="show" identifier="" id="NRW-br-zie"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="ACRA is an app which can help customer classify and read reviews" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-fg-vei" userLabel="introText">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="ACRA is an app which can help customers classify and read reviews" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-fg-vei" userLabel="introText">
                                 <rect key="frame" x="67" y="287" width="240" height="59"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -233,6 +233,7 @@
                         <constraints>
                             <constraint firstItem="EmK-ej-RJh" firstAttribute="leading" secondItem="Eni-cN-Wlx" secondAttribute="leading" id="HUx-rW-CUq"/>
                             <constraint firstItem="CtZ-6Y-d1l" firstAttribute="top" secondItem="EmK-ej-RJh" secondAttribute="bottom" id="Jqy-T2-ZQx"/>
+                            <constraint firstItem="EmK-ej-RJh" firstAttribute="top" secondItem="XVb-P1-z9y" secondAttribute="bottom" id="Zpd-xW-E4z"/>
                             <constraint firstItem="EmK-ej-RJh" firstAttribute="top" secondItem="XVb-P1-z9y" secondAttribute="bottom" id="cYw-nn-uje"/>
                             <constraint firstAttribute="trailing" secondItem="EmK-ej-RJh" secondAttribute="trailing" id="egG-MO-aT4"/>
                         </constraints>
@@ -313,6 +314,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Zrk-gD-3gA" id="n7p-Oj-BtY"/>
+                        <outlet property="titleView" destination="oy5-AX-UDE" id="ffB-ic-6dd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9u-rS-RbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,7 +362,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="119" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HeP-Cb-Q4n">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="101" width="375" height="566"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" rowHeight="119" id="7LW-d7-QrO" customClass="ReviewListCell" customModule="ACRA_iOS">
@@ -425,15 +427,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hJ6-8G-5Wj" firstAttribute="top" secondItem="HeP-Cb-Q4n" secondAttribute="bottom" id="5RJ-eQ-qLO"/>
-                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leadingMargin" id="6D2-cU-1D5"/>
-                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leading" id="G7E-6G-eU2"/>
-                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="trailing" secondItem="XPE-AY-MIc" secondAttribute="trailingMargin" id="TYY-U3-MVC"/>
+                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="top" secondItem="BY1-E7-GGJ" secondAttribute="bottom" constant="1" id="7Qu-CC-NCa"/>
+                            <constraint firstAttribute="trailing" secondItem="BY1-E7-GGJ" secondAttribute="trailing" constant="7" id="BKy-Ne-o3v"/>
+                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leading" id="Der-3I-VF6"/>
+                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="bottom" secondItem="hJ6-8G-5Wj" secondAttribute="top" id="Du9-c7-sXh"/>
+                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="centerX" secondItem="BY1-E7-GGJ" secondAttribute="centerX" id="Lcn-E6-5w1"/>
+                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="trailing" secondItem="XPE-AY-MIc" secondAttribute="trailingMargin" constant="9" id="TYY-U3-MVC"/>
                             <constraint firstItem="BY1-E7-GGJ" firstAttribute="top" secondItem="60H-tt-Oqr" secondAttribute="bottom" constant="8" id="bOX-vW-JRU"/>
-                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leadingMargin" id="eG3-h6-C0b"/>
-                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="trailing" secondItem="XPE-AY-MIc" secondAttribute="trailingMargin" id="iNf-5g-wZC"/>
-                            <constraint firstAttribute="trailing" secondItem="HeP-Cb-Q4n" secondAttribute="trailing" id="yfa-5F-yb3"/>
-                            <constraint firstItem="HeP-Cb-Q4n" firstAttribute="top" secondItem="BY1-E7-GGJ" secondAttribute="bottom" constant="8" id="yrj-w9-qbB"/>
+                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leadingMargin" constant="-9" id="eG3-h6-C0b"/>
+                            <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leading" constant="7" id="ovN-uW-SDJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Review List" id="R7L-CV-bui"/>
@@ -447,10 +449,10 @@
             </objects>
             <point key="canvasLocation" x="4328.8000000000002" y="116.49175412293854"/>
         </scene>
-        <!--Review Detail View Controller-->
+        <!--Review-->
         <scene sceneID="NA7-4d-TFw">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="M2f-UA-Hb1" customClass="ReviewDetailViewController" customModule="ACRA_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Review" automaticallyAdjustsScrollViewInsets="NO" id="M2f-UA-Hb1" customClass="ReviewDetailViewController" customModule="ACRA_iOS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t48-I7-AoP"/>
                         <viewControllerLayoutGuide type="bottom" id="dC1-v6-aQM"/>
@@ -462,16 +464,18 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBh-Uu-gcB">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Misclassified Button" width="344" id="Dpl-f9-fAe">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gaZ-es-4ue"/>
+                                    <barButtonItem title="Misclassified Button" id="Dpl-f9-fAe">
                                         <connections>
                                             <action selector="buttonTapped:" destination="M2f-UA-Hb1" id="4xW-dd-9eG"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hbJ-wf-OSG"/>
                                 </items>
                                 <color key="barTintColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSd-G1-GTm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="529"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDo-3i-fh6">
                                         <rect key="frame" x="8" y="8" width="360" height="543"/>
@@ -536,7 +540,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrT-tv-GRQ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrT-tv-GRQ">
                                                 <rect key="frame" x="8" y="66" width="344" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -581,9 +585,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="yDo-3i-fh6" secondAttribute="bottom" constant="8" id="0sW-mb-udF"/>
+                                    <constraint firstAttribute="bottom" secondItem="yDo-3i-fh6" secondAttribute="bottom" constant="-22" id="0sW-mb-udF"/>
                                     <constraint firstItem="yDo-3i-fh6" firstAttribute="top" secondItem="JSd-G1-GTm" secondAttribute="top" constant="8" id="LHw-t0-dPG"/>
-                                    <constraint firstItem="yDo-3i-fh6" firstAttribute="trailing" secondItem="JSd-G1-GTm" secondAttribute="trailingMargin" id="SJ7-mN-2VA"/>
+                                    <constraint firstItem="yDo-3i-fh6" firstAttribute="trailing" secondItem="JSd-G1-GTm" secondAttribute="trailingMargin" constant="1" id="SJ7-mN-2VA"/>
                                     <constraint firstItem="yDo-3i-fh6" firstAttribute="centerX" secondItem="JSd-G1-GTm" secondAttribute="centerX" id="jaF-Xj-viT"/>
                                     <constraint firstItem="yDo-3i-fh6" firstAttribute="leading" secondItem="JSd-G1-GTm" secondAttribute="leadingMargin" id="tQE-0I-Eio"/>
                                 </constraints>
@@ -600,11 +604,11 @@
                             <constraint firstAttribute="trailing" secondItem="JSd-G1-GTm" secondAttribute="trailing" id="JQa-Tt-vue"/>
                             <constraint firstItem="JSd-G1-GTm" firstAttribute="leading" secondItem="rBh-Uu-gcB" secondAttribute="leading" id="Lel-Io-4tq"/>
                             <constraint firstItem="JSd-G1-GTm" firstAttribute="trailing" secondItem="rBh-Uu-gcB" secondAttribute="trailing" id="jeN-pj-fpr"/>
-                            <constraint firstItem="JSd-G1-GTm" firstAttribute="top" secondItem="i50-BM-R7Z" secondAttribute="topMargin" constant="64" id="nae-Ge-Fgb"/>
+                            <constraint firstItem="JSd-G1-GTm" firstAttribute="top" secondItem="i50-BM-R7Z" secondAttribute="topMargin" constant="94" id="nae-Ge-Fgb"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationItem key="navigationItem" title="Review" id="i2z-oy-ZwY"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="Star1" destination="dWA-yA-ceb" id="esU-8K-wb4"/>
                         <outlet property="Star2" destination="krS-YT-PPP" id="1fD-j0-nIp"/>
@@ -614,6 +618,7 @@
                         <outlet property="contentView" destination="yDo-3i-fh6" id="06v-Pf-cje"/>
                         <outlet property="misclassifiedButton" destination="Dpl-f9-fAe" id="MF2-WO-CwT"/>
                         <outlet property="misclassifiedToolbar" destination="rBh-Uu-gcB" id="NQg-tJ-MMc"/>
+                        <outlet property="navigationTitle" destination="i2z-oy-ZwY" id="jkD-67-2xC"/>
                         <outlet property="reviewDate" destination="2nT-Qf-ids" id="qVn-Xx-qUJ"/>
                         <outlet property="reviewText" destination="CrT-tv-GRQ" id="aoi-hF-3uf"/>
                         <outlet property="reviewer" destination="Bye-xI-AfK" id="07e-6p-JlD"/>
@@ -623,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfp-rY-BaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5153" y="118"/>
+            <point key="canvasLocation" x="5192.8000000000002" y="115.59220389805098"/>
         </scene>
     </scenes>
     <resources>

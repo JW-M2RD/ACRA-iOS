@@ -24,11 +24,15 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
 //    var database = Database()
     var reviews = Reviews()
     var selectedCategory = String()
-
+    var selectedProductTitle = String ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationTitle.title = "Review List"
+        self.navigationTitle.title = "Review List (" + self.selectedCategory + ")"
+        
+        // Set the prompt(text above title) in navigation bar
+        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
+
         tableView.tableFooterView = UIView()
         
         
@@ -131,7 +135,8 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         let DestViewController: ReviewDetailViewController = segue.destination as! ReviewDetailViewController
         let selectedRow = tableView.indexPathForSelectedRow?.row
-        
+        DestViewController.selectedProductTitle = self.selectedProductTitle
+
         if self.selectedCategory == "Product Quality" {
             DestViewController.reviewCategoryName = self.selectedCategory
             
@@ -163,4 +168,5 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         let noDataImage = UIImageView(image: image)
         tableView.backgroundView = noDataImage
     }
+    
 }
