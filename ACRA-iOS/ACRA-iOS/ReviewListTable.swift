@@ -24,7 +24,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationTitle.title = "Review List"
+        self.navigationTitle.title = "Review List (" + self.selectedCategory + ")"
         
         // Set the prompt(text above title) in navigation bar
         self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: setOffSet()))
