@@ -174,16 +174,12 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         if(tableView == sortTableView) {
             switch indexPath.row {
             case 0:
-                print("0: ", indexPath.row)
                 self.products = self.products.sorted{$0.price_int > $1.price_int}
             case 1:
-                print("1: ", indexPath.row)
                 self.products = self.products.sorted{$0.price_int < $1.price_int}
             case 2:
-                print("2: ", indexPath.row)
                 self.products = self.products.sorted{$0.rating > $1.rating}
             case 3:
-                print("3: ", indexPath.row)
                 self.products = self.products.sorted{$0.rating < $1.rating}
             default:
                 break
