@@ -23,14 +23,11 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         else {
             trailingConstraint.constant = 0
-            UIView.animate(withDuration: 0.4, animations: {
-                    self.view.layoutIfNeeded()
-            })
-            
         }
-        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
         menuShowing = !menuShowing
-//        sortTableView.isHidden = false
     }
 
     @IBOutlet weak var sortTableView: UITableView!
@@ -74,6 +71,14 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         setMenuToHidden()
+        sortTableView.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
+
+        //for rounded corners
+        sortTableView.layer.cornerRadius = 10
+        sortTableView.layer.masksToBounds = true
+        
+//        sortTableView.layer.shadowOpacity = 1
+//        sortTableView.layer.shadowRadius = 6
 
         let escapedString = self.SearchLabel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
@@ -94,14 +99,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         
         navigationTitle.title = "Products"
         
-//        self.productTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        self.sortTableView.register(UITableViewCell.self, forCellReuseIdentifier: "SortCell")
         productTableView.tableFooterView = UIView()
         sortTableView.tableFooterView = UIView()
-        sortTableView.backgroundColor = UIColor.gray
-        sortTableView.tintColor = UIColor.blue
-        
-
     }
     
     func get_image(_ urlString:String) -> UIImage {
