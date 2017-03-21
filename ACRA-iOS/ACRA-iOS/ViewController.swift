@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         searchInput.delegate = self
+        navigationController?.navigationBar.barTintColor = UIColor (red: CGFloat(52/255.0), green: CGFloat(168/255.0), blue: CGFloat(188/255.0), alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
