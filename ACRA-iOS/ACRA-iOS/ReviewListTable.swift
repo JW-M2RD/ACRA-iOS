@@ -36,7 +36,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
 
         reviewListTableView.tableFooterView = UIView()
-        
+        listSortTableView.tableFooterView = UIView()
         
     }
     
