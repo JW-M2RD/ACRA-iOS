@@ -15,6 +15,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var navigationTitle: UINavigationItem!
   
+    @IBAction func sortMenuTrigger(_ sender: Any) {
+        sortTableView.isHidden = false
+    }
 
     @IBOutlet weak var sortTableView: UITableView!
     
@@ -28,7 +31,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var productRating = Double()
     
-    var sortRule = ["1 First","2 Second","3 Third","4 Fourth"]
+    var sortRules = ["Price: High to Low","Price: Low to High","Rating: Hight to Low","Rating: Low to High"]
+    var sortRule = String()
     
     func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
         if rating >= starNumber {
@@ -106,7 +110,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         else {
-            return self.sortRule.count
+            return self.sortRules.count
         }
     }
     
@@ -131,7 +135,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         else {
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "SortCell", for: indexPath)
-            cell2.textLabel?.text = self.sortRule[indexPath.row]
+            cell2.textLabel?.text = self.sortRules[indexPath.row]
             cell2.backgroundColor = UIColor.lightGray
             return cell2
         }
@@ -144,6 +148,27 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             self.selectedAsinProduct = self.products[indexPath.row].asin
             self.selectedProductName = self.products[indexPath.row].title
             self.performSegue(withIdentifier: "ProductToCategory", sender: nil)
+        }
+        
+        if(tableView == sortTableView) {
+            switch indexPath.row {
+            case 0:
+                print("0: ", indexPath.row)
+                self.products = self.products.sorted{$0.price_int > $1.price_int}
+            case 1:
+                print("1: ", indexPath.row)
+                self.products = self.products.sorted{$0.price_int < $1.price_int}
+            case 2:
+                print("2: ", indexPath.row)
+                self.products = self.products.sorted{$0.rating > $1.rating}
+            case 3:
+                print("3: ", indexPath.row)
+                self.products = self.products.sorted{$0.rating < $1.rating}
+            default:
+                break
+            }
+            tableView.isHidden = true
+            productTableView.reloadData()
         }
     }
     
