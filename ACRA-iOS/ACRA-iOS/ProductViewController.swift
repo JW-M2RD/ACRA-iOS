@@ -136,7 +136,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         else {
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "SortCell", for: indexPath)
             cell2.textLabel?.text = self.sortRules[indexPath.row]
-            cell2.backgroundColor = UIColor.lightGray
+            cell2.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
             return cell2
         }
     }
