@@ -43,9 +43,22 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var productRating = Double()
     
-    var sortRules = ["Price: High to Low","Price: Low to High","Rating: High to Low","Rating: Low to High"]
+    var sortByPrice = ["High to Low","Low to High"]
+    var sortByRating = ["High to Low","Low to High"]
     var sortRule = String()
     
+//    let sectionTitles: [String] = ["Sort By:","Price","Rating"]
+    //Sorting options icon by Icons8: https://icons8.com/web-app/18636/Sorting-Options
+    //Thanks to Icons8 for Price Tag USD icon: https://icons8.com/web-app/2971/Price-Tag-USD
+    //Thanks to Icons8 for the Rating icon: https://icons8.com/web-app/11674/Rating
+    let sectionImages: [UIImage] = [#imageLiteral(resourceName: "Sorting"), #imageLiteral(resourceName: "Price Tag"), #imageLiteral(resourceName: "Rating")]
+    
+    let sections: [String] = ["Sort By", "Price", "Rating"]
+    let s1Data: [String] = []
+    let s2Data: [String] = ["High to Low", "Low to High"]
+    let s3Data: [String] = ["High to Low", "Low to High"]
+    
+    var sectionData: [Int: [String]] = [:]
     func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
         if rating >= starNumber {
             return fullStarImage
@@ -76,7 +89,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         //for rounded corners
         sortTableView.layer.cornerRadius = 10
         sortTableView.layer.masksToBounds = true
-        
+       
+        sectionData = [0:s1Data, 1:s2Data, 2:s3Data]
 //        sortTableView.layer.shadowOpacity = 1
 //        sortTableView.layer.shadowRadius = 6
 
@@ -130,8 +144,12 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         else {
-            return self.sortRules.count
+            return (sectionData[section]?.count)!
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,10 +172,16 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
         }
         else {
-            let cell2 = tableView.dequeueReusableCell(withIdentifier: "SortCell", for: indexPath)
-            cell2.textLabel?.text = self.sortRules[indexPath.row]
-            cell2.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
-            return cell2
+            var cell2 = tableView.dequeueReusableCell(withIdentifier: "SortCell")
+            
+            if cell2 == nil {
+                cell2 = UITableViewCell(style: .default, reuseIdentifier: "SortCell");
+            }
+            
+            cell2!.textLabel?.text = sectionData[indexPath.section]![indexPath.row]
+            
+            cell2?.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
+            return cell2!
         }
     }
     
@@ -172,26 +196,61 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         if(tableView == sortTableView) {
-            switch indexPath.row {
-            case 0:
-                print("0: ", indexPath.row)
-                self.products = self.products.sorted{$0.price_int > $1.price_int}
-            case 1:
-                print("1: ", indexPath.row)
-                self.products = self.products.sorted{$0.price_int < $1.price_int}
-            case 2:
-                print("2: ", indexPath.row)
-                self.products = self.products.sorted{$0.rating > $1.rating}
-            case 3:
-                print("3: ", indexPath.row)
-                self.products = self.products.sorted{$0.rating < $1.rating}
-            default:
-                break
+            if(indexPath.section == 1) {
+                switch indexPath.row {
+                    case 0:
+                        print("Sec:1 Row: 0 ->", indexPath.section , indexPath.row)
+                        self.products = self.products.sorted{$0.price_int > $1.price_int}
+                    case 1:
+                        print("Sec:1 Row: 1 ->", indexPath.section , indexPath.row)
+                        self.products = self.products.sorted{$0.price_int < $1.price_int}
+                    default:
+                        break
+                }
+            }
+            else if(indexPath.section == 2) {
+                switch indexPath.row {
+                    case 0:
+                        print("Sec:2 Row: 0 ->", indexPath.section , indexPath.row)
+                        self.products = self.products.sorted{$0.rating > $1.rating}
+                    case 1:
+                        print("Sec:2 Row: 1 ->", indexPath.section , indexPath.row)
+                        self.products = self.products.sorted{$0.rating < $1.rating}
+                    default:
+                        break
+                }
             }
             setMenuToHidden()
             productTableView.reloadData()
         }
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (tableView == sortTableView){
+            let cellHeader = sortTableView.dequeueReusableCell(withIdentifier: "HeaderCell\(section)") as! HeaderCellProductSort
+            cellHeader.setupCell(image: sectionImages[section], labelText: sections[section])
+            return cellHeader
+        }
+        else {
+            return nil
+        }
+    }
+
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
+//        -> String? {
+//            return sections[section]
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if(tableView == sortTableView) {
+            return 45
+        }
+        else {
+            return 0
+        }
+    }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ProductToCategory"){
