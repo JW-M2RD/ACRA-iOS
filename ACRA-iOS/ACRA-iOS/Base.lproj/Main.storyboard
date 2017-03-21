@@ -228,8 +228,8 @@
                                     <outlet property="delegate" destination="fp5-q0-DD1" id="i4m-jo-ivu"/>
                                 </connections>
                             </tableView>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N9i-HG-bsq">
-                                <rect key="frame" x="195" y="64" width="180" height="175"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N9i-HG-bsq">
+                                <rect key="frame" x="195" y="64" width="180" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="bfu-HL-QGg"/>
@@ -263,7 +263,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="N9i-HG-bsq" firstAttribute="top" secondItem="EmK-ej-RJh" secondAttribute="top" id="8d0-er-uEV"/>
-                            <constraint firstItem="CtZ-6Y-d1l" firstAttribute="top" secondItem="N9i-HG-bsq" secondAttribute="bottom" constant="428" id="EfJ-Ib-kX5"/>
+                            <constraint firstItem="CtZ-6Y-d1l" firstAttribute="top" secondItem="N9i-HG-bsq" secondAttribute="bottom" id="EfJ-Ib-kX5"/>
                             <constraint firstItem="EmK-ej-RJh" firstAttribute="leading" secondItem="Eni-cN-Wlx" secondAttribute="leading" id="HUx-rW-CUq"/>
                             <constraint firstItem="CtZ-6Y-d1l" firstAttribute="top" secondItem="EmK-ej-RJh" secondAttribute="bottom" id="Jqy-T2-ZQx"/>
                             <constraint firstItem="EmK-ej-RJh" firstAttribute="top" secondItem="XVb-P1-z9y" secondAttribute="bottom" id="Zpd-xW-E4z"/>
@@ -283,6 +283,7 @@
                         <outlet property="navigationTitle" destination="ajR-wK-MJk" id="rTW-Pa-b3d"/>
                         <outlet property="productTableView" destination="EmK-ej-RJh" id="aMp-xy-cGH"/>
                         <outlet property="sortTableView" destination="N9i-HG-bsq" id="o0v-DC-dPH"/>
+                        <outlet property="trailingConstraint" destination="hwL-2p-5hV" id="pRd-5Y-PKR"/>
                         <segue destination="VHF-rc-PEY" kind="show" identifier="ProductToCategory" id="ysF-Ix-745"/>
                     </connections>
                 </viewController>

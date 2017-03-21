@@ -15,11 +15,26 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var navigationTitle: UINavigationItem!
   
+    var menuShowing = false
+    
     @IBAction func sortMenuTrigger(_ sender: Any) {
-        sortTableView.isHidden = false
+        if(menuShowing) {
+            trailingConstraint.constant = -180
+        }
+        else {
+            trailingConstraint.constant = 0
+            UIView.animate(withDuration: 0.4, animations: {
+                    self.view.layoutIfNeeded()
+            })
+            
+        }
+        
+        menuShowing = !menuShowing
+//        sortTableView.isHidden = false
     }
 
     @IBOutlet weak var sortTableView: UITableView!
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     
     var SearchLabel = String()
     var products: [Product] = []
@@ -44,6 +59,11 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    func setMenuToHidden() {
+        trailingConstraint.constant = -180
+        menuShowing = false
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -53,7 +73,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setMenuToHidden()
+
         let escapedString = self.SearchLabel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
         APIModel.sharedInstance.getProducts(escape: escapedString!) { (success:Bool) in
@@ -148,6 +169,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             self.selectedAsinProduct = self.products[indexPath.row].asin
             self.selectedProductName = self.products[indexPath.row].title
             self.performSegue(withIdentifier: "ProductToCategory", sender: nil)
+            setMenuToHidden()
         }
         
         if(tableView == sortTableView) {
@@ -167,7 +189,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             default:
                 break
             }
-            tableView.isHidden = true
+            setMenuToHidden()
             productTableView.reloadData()
         }
     }
