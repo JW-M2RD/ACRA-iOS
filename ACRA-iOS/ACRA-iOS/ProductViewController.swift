@@ -31,7 +31,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var productRating = Double()
     
-    var sortRules = ["Price: High to Low","Price: Low to High","Rating: Hight to Low","Rating: Low to High"]
+    var sortRules = ["Price: High to Low","Price: Low to High","Rating: High to Low","Rating: Low to High"]
     var sortRule = String()
     
     func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
