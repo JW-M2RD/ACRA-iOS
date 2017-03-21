@@ -228,6 +228,35 @@
                                     <outlet property="delegate" destination="fp5-q0-DD1" id="i4m-jo-ivu"/>
                                 </connections>
                             </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N9i-HG-bsq">
+                                <rect key="frame" x="232" y="64" width="143" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SortCell" textLabel="HPz-kP-joN" style="IBUITableViewCellStyleDefault" id="Uco-iy-Zeq">
+                                        <rect key="frame" x="0.0" y="28" width="143" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uco-iy-Zeq" id="7Ea-Wg-H9C">
+                                            <rect key="frame" x="0.0" y="0.0" width="143" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HPz-kP-joN">
+                                                    <rect key="frame" x="15" y="0.0" width="113" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fp5-q0-DD1" id="tb4-lw-Jwd"/>
+                                    <outlet property="delegate" destination="fp5-q0-DD1" id="Nld-dU-ruP"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -243,7 +272,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="navigationTitle" destination="ajR-wK-MJk" id="rTW-Pa-b3d"/>
-                        <outlet property="tableView" destination="EmK-ej-RJh" id="0pc-FF-g2m"/>
+                        <outlet property="productTableView" destination="EmK-ej-RJh" id="aMp-xy-cGH"/>
+                        <outlet property="sortTableView" destination="N9i-HG-bsq" id="o0v-DC-dPH"/>
                         <segue destination="VHF-rc-PEY" kind="show" identifier="ProductToCategory" id="ysF-Ix-745"/>
                     </connections>
                 </viewController>
