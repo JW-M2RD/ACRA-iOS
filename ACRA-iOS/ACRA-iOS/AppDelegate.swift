@@ -21,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().backgroundColor = UIColor (colorLiteralRed: 62.0/255.0, green: 150.0/255.0, blue: 165.0/255.0, alpha: 1)
         
         // Set navigation bar color
-//        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor.white
         
         // Set navigation bar title text color
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
 
         return true
     }

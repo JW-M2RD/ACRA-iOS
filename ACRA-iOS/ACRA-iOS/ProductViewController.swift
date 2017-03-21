@@ -15,11 +15,23 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var navigationTitle: UINavigationItem!
   
+    var menuShowing = false
+    
     @IBAction func sortMenuTrigger(_ sender: Any) {
-        sortTableView.isHidden = false
+        if(menuShowing) {
+            trailingConstraint.constant = -180
+        }
+        else {
+            trailingConstraint.constant = 0
+        }
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+        menuShowing = !menuShowing
     }
 
     @IBOutlet weak var sortTableView: UITableView!
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     
     var SearchLabel = String()
     var products: [Product] = []
@@ -44,6 +56,11 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    func setMenuToHidden() {
+        trailingConstraint.constant = -180
+        menuShowing = false
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -53,7 +70,16 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setMenuToHidden()
+        sortTableView.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
+
+        //for rounded corners
+        sortTableView.layer.cornerRadius = 10
+        sortTableView.layer.masksToBounds = true
         
+//        sortTableView.layer.shadowOpacity = 1
+//        sortTableView.layer.shadowRadius = 6
+
         let escapedString = self.SearchLabel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
         APIModel.sharedInstance.getProducts(escape: escapedString!) { (success:Bool) in
@@ -73,14 +99,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         
         navigationTitle.title = "Products"
         
-//        self.productTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        self.sortTableView.register(UITableViewCell.self, forCellReuseIdentifier: "SortCell")
         productTableView.tableFooterView = UIView()
         sortTableView.tableFooterView = UIView()
-        sortTableView.backgroundColor = UIColor.gray
-        sortTableView.tintColor = UIColor.blue
-        
-
     }
     
     func get_image(_ urlString:String) -> UIImage {
@@ -136,7 +156,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         else {
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "SortCell", for: indexPath)
             cell2.textLabel?.text = self.sortRules[indexPath.row]
-            cell2.backgroundColor = UIColor.lightGray
+            cell2.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
             return cell2
         }
     }
@@ -148,6 +168,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             self.selectedAsinProduct = self.products[indexPath.row].asin
             self.selectedProductName = self.products[indexPath.row].title
             self.performSegue(withIdentifier: "ProductToCategory", sender: nil)
+            setMenuToHidden()
         }
         
         if(tableView == sortTableView) {
@@ -167,7 +188,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             default:
                 break
             }
-            tableView.isHidden = true
+            setMenuToHidden()
             productTableView.reloadData()
         }
     }
