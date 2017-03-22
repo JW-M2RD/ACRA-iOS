@@ -26,7 +26,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     var reviews = Reviews()
     var selectedCategory = String()
     var selectedProductTitle = String ()
-    var sortByTitles = ["First","Second"]
+    var sortByTitles = ["Newest","Oldest"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
