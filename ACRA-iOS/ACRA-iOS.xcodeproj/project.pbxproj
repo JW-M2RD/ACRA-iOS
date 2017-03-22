@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84444B681E82239100E838F6 /* HeaderCellListSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84444B671E82239100E838F6 /* HeaderCellListSort.swift */; };
 		8446307F1E677BE400B76877 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446307E1E677BE400B76877 /* ReviewDetailViewController.swift */; };
 		8464B4621E5587C0006EBBB8 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4611E5587C0006EBBB8 /* ProductViewController.swift */; };
 		8464B4661E55ABFB006EBBB8 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84444B671E82239100E838F6 /* HeaderCellListSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellListSort.swift; sourceTree = "<group>"; };
 		8446307E1E677BE400B76877 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		8464B4611E5587C0006EBBB8 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				EBF6B1D71E5C427C00BDFDAF /* ReviewListCell.swift */,
 				8464B4651E55ABFA006EBBB8 /* ProductTableViewCell.swift */,
 				84B7EAED1E819E8A0098F92E /* HeaderCellProductSort.swift */,
+				84444B671E82239100E838F6 /* HeaderCellListSort.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84444B681E82239100E838F6 /* HeaderCellListSort.swift in Sources */,
 				EB21984F1E5E4DE100E4F3A9 /* ACRAReviews.swift in Sources */,
 				84DECC151E5BE7A300331F33 /* ACRAProducts.swift in Sources */,
 				EBF6B1D81E5C427C00BDFDAF /* ReviewListCell.swift in Sources */,
