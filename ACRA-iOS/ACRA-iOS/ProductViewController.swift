@@ -187,7 +187,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // Get which selected from table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(tableView == productTableView) {
+        if(tableView == productTableView ) {
             print("selected asin: " + self.products[indexPath.row].asin)
             self.selectedAsinProduct = self.products[indexPath.row].asin
             self.selectedProductName = self.products[indexPath.row].title
