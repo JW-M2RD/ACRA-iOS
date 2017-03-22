@@ -19,18 +19,51 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
        @IBAction func SegmentedAction(_ sender: Any) {
         self.reviewListTableView.reloadData()
     }
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBAction func sortMenuTrigger(_ sender: Any) {
+        if(menuShowing) {
+            trailingConstraint.constant = -180
+        }
+        else {
+            trailingConstraint.constant = 0
+        }
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+        menuShowing = !menuShowing
+    }
 
-    
+
+  
+    var menuShowing = false
+
     var SearchLabel = String()
 //    var database = Database()
     var reviews = Reviews()
     var selectedCategory = String()
     var selectedProductTitle = String ()
-    var sortByTitles = ["Newest","Oldest"]
+//    var sortByTitles = ["Newest","Oldest"]
     
+    let sectionImages: [UIImage] = [#imageLiteral(resourceName: "Sorting"), #imageLiteral(resourceName: "Date")]
+    
+    let sections: [String] = ["Sort By", "Date"]
+    let s1Data: [String] = []
+    let s2Data: [String] = ["Newest", "Oldest"]
+    
+
+    var sectionData: [Int: [String]] = [:]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationTitle.title = "Review List (" + self.selectedCategory + ")"
+        setMenuToHidden()
+        sectionData = [0:s1Data, 1:s2Data]
+        
+        listSortTableView.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
+        
+        //for rounded corners
+        listSortTableView.layer.cornerRadius = 10
+        listSortTableView.layer.masksToBounds = true
         
         // Set the prompt(text above title) in navigation bar
         self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
@@ -45,11 +78,16 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
- 
-        if(tableView == reviewListTableView){
-            if self.selectedCategory == "Product Quality" {
+    func setMenuToHidden() {
+        trailingConstraint.constant = -180
+        menuShowing = false
+    }
 
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if(tableView == reviewListTableView){
+            if (self.selectedCategory == "Product Quality") {
                 tableView.backgroundView = nil
             
                 switch self.positiveSegmentedController.selectedSegmentIndex {
@@ -87,12 +125,15 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                     break
                 }
             }
-        
             return 0
         }
         else {
-            return self.sortByTitles.count
+            return (sectionData[section]?.count)!
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -133,14 +174,39 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                     break
                 }
             }
+            setMenuToHidden()
             return cell
         }
         else {
-            let cell2 = tableView.dequeueReusableCell(withIdentifier: "ListSortCell", for: indexPath)
-            cell2.textLabel?.text = self.sortByTitles[indexPath.row]
-            cell2.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
-            return cell2
+            var cell2 = tableView.dequeueReusableCell(withIdentifier: "ListSortCell")
+            if cell2 == nil {
+                cell2 = UITableViewCell(style: .default, reuseIdentifier: "ListSortCell");
+            }
+            cell2!.textLabel?.text = sectionData[indexPath.section]![indexPath.row]
+            cell2?.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
+            return cell2!
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if (tableView == listSortTableView){
+            let cellHeader = listSortTableView.dequeueReusableCell(withIdentifier: "HeaderCell\(section)") as! HeaderCellListSort
+            cellHeader.setupCell(image: sectionImages[section], labelText: sections[section])
+            return cellHeader
 
+        }
+        else {
+            return nil
+        }
+    }
+
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if(tableView == listSortTableView) {
+            return 45
+        }
+        else {
+            return 0
         }
     }
     
@@ -177,31 +243,30 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (tableView == listSortTableView) {
-            switch indexPath.row {
-            case 0:
-                self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
-                self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
-                self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
-                self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
-            case 1:
-                self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
-                self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
-                self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
-                self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
-            default:
-                break
+            if (tableView == listSortTableView) {
+                if(indexPath.section == 1){
+                    switch indexPath.row {
+                    case 0:
+                        self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                        self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                        self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                        self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                    case 1:
+                        self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                        self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                        self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                        self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                    default:
+                        break
+                    }
+                setMenuToHidden()
+                reviewListTableView.reloadData()
             }
-//            setMenuToHidden()
-            reviewListTableView.reloadData()
         }
     }
     
-//    func setMenuToHidden() {
-//        trailingConstraint.constant = -180
-//        menuShowing = false
-//    }
     
     func setDogImg () {
         let image = UIImage(named: "dog")

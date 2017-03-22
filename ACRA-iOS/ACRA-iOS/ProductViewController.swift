@@ -196,17 +196,29 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         if(tableView == sortTableView) {
-            switch indexPath.row {
-            case 0:
-                self.products = self.products.sorted{$0.price_int > $1.price_int}
-            case 1:
-                self.products = self.products.sorted{$0.price_int < $1.price_int}
-            case 2:
-                self.products = self.products.sorted{$0.rating > $1.rating}
-            case 3:
-                self.products = self.products.sorted{$0.rating < $1.rating}
-            default:
-                break
+            if(indexPath.section == 1) {
+                switch indexPath.row {
+                    case 0:
+                        print("Sec:1 Row: 0 ->", indexPath.section , indexPath.row)
+                        self.products = self.products.sorted{$0.price_int > $1.price_int}
+                    case 1:
+                        print("Sec:1 Row: 1 ->", indexPath.section , indexPath.row)
+                        self.products = self.products.sorted{$0.price_int < $1.price_int}
+                    default:
+                        break
+                    }
+                }
+            else if(indexPath.section == 2) {
+                switch indexPath.row {
+                    case 0:
+                        print("Sec:2 Row: 0 ->", indexPath.section , indexPath.row)
+                        self.products = self.products.sorted{$0.rating > $1.rating}
+                    case 1:
+                        print("Sec:2 Row: 1 ->", indexPath.section , indexPath.row)
+                        self.products = self.products.sorted{$0.rating < $1.rating}
+                    default:
+                        break
+                }
             }
             setMenuToHidden()
             productTableView.reloadData()
