@@ -177,6 +177,32 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (tableView == listSortTableView) {
+            switch indexPath.row {
+            case 0:
+                self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+            case 1:
+                self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+            default:
+                break
+            }
+//            setMenuToHidden()
+            reviewListTableView.reloadData()
+        }
+    }
+    
+//    func setMenuToHidden() {
+//        trailingConstraint.constant = -180
+//        menuShowing = false
+//    }
+    
     func setDogImg () {
         let image = UIImage(named: "dog")
         let noDataImage = UIImageView(image: image)
