@@ -20,16 +20,22 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func sortMenuTrigger(_ sender: Any) {
         if(menuShowing) {
             trailingConstraint.constant = -180
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+                self.backgroundButton.alpha = 0
+            })
         }
         else {
             trailingConstraint.constant = 0
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+                self.backgroundButton.alpha = 0.5
+            })
         }
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        })
         menuShowing = !menuShowing
     }
 
+    @IBOutlet weak var backgroundButton: UIButton!
     @IBOutlet weak var sortTableView: UITableView!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     
@@ -72,6 +78,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     func setMenuToHidden() {
         trailingConstraint.constant = -180
         menuShowing = false
+        backgroundButton.alpha = 0
     }
     
     
@@ -242,7 +249,13 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(tableView == sortTableView) {
-            return 45
+            if(section==0){
+                return 45
+            }
+            else{
+                return 41
+            }
+            
         }
         else {
             return 0
