@@ -91,8 +91,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         sortTableView.layer.masksToBounds = true
        
         sectionData = [0:s1Data, 1:s2Data, 2:s3Data]
-//        sortTableView.layer.shadowOpacity = 1
-//        sortTableView.layer.shadowRadius = 6
 
         let escapedString = self.SearchLabel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         
@@ -236,10 +234,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
-//        -> String? {
-//            return sections[section]
-//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(tableView == sortTableView) {
