@@ -48,13 +48,16 @@ class APIModel: NSObject {
                     
                     Reviews.sharedReviews.clearReviews()
                     
-                    //Get num Reivews 
-                    let numReviews = json["Count"] as! Int
+                    let review_json = json["reviews"] as! NSDictionary
+                    let common_phrase_json = json["common_phrases"] as! NSDictionary
+                    
+                    //Get num Reivews
+                    let numReviews = review_json["Count"] as! Int
                     Reviews.sharedReviews.numReviews = numReviews
                     
                     
-                    if let reviews = json["Items"] as? [NSDictionary] {
-                        for review in reviews{
+                    if let reviews = review_json["Items"] as? [NSDictionary] {
+                        for review in reviews {
                             let uid = review["uid"] as! String
                             let asin = review["asin"] as! String
                             let relevant = review["relevant"] as! Bool
@@ -79,9 +82,8 @@ class APIModel: NSObject {
                             newReview.summary = summary
                             
                             Reviews.sharedReviews.addReview(review: newReview)
-                            
-                        
                         }
+
                         
                     }
                     else {
