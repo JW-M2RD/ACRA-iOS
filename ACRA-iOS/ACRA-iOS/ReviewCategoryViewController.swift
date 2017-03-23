@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
@@ -70,7 +70,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("Review number: ", self.reviews.numReviews)
         print("Positive Review number: ", self.reviews.rePosReviews.count)
         print("Negative Review number: ", self.reviews.reNegReviews.count)
         return categories.count
@@ -80,17 +79,23 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         cell.textLabel?.text = categories[indexPath.row]
         if(cell.textLabel?.text == "Product Quality"){
-//            cell.detailTextLabel?.text = "472"
-//            let relCount = self.reviews.rePosReviews.count + self.reviews.reNegReviews.count
+
             print("review number: ", self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
             
             cell.detailTextLabel?.text = String(self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
         }
         else if(cell.textLabel?.text == "Non Product Quality"){
-//            cell.detailTextLabel?.text = "53"
             cell.detailTextLabel?.text = String(self.reviews.irPosReviews.count + self.reviews.irNegReviews.count)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,8 +105,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             DestViewController.reviews = self.reviews
             DestViewController.selectedProductTitle = self.selectedProductTitle
 
-
-
     }
     
 }
+
+
