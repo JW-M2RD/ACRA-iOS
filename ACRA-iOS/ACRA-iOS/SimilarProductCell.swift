@@ -49,8 +49,8 @@ class SimilarProductCell: UICollectionViewCell {
         star4.image = getStarImage(starNumber: 4, forRating: productRating)
         star5.image = getStarImage(starNumber: 5, forRating: productRating)
         
-        productQualityNum.text = String(productQuality)
-        NonProductQualityNum.text = String(nonProductQuality)
+        productQualityNum.text = "Product Quality: " + String(productQuality)
+        NonProductQualityNum.text = "Non-Product Quality: " + String(nonProductQuality)
         productPrice.text = price
     }
 

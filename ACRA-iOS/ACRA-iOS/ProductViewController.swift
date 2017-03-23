@@ -249,7 +249,13 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(tableView == sortTableView) {
-            return 45
+            if(section==0){
+                return 45
+            }
+            else{
+                return 41
+            }
+            
         }
         else {
             return 0

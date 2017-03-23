@@ -93,7 +93,7 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
         print(review.uid)
         titleText.text = review.summary
         reviewer.text = "By " + review.reviewerName
-        reviewDate.text = "on " + review.reviewerTime
+        reviewDate.text = " on " + review.reviewerTime
         reviewText.text = review.reviewText
         productRating = Double(review.overall)
         
