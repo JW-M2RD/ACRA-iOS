@@ -213,11 +213,11 @@ class APIModel: NSObject {
     
     func storeMisclassifiedGet(uid: String, completionHandler: @escaping(Bool) -> ()) {
      
-        var urlRequest = URLRequest(url: URL(string: "\(baseURL)misclassified?uid=\(uid)")!)
+        var urlRequest = URLRequest(url: URL(string: "\(baseURL)misclassified-get?uid=\(uid)")!)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
     
-        
+        print("url: ", urlRequest)
         //make request
         sessionManager.request(urlRequest).responseJSON { response in
             guard response.result.isSuccess else {

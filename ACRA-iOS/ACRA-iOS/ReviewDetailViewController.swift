@@ -35,8 +35,9 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
         let alertController = UIAlertController(title: "Thanks For The Help!",
                                                 message: "Your feedback helps improve ACRA. Are you sure this review is not related to " + self.reviewCategoryName.lowercased() + "?",
                                                 preferredStyle: UIAlertControllerStyle.alert)
+        
         alertController.addAction(UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.default,handler: nil))
-        alertController.addAction(UIAlertAction(title: "Yes, I'm Sure", style: UIAlertActionStyle.default,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Yes, I'm Sure", style: UIAlertActionStyle.default,handler: { action in self.sendMissclassified()}))
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -88,6 +89,8 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     }
     
     private func populateViewWithData() {
+        
+        print(review.uid)
         titleText.text = review.summary
         reviewer.text = "By " + review.reviewerName
         reviewDate.text = "on " + review.reviewerTime
@@ -105,6 +108,17 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resoureces that can be recreated
+    }
+    
+    func sendMissclassified() {
+        APIModel.sharedInstance.storeMisclassifiedGet(uid: review.uid) { (success:Bool) in
+            if success {
+                print("Successfully sent missclassified review")
+                
+            } else {
+                print("missclassified review broke")
+            }
+        }
     }
     
    

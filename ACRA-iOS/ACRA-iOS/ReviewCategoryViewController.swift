@@ -20,6 +20,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     var selectedProductTitle = String()
     var reviews = Reviews()
     var selectedCategory = String()
+    var similarProducts = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
