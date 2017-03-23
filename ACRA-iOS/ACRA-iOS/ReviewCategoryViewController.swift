@@ -63,7 +63,12 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
-    
+    func get_image(_ urlString:String) -> UIImage {
+        let strurl = NSURL(string: urlString)!
+        let dtinternet = NSData(contentsOf:strurl as URL)!
+        return UIImage(data: dtinternet as Data)!
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -92,11 +97,15 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return similarProducts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let similarCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellSimilar", for: indexPath) as! SimilarProductCell
+        
+        similarCell.setupSimilarCell(prImage: get_image(similarProducts[indexPath.row].image_url), name: similarProducts[indexPath.row].title, productQuality: 123, nonProductQuality: 23, productRating: similarProducts[indexPath.row].rating, price: similarProducts[indexPath.row].price_string)
+        
+        return similarCell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
