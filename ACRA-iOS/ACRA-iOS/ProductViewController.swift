@@ -147,7 +147,12 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        if(tableView == sortTableView){
+            return sections.count
+        }
+        else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

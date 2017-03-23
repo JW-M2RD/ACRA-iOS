@@ -133,7 +133,12 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        if(tableView == listSortTableView){
+            return sections.count
+        }
+        else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
