@@ -103,7 +103,11 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let similarCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellSimilar", for: indexPath) as! SimilarProductCell
         
-        similarCell.setupSimilarCell(prImage: get_image(similarProducts[indexPath.row].image_url), name: similarProducts[indexPath.row].title, productQuality: 123, nonProductQuality: 23, productRating: similarProducts[indexPath.row].rating, price: similarProducts[indexPath.row].price_string)
+        similarCell.setupSimilarCell(prImage: get_image(similarProducts[indexPath.row].image_url), name: similarProducts[indexPath.row].title,
+                                     productQuality: similarProducts[indexPath.row].displayProductQualityNumber,
+                                     nonProductQuality: similarProducts[indexPath.row].displayNonProductQualityNumber,
+                                     productRating: similarProducts[indexPath.row].rating,
+                                     price: similarProducts[indexPath.row].price_string)
         
         return similarCell
     }

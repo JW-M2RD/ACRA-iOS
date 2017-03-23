@@ -15,6 +15,8 @@ class Product: NSObject {
     var price_string: String! = nil
     var price_int: Int! = nil
     var rating: Double! = nil
+    var displayProductQualityNumber: Int! = nil
+    var displayNonProductQualityNumber: Int! = nil
     
     override init() {
         super.init()
@@ -27,6 +29,8 @@ class Product: NSObject {
             "\n image_url:\(image_url!)" +
             "\n price_string:\(price_string!)" +
             "\n price_int:\(price_int!)" +
+            "\n price_int:\(displayProductQualityNumber!)" +
+            "\n price_int:\(displayProductQualityNumber!)" +
             "\n rating:\(rating!)"
         
         return product

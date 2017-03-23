@@ -142,6 +142,13 @@ class APIModel: NSObject {
                                     
                                 let titlee = obj["title"] as! [String]
                                 let title = titlee[0]
+                                    
+                                let productQualityNumberr = obj["product_quality_count"] as! [String]
+                                let productQualityNumber = Int(productQualityNumberr[0])
+                                    
+                                let nonProductQualityNumberr = obj["non_product_quality_count"] as! [String]
+                                let nonProductQualityNumber = Int(nonProductQualityNumberr[0])
+                                    
                             
                                 product.asin = asin
                                 product.rating = rating
@@ -149,6 +156,8 @@ class APIModel: NSObject {
                                 product.price_string=price_string
                                 product.price_int=price_int
                                 product.title=title
+                                product.displayProductQualityNumber = productQualityNumber
+                                product.displayNonProductQualityNumber = nonProductQualityNumber
                                     
                                 Products.sharedProducts.addProduct(product: product)
                                 
