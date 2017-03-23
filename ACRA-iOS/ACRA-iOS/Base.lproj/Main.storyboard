@@ -228,6 +228,14 @@
                                     <outlet property="delegate" destination="fp5-q0-DD1" id="i4m-jo-ivu"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzY-ZC-Aub">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.58165133000000002" green="0.78759419919999996" blue="0.91899383069999996" alpha="0.53000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="sortMenuTrigger:" destination="fp5-q0-DD1" eventType="touchUpInside" id="ahf-li-VrX"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N9i-HG-bsq">
                                 <rect key="frame" x="195" y="64" width="180" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -419,6 +427,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundButton" destination="bzY-ZC-Aub" id="zUd-0y-lsQ"/>
                         <outlet property="navigationTitle" destination="ajR-wK-MJk" id="rTW-Pa-b3d"/>
                         <outlet property="productTableView" destination="EmK-ej-RJh" id="aMp-xy-cGH"/>
                         <outlet property="sortTableView" destination="N9i-HG-bsq" id="o0v-DC-dPH"/>
@@ -699,6 +708,14 @@
                                     <outlet property="delegate" destination="Y43-BN-2yZ" id="NQS-81-I1K"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ian-lq-mgI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.58165133000000002" green="0.78759419919999996" blue="0.91899383069999996" alpha="0.53000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="sortMenuTrigger:" destination="Y43-BN-2yZ" eventType="touchUpInside" id="MYJ-2L-Jd4"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n4h-PR-mcT">
                                 <rect key="frame" x="195" y="64" width="180" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -826,6 +843,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundButton" destination="Ian-lq-mgI" id="U4M-xH-zDY"/>
                         <outlet property="listSortTableView" destination="n4h-PR-mcT" id="csN-au-0Um"/>
                         <outlet property="navigationTitle" destination="R7L-CV-bui" id="AUX-ls-2I1"/>
                         <outlet property="positiveSegmentedController" destination="BY1-E7-GGJ" id="fFc-vz-KE5"/>

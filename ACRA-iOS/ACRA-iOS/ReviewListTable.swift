@@ -20,17 +20,24 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         self.reviewListTableView.reloadData()
     }
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundButton: UIButton!
     @IBAction func sortMenuTrigger(_ sender: Any) {
         if(menuShowing) {
             trailingConstraint.constant = -180
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+                self.backgroundButton.alpha = 0
+            })
         }
         else {
             trailingConstraint.constant = 0
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+                self.backgroundButton.alpha = 0.5
+            })
         }
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        })
         menuShowing = !menuShowing
+
     }
 
 
@@ -81,6 +88,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     func setMenuToHidden() {
         trailingConstraint.constant = -180
         menuShowing = false
+        backgroundButton.alpha = 0
     }
 
     
