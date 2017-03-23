@@ -418,7 +418,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zrk-gD-3gA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zrk-gD-3gA">
                                 <rect key="frame" x="0.0" y="64" width="375" height="126"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -599,7 +599,7 @@
                             <constraint firstItem="OA7-2u-UGU" firstAttribute="top" secondItem="51L-83-tLw" secondAttribute="bottom" id="Qal-i3-s1m"/>
                             <constraint firstItem="51L-83-tLw" firstAttribute="leading" secondItem="0Pv-cY-yTO" secondAttribute="leading" id="mkx-GT-znQ"/>
                             <constraint firstAttribute="trailing" secondItem="Zrk-gD-3gA" secondAttribute="trailing" id="oMn-xd-aj5"/>
-                            <constraint firstItem="51L-83-tLw" firstAttribute="top" secondItem="Zrk-gD-3gA" secondAttribute="bottom" constant="261" id="vhz-Mf-Ze4"/>
+                            <constraint firstItem="51L-83-tLw" firstAttribute="top" secondItem="Zrk-gD-3gA" secondAttribute="bottom" constant="265" id="vhz-Mf-Ze4"/>
                             <constraint firstItem="Zrk-gD-3gA" firstAttribute="top" secondItem="lph-Vd-xUK" secondAttribute="bottom" id="zgi-WY-7dB"/>
                         </constraints>
                     </view>
