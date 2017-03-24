@@ -160,7 +160,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             print("didSeclect CollectionView: ", self.similarProducts[indexPath.row].asin)
             self.similarAsinProduct = self.similarProducts[indexPath.row].asin
             self.similarProductName = self.similarProducts[indexPath.row].title
-            self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
+            //self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
             
         }
     }
@@ -194,26 +194,26 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "SimilarToCategory"){
-            let DestViewControllerSim: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
+        //if (segue.identifier == "SimilarToCategory"){
+         //   let DestViewControllerSim: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
         
-        print("prepare CollectionView: ", self.similarAsinProduct)
-            DestViewControllerSim.selectedAsin = self.similarAsinProduct
-            DestViewControllerSim.selectedProductTitle = self.similarProductName
+        //print("prepare CollectionView: ", self.similarAsinProduct)
+            //DestViewControllerSim.selectedAsin = self.similarAsinProduct
+           // DestViewControllerSim.selectedProductTitle = self.similarProductName
             
-            print("SimilarAsin: " + self.similarAsinProduct)
-            print("SimilarProductName" + self.similarProductName)
+            //print("SimilarAsin: " + self.similarAsinProduct)
+            //print("SimilarProductName" + self.similarProductName)
             
-            print("Segue in Similar")
-            print("Prouct View Controller: " + DestViewControllerSim.selectedAsin)
-        }
-        else {
+            //print("Segue in Similar")
+            //print("Prouct View Controller: " + DestViewControllerSim.selectedAsin)
+        //}
+        //else {
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
             let selectedRow = categoryTableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = categories[selectedRow!]
             DestViewController.reviews = self.reviews
             DestViewController.selectedProductTitle = self.selectedProductTitle
-        }
+        //}
     }
     
 }
