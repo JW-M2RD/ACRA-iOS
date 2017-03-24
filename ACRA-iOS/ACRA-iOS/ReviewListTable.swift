@@ -116,6 +116,8 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 }
             }
             else {
+                tableView.backgroundView = nil
+                
                 switch self.positiveSegmentedController.selectedSegmentIndex {
                 case 0:
                     if(self.reviews.irPosReviews.count == 0){

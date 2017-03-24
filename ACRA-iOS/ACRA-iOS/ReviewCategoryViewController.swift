@@ -38,6 +38,10 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
         
         categoryTableView.tableFooterView = UIView()
+        // We set the table view header.
+        //let categoryHeader = tableView.dequeueReusableCellWithIdentifier("HeaderCatCell") as! UITableViewCell
+        //cellTableViewHeader.frame = CGRectMake(0, 0, self.tableView.bounds.width, self.heightCache[TableViewController.tableViewHeaderCustomCellIdentifier]!)
+        //self.tableView.tableHeaderView = cellTableViewHeader
         commonTableView.tableFooterView = UIView()
         
         categories = ["Product Quality", "Non Product Quality"]
@@ -158,6 +162,34 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             self.similarProductName = self.similarProducts[indexPath.row].title
             self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
             
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
+            return 43
+        
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if(tableView == categoryTableView){
+            let cellHeader = categoryTableView.dequeueReusableCell(withIdentifier: "HeaderCatCell")
+            cellHeader?.textLabel?.text = "Categories"
+            return cellHeader
+        }
+        
+        if (tableView == commonTableView){
+            let cellHeader2 = commonTableView.dequeueReusableCell(withIdentifier: "HeaderCommonCell")
+            cellHeader2?.textLabel?.text = "Common Phrases"
+            return cellHeader2
+        }
+        
+        else {
+            return nil
         }
     }
     
