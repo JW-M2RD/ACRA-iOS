@@ -10,9 +10,12 @@ import Foundation
 
 class PhraseCategory: NSObject {
     
-    var asin: String! = nil
-    var phrases: [String]! = nil
-    var uids: Set<String>! = []
+//    var asin: String! = nil
+//    var phrases: [String]! = nil
+//    var uids: Set<String>! = []
+    
+    var phrases: String! = nil
+    var uids = [String]()
     
     override init() {
         super.init()
