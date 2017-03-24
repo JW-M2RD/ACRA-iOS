@@ -45,16 +45,19 @@ class APIModel: NSObject {
             
             if let result = response.result.value {
                 if let json = result as? NSDictionary {
-                    
                     Reviews.sharedReviews.clearReviews()
+                    PhraseCategories.sharedPhraseCategories.clearPhraseCategories()
                     
-                    //Get num Reivews 
-                    let numReviews = json["Count"] as! Int
+                    let review_json = json["reviews"] as! NSDictionary
+                    let common_phrase_json = json["common_phrases"] as! NSDictionary
+                    
+                    //Get num Reivews
+                    let numReviews = review_json["Count"] as! Int
                     Reviews.sharedReviews.numReviews = numReviews
                     
                     
-                    if let reviews = json["Items"] as? [NSDictionary] {
-                        for review in reviews{
+                    if let reviews = review_json["Items"] as? [NSDictionary] {
+                        for review in reviews {
                             let uid = review["uid"] as! String
                             let asin = review["asin"] as! String
                             let relevant = review["relevant"] as! Bool
@@ -79,10 +82,39 @@ class APIModel: NSObject {
                             newReview.summary = summary
                             
                             Reviews.sharedReviews.addReview(review: newReview)
-                            
-                        
                         }
                         
+                    }
+                    else {
+                        completionHandler(false)
+                    }
+                    
+                    if let common_phrases = common_phrase_json["Items"] as? [NSDictionary] {
+                        let common_phrase_dict = common_phrases[0]
+                        
+                        let asin = common_phrase_dict["asin"] as! String
+                        let keys = common_phrase_dict["keys"] as! [[String]]
+                        let phrase_dict = common_phrase_dict["phrase_dict"] as! NSDictionary
+                        
+                        for key in keys {
+                            var str_key = ""
+                            for word in key {
+                                str_key += word + "_"
+                            }
+                            str_key.remove(at: str_key.index(before: str_key.endIndex))
+                            
+                            let uids = phrase_dict[str_key] as! [String]
+                            
+                            let phrase_category = PhraseCategory()
+                            phrase_category.asin = asin
+                            phrase_category.phrases = key
+                            
+                            for uid in uids {
+                                phrase_category.uids.insert(uid)
+                            }
+                            
+                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phrase_category)
+                        }
                     }
                     else {
                         completionHandler(false)
@@ -142,6 +174,13 @@ class APIModel: NSObject {
                                     
                                 let titlee = obj["title"] as! [String]
                                 let title = titlee[0]
+                                    
+                                let productQualityNumberr = obj["product_quality_count"] as! [String]
+                                let productQualityNumber = Int(productQualityNumberr[0])
+                                    
+                                let nonProductQualityNumberr = obj["non_product_quality_count"] as! [String]
+                                let nonProductQualityNumber = Int(nonProductQualityNumberr[0])
+                                    
                             
                                 product.asin = asin
                                 product.rating = rating
@@ -149,6 +188,8 @@ class APIModel: NSObject {
                                 product.price_string=price_string
                                 product.price_int=price_int
                                 product.title=title
+                                product.displayProductQualityNumber = productQualityNumber
+                                product.displayNonProductQualityNumber = nonProductQualityNumber
                                     
                                 Products.sharedProducts.addProduct(product: product)
                                 

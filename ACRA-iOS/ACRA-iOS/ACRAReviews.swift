@@ -22,7 +22,6 @@ class Reviews: NSObject {
     
     static let sharedReviews = Reviews()
     
-    
     override init () {
         super.init()
     }
