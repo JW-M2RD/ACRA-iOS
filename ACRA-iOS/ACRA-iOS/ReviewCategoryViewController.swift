@@ -38,57 +38,23 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.titleView.title = "Review Category"
         
         // Set the prompt(text above title) in navigation bar
-        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
+        updateTitlePrompt(nameOfProduct: self.selectedProductTitle)
         
+        //remove the footer lines
         categoryTableView.tableFooterView = UIView()
-        
         commonTableView.tableFooterView = UIView()
         
         categories = ["Product Quality", "Non Product Quality"]
         print("Review Category View: " + self.selectedAsin)
-        
 
         getReviewAPI(selectedAsinAPI: self.selectedAsin)
-//        APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
-//            if success {
-//                print("Successfully got reviews")
-//                DispatchQueue.main.async {
-//                    for review in Reviews.sharedReviews.rePosReviews {
-                        
-//                        self.reviews.addReview(review: review)
-//                    }
-//                    for review in Reviews.sharedReviews.reNegReviews {
-                        
-//                        self.reviews.addReview(review: review)
-//                    }
-//                    for review in Reviews.sharedReviews.irPosReviews {
-//                        self.reviews.addReview(review: review)
-//                    }
-//                    for review in Reviews.sharedReviews.irNegReviews {
-//                        self.reviews.addReview(review: review)
-//                    }
-                    
-//                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
-//                        var phraseString = ""
-//                        for word in obj.phrases {
-//                            phraseString += "\"" + word + "\" "
-//                        }
-//                        self.commonPhrases.append(phraseString)
-//                    }
-                    
-//                    self.commonPhrases = PhraseCategories.sharedPhraseCategories
-//                    self.categoryTableView.reloadData()
-//                    self.commonTableView.reloadData()
-//                }
-//
-//            } else {
-//                print("Product API call broke")
-//            }
-//
-//        }
-        
 
         
+    }
+    
+    func updateTitlePrompt (nameOfProduct: String) {
+        self.navigationItem.prompt = nameOfProduct.substring(to: nameOfProduct.index(nameOfProduct.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: nameOfProduct.characters.count)))
+        self.selectedProductTitle = nameOfProduct
     }
     
     func getReviewAPI(selectedAsinAPI: String){
@@ -110,14 +76,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
                     for review in Reviews.sharedReviews.irNegReviews {
                         self.reviews.addReview(review: review)
                     }
-                    
-                    //                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
-                    //                        var phraseString = ""
-                    //                        for word in obj.phrases {
-                    //                            phraseString += "\"" + word + "\" "
-                    //                        }
-                    //                        self.commonPhrases.append(phraseString)
-                    //                    }
                     
                     self.commonPhrases = PhraseCategories.sharedPhraseCategories
                     self.categoryTableView.reloadData()
@@ -203,8 +161,14 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             print("didSeclect CollectionView: ", self.similarProducts[indexPath.row].asin)
             self.similarAsinProduct = self.similarProducts[indexPath.row].asin
             self.similarProductName = self.similarProducts[indexPath.row].title
-            //self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
+            
+            // Update title of the page when item clicked
+            updateTitlePrompt(nameOfProduct: self.similarProducts[indexPath.row].title)
+            //remove the reviews when clicked again
+            self.reviews.clearReviews()
+            //update reviews from api on item selected
             getReviewAPI(selectedAsinAPI: self.similarProducts[indexPath.row].asin)
+      
         }
     }
     
