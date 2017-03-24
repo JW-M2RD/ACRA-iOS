@@ -41,6 +41,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
         
         categoryTableView.tableFooterView = UIView()
+        
         commonTableView.tableFooterView = UIView()
         
         categories = ["Product Quality", "Non Product Quality"]
@@ -132,9 +133,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         }
         else {
             let cellCP = tableView.dequeueReusableCell(withIdentifier: "CellCommon", for: indexPath)
-//            cellCP.textLabel?.text = commonPhrases[indexPath.row]
-            //cellCP.detailTextLabel?.text = String(self.cp.uids.count)
-            
+
             cellCP.textLabel?.text = commonPhrases.phraseCategories[indexPath.row].phrases
             cellCP.detailTextLabel?.text = String(commonPhrases.phraseCategories[indexPath.row].uids.count)
             
@@ -164,32 +163,76 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             print("didSeclect CollectionView: ", self.similarProducts[indexPath.row].asin)
             self.similarAsinProduct = self.similarProducts[indexPath.row].asin
             self.similarProductName = self.similarProducts[indexPath.row].title
-            self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
+            //self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
             
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "SimilarToCategory"){
-            let DestViewControllerSim: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
+            return 43
         
-        print("prepare CollectionView: ", self.similarAsinProduct)
-            DestViewControllerSim.selectedAsin = self.similarAsinProduct
-            DestViewControllerSim.selectedProductTitle = self.similarProductName
-            
-            print("SimilarAsin: " + self.similarAsinProduct)
-            print("SimilarProductName" + self.similarProductName)
-            
-            print("Segue in Similar")
-            print("Prouct View Controller: " + DestViewControllerSim.selectedAsin)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if(tableView == categoryTableView){
+            let cellHeader = categoryTableView.dequeueReusableCell(withIdentifier: "HeaderCatCell")
+            cellHeader?.textLabel?.text = "Categories"
+            return cellHeader
         }
+        
+        if (tableView == commonTableView){
+            let cellHeader2 = commonTableView.dequeueReusableCell(withIdentifier: "HeaderCommonCell")
+            cellHeader2?.textLabel?.text = "Common Phrases"
+            return cellHeader2
+        }
+        
         else {
+            return nil
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "CategoryToList"){
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
             let selectedRow = categoryTableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = categories[selectedRow!]
             DestViewController.reviews = self.reviews
             DestViewController.selectedProductTitle = self.selectedProductTitle
         }
+        else if(segue.identifier == "CommonPhraseToList") {
+            let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
+            let selectedRow = commonTableView.indexPathForSelectedRow?.row
+            DestViewController.selectedCategory = commonPhrases.phraseCategories[selectedRow!].phrases
+            DestViewController.selectedProductTitle = self.selectedProductTitle
+            //DestViewController.reviews = self.commonPhrases.phraseCategories[selectedRow!].uids
+        }
+        
+        
+        //if (segue.identifier == "SimilarToCategory"){
+         //   let DestViewControllerSim: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
+        
+        //print("prepare CollectionView: ", self.similarAsinProduct)
+            //DestViewControllerSim.selectedAsin = self.similarAsinProduct
+           // DestViewControllerSim.selectedProductTitle = self.similarProductName
+            
+            //print("SimilarAsin: " + self.similarAsinProduct)
+            //print("SimilarProductName" + self.similarProductName)
+            
+            //print("Segue in Similar")
+            //print("Prouct View Controller: " + DestViewControllerSim.selectedAsin)
+        //}
+        //else {
+            //let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
+            //let selectedRow = categoryTableView.indexPathForSelectedRow?.row
+            //DestViewController.selectedCategory = categories[selectedRow!]
+            //DestViewController.reviews = self.reviews
+            //DestViewController.selectedProductTitle = self.selectedProductTitle
+        //}
     }
     
 }
