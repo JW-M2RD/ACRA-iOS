@@ -18,18 +18,17 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var similarCollectionView: UICollectionView!
     @IBOutlet weak var titleView: UINavigationItem!
     var categories = [String]()
-    var commonPhrase = [String]()
     
     var selectedAsin = String()
     var selectedProductTitle = String()
     
     var reviews = Reviews()
     var selectedCategory = String()
-    
+    var cp = PhraseCategory()
     var similarProducts = [Product]()
     var similarAsinProduct = String()
     var similarProductName = String()
-    
+    var commonPhrases = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the title in navigation bar
@@ -39,12 +38,12 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
         
         categoryTableView.tableFooterView = UIView()
-        //commonTableView.tableFooterView = UIView()
+        commonTableView.tableFooterView = UIView()
         
         categories = ["Product Quality", "Non Product Quality"]
         print("Review Category View: " + self.selectedAsin)
         
-        commonPhrase = ["Phrase 1", "Phrase 2", "Phrase 3"]
+
         
         APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
             if success {
@@ -64,13 +63,26 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
                     for review in Reviews.sharedReviews.irNegReviews {
                         self.reviews.addReview(review: review)
                     }
+                    
+                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
+                        var phraseString = ""
+                        for word in obj.phrases {
+                            phraseString += "\"" + word + "\" "
+                        }
+                        self.commonPhrases.append(phraseString)
+                    }
+                    
                     self.categoryTableView.reloadData()
+                    self.commonTableView.reloadData()
                 }
                 
             } else {
                 print("Product API call broke")
             }
+            
         }
+        
+
         
     }
     
@@ -91,7 +103,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             return categories.count
         }
         else if (tableView == commonTableView){
-            return commonPhrase.count
+            return commonPhrases.count
         }
         else{
             return 0
@@ -115,7 +127,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         }
         else {
             let cellCP = tableView.dequeueReusableCell(withIdentifier: "CellCommon", for: indexPath)
-            cellCP.textLabel?.text = commonPhrase[indexPath.row]
+            cellCP.textLabel?.text = commonPhrases[indexPath.row]
+            //cellCP.detailTextLabel?.text = String(self.cp.uids.count)
             
             return cellCP
         }
