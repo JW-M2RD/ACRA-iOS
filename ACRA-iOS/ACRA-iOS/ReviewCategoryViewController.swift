@@ -48,8 +48,51 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         print("Review Category View: " + self.selectedAsin)
         
 
+        getReviewAPI(selectedAsinAPI: self.selectedAsin)
+//        APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
+//            if success {
+//                print("Successfully got reviews")
+//                DispatchQueue.main.async {
+//                    for review in Reviews.sharedReviews.rePosReviews {
+                        
+//                        self.reviews.addReview(review: review)
+//                    }
+//                    for review in Reviews.sharedReviews.reNegReviews {
+                        
+//                        self.reviews.addReview(review: review)
+//                    }
+//                    for review in Reviews.sharedReviews.irPosReviews {
+//                        self.reviews.addReview(review: review)
+//                    }
+//                    for review in Reviews.sharedReviews.irNegReviews {
+//                        self.reviews.addReview(review: review)
+//                    }
+                    
+//                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
+//                        var phraseString = ""
+//                        for word in obj.phrases {
+//                            phraseString += "\"" + word + "\" "
+//                        }
+//                        self.commonPhrases.append(phraseString)
+//                    }
+                    
+//                    self.commonPhrases = PhraseCategories.sharedPhraseCategories
+//                    self.categoryTableView.reloadData()
+//                    self.commonTableView.reloadData()
+//                }
+//
+//            } else {
+//                print("Product API call broke")
+//            }
+//
+//        }
         
-        APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
+
+        
+    }
+    
+    func getReviewAPI(selectedAsinAPI: String){
+        APIModel.sharedInstance.getReviews(escape: selectedAsinAPI) { (success:Bool) in
             if success {
                 print("Successfully got reviews")
                 DispatchQueue.main.async {
@@ -68,13 +111,13 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
                         self.reviews.addReview(review: review)
                     }
                     
-//                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
-//                        var phraseString = ""
-//                        for word in obj.phrases {
-//                            phraseString += "\"" + word + "\" "
-//                        }
-//                        self.commonPhrases.append(phraseString)
-//                    }
+                    //                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
+                    //                        var phraseString = ""
+                    //                        for word in obj.phrases {
+                    //                            phraseString += "\"" + word + "\" "
+                    //                        }
+                    //                        self.commonPhrases.append(phraseString)
+                    //                    }
                     
                     self.commonPhrases = PhraseCategories.sharedPhraseCategories
                     self.categoryTableView.reloadData()
@@ -86,9 +129,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             }
             
         }
-        
-
-        
     }
     
     func get_image(_ urlString:String) -> UIImage {
@@ -164,7 +204,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             self.similarAsinProduct = self.similarProducts[indexPath.row].asin
             self.similarProductName = self.similarProducts[indexPath.row].title
             //self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
-            
+            getReviewAPI(selectedAsinAPI: self.similarProducts[indexPath.row].asin)
         }
     }
     
