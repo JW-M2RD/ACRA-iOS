@@ -12,19 +12,23 @@ import UIKit
 class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //MARK: Properties
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var categoryTableView: UITableView!
+    @IBOutlet weak var commonTableView: UITableView!
     
     @IBOutlet weak var similarCollectionView: UICollectionView!
     @IBOutlet weak var titleView: UINavigationItem!
     var categories = [String]()
+    
     var selectedAsin = String()
     var selectedProductTitle = String()
+    
     var reviews = Reviews()
     var selectedCategory = String()
+    var cp = PhraseCategory()
     var similarProducts = [Product]()
     var similarAsinProduct = String()
     var similarProductName = String()
-    
+    var commonPhrases = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the title in navigation bar
@@ -33,10 +37,13 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         // Set the prompt(text above title) in navigation bar
         self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
         
-        tableView.tableFooterView = UIView()
+        categoryTableView.tableFooterView = UIView()
+        commonTableView.tableFooterView = UIView()
         
         categories = ["Product Quality", "Non Product Quality"]
         print("Review Category View: " + self.selectedAsin)
+        
+
         
         APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
             if success {
@@ -56,13 +63,26 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
                     for review in Reviews.sharedReviews.irNegReviews {
                         self.reviews.addReview(review: review)
                     }
-                    self.tableView.reloadData()
+                    
+                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
+                        var phraseString = ""
+                        for word in obj.phrases {
+                            phraseString += "\"" + word + "\" "
+                        }
+                        self.commonPhrases.append(phraseString)
+                    }
+                    
+                    self.categoryTableView.reloadData()
+                    self.commonTableView.reloadData()
                 }
                 
             } else {
                 print("Product API call broke")
             }
+            
         }
+        
+
         
     }
     
@@ -79,24 +99,40 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("Positive Review number: ", self.reviews.rePosReviews.count)
-        //print("Negative Review number: ", self.reviews.reNegReviews.count)
-        return categories.count
+        if(tableView == categoryTableView) {
+            return categories.count
+        }
+        else if (tableView == commonTableView){
+            return commonPhrases.count
+        }
+        else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
-        cell.textLabel?.text = categories[indexPath.row]
-        if(cell.textLabel?.text == "Product Quality"){
+        if(tableView == categoryTableView) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+            cell.textLabel?.text = categories[indexPath.row]
+            if(cell.textLabel?.text == "Product Quality"){
 
-            //print("review number: ", self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
+                //print("review number: ", self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
+                
+                cell.detailTextLabel?.text = String(self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
+            }
+            else if(cell.textLabel?.text == "Non Product Quality"){
+                cell.detailTextLabel?.text = String(self.reviews.irPosReviews.count + self.reviews.irNegReviews.count)
+            }
+            return cell
+        }
+        else {
+            let cellCP = tableView.dequeueReusableCell(withIdentifier: "CellCommon", for: indexPath)
+            cellCP.textLabel?.text = commonPhrases[indexPath.row]
+            //cellCP.detailTextLabel?.text = String(self.cp.uids.count)
             
-            cell.detailTextLabel?.text = String(self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
+            return cellCP
         }
-        else if(cell.textLabel?.text == "Non Product Quality"){
-            cell.detailTextLabel?.text = String(self.reviews.irPosReviews.count + self.reviews.irNegReviews.count)
-        }
-        return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -141,7 +177,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         }
         else {
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
-            let selectedRow = tableView.indexPathForSelectedRow?.row
+            let selectedRow = categoryTableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = categories[selectedRow!]
             DestViewController.reviews = self.reviews
             DestViewController.selectedProductTitle = self.selectedProductTitle
