@@ -469,7 +469,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellSimilar" id="rNq-7b-E2u" customClass="SimilarProductCell" customModule="ACRA_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="14" width="185" height="185"/>
+                                        <rect key="frame" x="5" y="13.5" width="185" height="185"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="185" height="185"/>
@@ -607,6 +607,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="0UX-kr-e8M"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="similarCollectionView" destination="51L-83-tLw" id="crQ-kt-4n0"/>
                         <outlet property="tableView" destination="Zrk-gD-3gA" id="n7p-Oj-BtY"/>
                         <outlet property="titleView" destination="oy5-AX-UDE" id="ffB-ic-6dd"/>
                     </connections>

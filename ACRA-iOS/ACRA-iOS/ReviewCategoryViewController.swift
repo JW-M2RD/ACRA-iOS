@@ -14,6 +14,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var similarCollectionView: UICollectionView!
     @IBOutlet weak var titleView: UINavigationItem!
     var categories = [String]()
     var selectedAsin = String()
@@ -21,6 +22,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     var reviews = Reviews()
     var selectedCategory = String()
     var similarProducts = [Product]()
+    var similarAsinProduct = String()
+    var similarProductName = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,8 +79,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Positive Review number: ", self.reviews.rePosReviews.count)
-        print("Negative Review number: ", self.reviews.reNegReviews.count)
+        //print("Positive Review number: ", self.reviews.rePosReviews.count)
+        //print("Negative Review number: ", self.reviews.reNegReviews.count)
         return categories.count
     }
     
@@ -86,7 +89,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         cell.textLabel?.text = categories[indexPath.row]
         if(cell.textLabel?.text == "Product Quality"){
 
-            print("review number: ", self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
+            //print("review number: ", self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
             
             cell.detailTextLabel?.text = String(self.reviews.rePosReviews.count + self.reviews.reNegReviews.count)
         }
@@ -112,13 +115,37 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         return similarCell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == similarCollectionView {
+            print("didSeclect CollectionView: ", self.similarProducts[indexPath.row].asin)
+            self.similarAsinProduct = self.similarProducts[indexPath.row].asin
+            self.similarProductName = self.similarProducts[indexPath.row].title
+            self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
+            
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "SimilarToCategory"){
+            let DestViewControllerSim: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
+        
+        print("prepare CollectionView: ", self.similarAsinProduct)
+            DestViewControllerSim.selectedAsin = self.similarAsinProduct
+            DestViewControllerSim.selectedProductTitle = self.similarProductName
+            
+            print("SimilarAsin: " + self.similarAsinProduct)
+            print("SimilarProductName" + self.similarProductName)
+            
+            print("Segue in Similar")
+            print("Prouct View Controller: " + DestViewControllerSim.selectedAsin)
+        }
+        else {
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
             let selectedRow = tableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = categories[selectedRow!]
             DestViewController.reviews = self.reviews
             DestViewController.selectedProductTitle = self.selectedProductTitle
-
+        }
     }
     
 }
