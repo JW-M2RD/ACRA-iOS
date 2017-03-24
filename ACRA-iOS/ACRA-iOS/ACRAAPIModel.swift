@@ -45,8 +45,8 @@ class APIModel: NSObject {
             
             if let result = response.result.value {
                 if let json = result as? NSDictionary {
-                    
                     Reviews.sharedReviews.clearReviews()
+                    PhraseCategories.sharedPhraseCategories.clearPhraseCategories()
                     
                     let review_json = json["reviews"] as! NSDictionary
                     let common_phrase_json = json["common_phrases"] as! NSDictionary
@@ -83,8 +83,38 @@ class APIModel: NSObject {
                             
                             Reviews.sharedReviews.addReview(review: newReview)
                         }
-
                         
+                    }
+                    else {
+                        completionHandler(false)
+                    }
+                    
+                    if let common_phrases = common_phrase_json["Items"] as? [NSDictionary] {
+                        let common_phrase_dict = common_phrases[0]
+                        
+                        let asin = common_phrase_dict["asin"] as! String
+                        let keys = common_phrase_dict["keys"] as! [[String]]
+                        let phrase_dict = common_phrase_dict["phrase_dict"] as! NSDictionary
+                        
+                        for key in keys {
+                            var str_key = ""
+                            for word in key {
+                                str_key += word + "_"
+                            }
+                            str_key.remove(at: str_key.index(before: str_key.endIndex))
+                            
+                            let uids = phrase_dict[str_key] as! [String]
+                            
+                            let phrase_category = PhraseCategory()
+                            phrase_category.asin = asin
+                            phrase_category.phrases = key
+                            
+                            for uid in uids {
+                                phrase_category.uids.insert(uid)
+                            }
+                            
+                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phrase_category)
+                        }
                     }
                     else {
                         completionHandler(false)
