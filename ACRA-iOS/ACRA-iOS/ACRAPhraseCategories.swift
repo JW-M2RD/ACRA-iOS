@@ -10,6 +10,8 @@ import Foundation
 
 class PhraseCategories : NSObject {
     
+    var asin: String! = nil
+    
     var phraseCategories: [PhraseCategory] = []
     
     static let sharedPhraseCategories = PhraseCategories()

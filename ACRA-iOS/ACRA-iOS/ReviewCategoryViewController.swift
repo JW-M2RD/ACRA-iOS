@@ -28,7 +28,10 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     var similarProducts = [Product]()
     var similarAsinProduct = String()
     var similarProductName = String()
-    var commonPhrases = [String]()
+//    var commonPhrases = [String]()
+    
+    var commonPhrases = PhraseCategories()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the title in navigation bar
@@ -68,14 +71,15 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
                         self.reviews.addReview(review: review)
                     }
                     
-                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
-                        var phraseString = ""
-                        for word in obj.phrases {
-                            phraseString += "\"" + word + "\" "
-                        }
-                        self.commonPhrases.append(phraseString)
-                    }
+//                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
+//                        var phraseString = ""
+//                        for word in obj.phrases {
+//                            phraseString += "\"" + word + "\" "
+//                        }
+//                        self.commonPhrases.append(phraseString)
+//                    }
                     
+                    self.commonPhrases = PhraseCategories.sharedPhraseCategories
                     self.categoryTableView.reloadData()
                     self.commonTableView.reloadData()
                 }
@@ -107,7 +111,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             return categories.count
         }
         else if (tableView == commonTableView){
-            return commonPhrases.count
+//            return commonPhrases.count
+            return commonPhrases.phraseCategories.count
         }
         else{
             return 0
@@ -131,8 +136,11 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         }
         else {
             let cellCP = tableView.dequeueReusableCell(withIdentifier: "CellCommon", for: indexPath)
-            cellCP.textLabel?.text = commonPhrases[indexPath.row]
+//            cellCP.textLabel?.text = commonPhrases[indexPath.row]
             //cellCP.detailTextLabel?.text = String(self.cp.uids.count)
+            
+            cellCP.textLabel?.text = commonPhrases.phraseCategories[indexPath.row].phrases
+            cellCP.detailTextLabel?.text = String(commonPhrases.phraseCategories[indexPath.row].uids.count)
             
             return cellCP
         }

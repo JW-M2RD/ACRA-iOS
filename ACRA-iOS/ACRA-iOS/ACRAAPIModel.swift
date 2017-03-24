@@ -96,24 +96,49 @@ class APIModel: NSObject {
                         let keys = common_phrase_dict["keys"] as! [[String]]
                         let phrase_dict = common_phrase_dict["phrase_dict"] as! NSDictionary
                         
+//                        for key in keys {
+//                            var str_key = ""
+//                            for word in key {
+//                                str_key += word + "_"
+//                            }
+//                            str_key.remove(at: str_key.index(before: str_key.endIndex))
+//                            
+//                            let uids = phrase_dict[str_key] as! [String]
+//                            
+//                            let phrase_category = PhraseCategory()
+//                            phrase_category.asin = asin
+//                            phrase_category.phrases = key
+//                            
+//                            for uid in uids {
+//                                phrase_category.uids.insert(uid)
+//                            }
+//                            
+//                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phrase_category)
+//                        }
+                        
+                        // assign asin
+                        PhraseCategories.sharedPhraseCategories.asin = asin
+                        
                         for key in keys {
+                            let phraseCategory = PhraseCategory()
+                            
                             var str_key = ""
+                            var dis_key = ""
                             for word in key {
                                 str_key += word + "_"
+                                dis_key += "\"" + word + "\" "
                             }
                             str_key.remove(at: str_key.index(before: str_key.endIndex))
                             
                             let uids = phrase_dict[str_key] as! [String]
-                            
-                            let phrase_category = PhraseCategory()
-                            phrase_category.asin = asin
-                            phrase_category.phrases = key
-                            
                             for uid in uids {
-                                phrase_category.uids.insert(uid)
+                                phraseCategory.uids.append(uid)
                             }
                             
-                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phrase_category)
+//                            phraseCategory.asin = str_key
+                            phraseCategory.phrases = dis_key
+                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phraseCategory)
+                            
                         }
                     }
                     else {
