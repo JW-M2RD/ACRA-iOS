@@ -466,7 +466,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Y43-BN-2yZ" kind="show" identifier="ReviewCategory" id="9nt-zm-JkG"/>
+                                            <segue destination="Y43-BN-2yZ" kind="show" identifier="CategoryToList" id="9nt-zm-JkG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -655,6 +655,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Y43-BN-2yZ" kind="show" identifier="CommonPhraseToList" id="1wa-Xh-hN7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1121,4 +1124,7 @@
         <image name="amazon_logo.png" width="2213" height="685"/>
         <image name="sorting_menuitem" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1wa-Xh-hN7"/>
+    </inferredMetricsTieBreakers>
 </document>
