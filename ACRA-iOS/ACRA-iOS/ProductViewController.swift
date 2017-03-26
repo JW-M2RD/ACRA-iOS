@@ -57,7 +57,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var finishedLoading = false
     
-//    let sectionTitles: [String] = ["Sort By:","Price","Rating"]
+
     //Sorting options icon by Icons8: https://icons8.com/web-app/18636/Sorting-Options
     //Thanks to Icons8 for Price Tag USD icon: https://icons8.com/web-app/2971/Price-Tag-USD
     //Thanks to Icons8 for the Rating icon: https://icons8.com/web-app/11674/Rating
@@ -115,17 +115,23 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             //activityIndicator.hidesWhenStopped = true
         //}
         
-        if(getFinishedLoading()==true){
+        if(self.getFinishedLoading()==true){
             print("stop animation")
             self.activityIndicator.stopAnimating()
+            self.messageDisplay.isHidden = true
         }
-        else if(getFinishedLoading()==false){
-            if(self.productTableView.numberOfRows(inSection: 0) == 0) {
-                print("seting dog")
-                self.messageDisplay.isHidden=false
-                setDogImg(viewName: productTableView)
-                activityIndicator.stopAnimating()
+        else if(self.getFinishedLoading()==false){
+            let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                //code with delay
+                if(self.productTableView.numberOfRows(inSection: 0) == 0) {
+                    print("seting dog")
+                    self.messageDisplay.isHidden=false
+                    self.setDogImg(viewName: self.productTableView)
+                    self.activityIndicator.stopAnimating()
+                }
             }
+            
         }
         
        print("viewdidappear")
@@ -134,7 +140,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       print("viewdidload")
+        print("")
+        print("viewdidload")
+        
         setMenuToHidden()
         sortTableView.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
 
