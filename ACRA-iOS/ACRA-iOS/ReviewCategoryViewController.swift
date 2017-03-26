@@ -28,6 +28,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     var similarProducts = [Product]()
     var similarAsinProduct = String()
     var similarProductName = String()
+    var products = Products()
 //    var commonPhrases = [String]()
     
     var commonPhrases = PhraseCategories()
@@ -47,8 +48,10 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         categories = ["Product Quality", "Non Product Quality"]
         print("Review Category View: " + self.selectedAsin)
 
-        getReviewAPI(selectedAsinAPI: self.selectedAsin)
 
+        createSimilarProducts(selected: self.selectedAsin)
+        getReviewAPI(selectedAsinAPI: self.selectedAsin)
+        
         
     }
     
@@ -80,6 +83,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
                     self.commonPhrases = PhraseCategories.sharedPhraseCategories
                     self.categoryTableView.reloadData()
                     self.commonTableView.reloadData()
+                    self.similarCollectionView.reloadData()
                 }
                 
             } else {
@@ -166,7 +170,11 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             updateTitlePrompt(nameOfProduct: self.similarProducts[indexPath.row].title)
             //remove the reviews when clicked again
             self.reviews.clearReviews()
+            //remove previous similar products
+            //self.similarProducts.removeAll()
             //update reviews from api on item selected
+            
+            self.selectedAsin = self.similarProducts[indexPath.row].asin
             getReviewAPI(selectedAsinAPI: self.similarProducts[indexPath.row].asin)
       
         }
@@ -237,6 +245,15 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             //DestViewController.reviews = self.reviews
             //DestViewController.selectedProductTitle = self.selectedProductTitle
         //}
+    }
+    
+    func createSimilarProducts (selected : String) {
+        self.similarProducts.removeAll()
+        for product in self.products.products {
+            if self.similarProducts.count < 11 && product.asin != selected{
+                self.similarProducts.append(product)
+            }
+        }
     }
     
 }

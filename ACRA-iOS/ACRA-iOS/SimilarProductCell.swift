@@ -21,6 +21,7 @@ class SimilarProductCell: UICollectionViewCell {
     @IBOutlet weak var productQualityNum: UILabel!
     @IBOutlet weak var NonProductQualityNum: UILabel!
     @IBOutlet weak var productPrice: UILabel!
+
     
     let fullStarImage:  UIImage = UIImage(named: "starFull.png")!
     let halfStarImage:  UIImage = UIImage(named: "starHalf.png")!
@@ -49,8 +50,8 @@ class SimilarProductCell: UICollectionViewCell {
         star4.image = getStarImage(starNumber: 4, forRating: productRating)
         star5.image = getStarImage(starNumber: 5, forRating: productRating)
         
-        productQualityNum.text = "Product Quality: " + String(productQuality)
-        NonProductQualityNum.text = "Non-Product Quality: " + String(nonProductQuality)
+        productQualityNum.text = String(productQuality)
+        NonProductQualityNum.text = String(nonProductQuality)
         productPrice.text = price
     }
 

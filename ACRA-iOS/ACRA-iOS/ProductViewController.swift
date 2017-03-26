@@ -38,6 +38,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var backgroundButton: UIButton!
     @IBOutlet weak var sortTableView: UITableView!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var messageDisplay: UITextField!
     
     var SearchLabel = String()
     var products: [Product] = []
@@ -53,6 +55,8 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var sortByRating = ["High to Low","Low to High"]
     var sortRule = String()
     
+    var finishedLoading = false
+    
 //    let sectionTitles: [String] = ["Sort By:","Price","Rating"]
     //Sorting options icon by Icons8: https://icons8.com/web-app/18636/Sorting-Options
     //Thanks to Icons8 for Price Tag USD icon: https://icons8.com/web-app/2971/Price-Tag-USD
@@ -65,6 +69,15 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     let s3Data: [String] = ["High to Low", "Low to High"]
     
     var sectionData: [Int: [String]] = [:]
+    
+    func setFinishedLoading(setTo: Bool){
+        finishedLoading = setTo
+    }
+    
+    func getFinishedLoading() -> Bool{
+        return finishedLoading
+    }
+    
     func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
         if rating >= starNumber {
             return fullStarImage
@@ -81,15 +94,47 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         backgroundButton.alpha = 0
     }
     
+    func setDogImg (viewName: UITableView) {
+        let image = UIImage(named: "dog")
+        let noDataImage = UIImageView(image: image)
+        viewName.backgroundView = noDataImage
+    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //Products.sharedProducts.clearProducts()
+        
+        //if(self.finishedLoading == true){
+        //    setDogImg(viewName: productTableView)
+        //    activityIndicator.stopAnimating()
+            //activityIndicator.hidesWhenStopped = true
+        //}
+       // if(self.productTableView.numberOfRows(inSection: 0) > 0){
+       //     activityIndicator.stopAnimating()
+            //activityIndicator.hidesWhenStopped = true
+        //}
+        
+        if(getFinishedLoading()==true){
+            print("stop animation")
+            self.activityIndicator.stopAnimating()
+        }
+        else if(getFinishedLoading()==false){
+            if(self.productTableView.numberOfRows(inSection: 0) == 0) {
+                print("seting dog")
+                self.messageDisplay.isHidden=false
+                setDogImg(viewName: productTableView)
+                activityIndicator.stopAnimating()
+            }
+        }
+        
+       print("viewdidappear")
     
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       print("viewdidload")
         setMenuToHidden()
         sortTableView.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
 
@@ -100,22 +145,21 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         sectionData = [0:s1Data, 1:s2Data, 2:s3Data]
 
         let escapedString = self.SearchLabel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        
+        activityIndicator.startAnimating()
         APIModel.sharedInstance.getProducts(escape: escapedString!) { (success:Bool) in
             if success {
                 print("Successfully got products")
+                print("entered successfully got products")
                 DispatchQueue.main.async {
                     for product in Products.sharedProducts.products {
                         self.products.append(product)
                     }
                     self.productTableView.reloadData()
                 }
-                
             } else {
                 print("Product API call broke")
             }
         }
-        
         navigationTitle.title = "Products"
         
         productTableView.tableFooterView = UIView()
@@ -134,12 +178,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("num of rows in sec")
         if(tableView == productTableView) {
             if(self.products.count == 0){
-                let image = UIImage(named: "dog")
-                let noDataImage = UIImageView(image: image)
-                productTableView.backgroundView = noDataImage
-
                 return 0
             }
             else {
@@ -163,6 +204,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cell for row at")
         if(tableView == productTableView) {
             let cell = self.productTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         
@@ -178,6 +220,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             let rounded_rating = Double(round(100*(self.products[indexPath.row].rating))/100)
             cell.ratingValue.text = "(" + String(rounded_rating) + ")"
+            setFinishedLoading(setTo: true)
             
             return cell
         }
@@ -197,6 +240,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // Get which selected from table
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if(tableView == productTableView ) {
             print("selected asin: " + self.products[indexPath.row].asin)
             self.selectedAsinProduct = self.products[indexPath.row].asin
@@ -269,6 +313,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             let DestViewController: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
             DestViewController.selectedAsin = self.selectedAsinProduct
             DestViewController.selectedProductTitle = self.selectedProductName
+            DestViewController.products.products = self.products
             
             for product in self.products {
                 if DestViewController.similarProducts.count < 11 && product.asin != self.selectedAsinProduct{
