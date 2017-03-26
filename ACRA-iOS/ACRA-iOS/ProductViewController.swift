@@ -56,6 +56,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var sortRule = String()
     
     var finishedLoading = false
+    var viewApperBool = false
     
 
     //Sorting options icon by Icons8: https://icons8.com/web-app/18636/Sorting-Options
@@ -114,7 +115,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
        //     activityIndicator.stopAnimating()
             //activityIndicator.hidesWhenStopped = true
         //}
-        
+        viewApperBool = true
         if(self.getFinishedLoading()==true){
             print("stop animation")
             self.activityIndicator.stopAnimating()
@@ -163,6 +164,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
                         self.products.append(product)
                     }
                     self.productTableView.reloadData()
+                    if(self.viewApperBool){
+                        self.activityIndicator.isHidden = true
+                    }
                 }
             } else {
                 print("Product API call broke")
