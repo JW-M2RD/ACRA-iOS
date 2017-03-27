@@ -50,6 +50,9 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 
         //ReviewAPI call when the page is loaded first time
         getReviewAPI(selectedAsinAPI: self.selectedAsin)
+        
+        //sort similar products by qualityNumber
+        self.similarProducts = self.similarProducts.sorted{$0.displayProductQualityNumber > $1.displayProductQualityNumber}
     }
     
     func updateTitlePrompt (nameOfProduct: String) {
@@ -230,6 +233,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
                 self.similarProducts.append(product)
             }
         }
+        self.similarProducts = self.similarProducts.sorted{$0.displayProductQualityNumber > $1.displayProductQualityNumber}
     }
     
 }

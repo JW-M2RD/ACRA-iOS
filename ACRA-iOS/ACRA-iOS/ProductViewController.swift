@@ -20,14 +20,14 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func sortMenuTrigger(_ sender: Any) {
         if(menuShowing) {
             trailingConstraint.constant = -180
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.view.layoutIfNeeded()
                 self.backgroundButton.alpha = 0
             })
         }
         else {
             trailingConstraint.constant = 0
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.4, animations: {
                 self.view.layoutIfNeeded()
                 self.backgroundButton.alpha = 0.5
             })
