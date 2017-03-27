@@ -1016,7 +1016,7 @@
                                         <rect key="frame" x="8" y="4" width="359" height="521"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviewer" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bye-xI-AfK">
-                                                <rect key="frame" x="8" y="36" width="62.5" height="18"/>
+                                                <rect key="frame" x="8" y="55.5" width="63" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1056,56 +1056,48 @@
                                                     <constraint firstAttribute="width" constant="25" id="BOW-5V-Cj5"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPL-F9-v4X">
-                                                <rect key="frame" x="131" y="8" width="221" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="221" id="fbj-qH-rX0"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrT-tv-GRQ">
-                                                <rect key="frame" x="8" y="66" width="344" height="20"/>
+                                                <rect key="frame" x="8" y="85.5" width="344" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPn-cr-ZAP">
-                                                <rect key="frame" x="70.5" y="36" width="32.5" height="18"/>
+                                                <rect key="frame" x="71" y="55.5" width="33" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPL-F9-v4X">
+                                                <rect key="frame" x="8" y="34" width="343" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="leading" secondItem="RPt-8J-nWe" secondAttribute="trailing" constant="24" id="1IE-xs-fLa"/>
+                                            <constraint firstItem="7vy-wc-Ej5" firstAttribute="top" secondItem="krS-YT-PPP" secondAttribute="top" id="70Z-z8-tow"/>
                                             <constraint firstItem="krS-YT-PPP" firstAttribute="leading" secondItem="dWA-yA-ceb" secondAttribute="trailing" id="7ud-VL-fp0"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="top" secondItem="RPt-8J-nWe" secondAttribute="top" id="9a1-1w-aTF"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="centerY" secondItem="dWA-yA-ceb" secondAttribute="centerY" id="9to-zO-eXg"/>
+                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="centerX" secondItem="CrT-tv-GRQ" secondAttribute="centerX" id="AXf-ho-OGm"/>
                                             <constraint firstAttribute="trailing" secondItem="CrT-tv-GRQ" secondAttribute="trailing" constant="7" id="BQ1-Ks-508"/>
+                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="leading" secondItem="Bye-xI-AfK" secondAttribute="leading" id="BQM-iK-EiB"/>
                                             <constraint firstAttribute="height" constant="521" id="EsH-AV-rn1"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="centerY" secondItem="krS-YT-PPP" secondAttribute="centerY" id="Fpk-AA-EbO"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="top" secondItem="dWA-yA-ceb" secondAttribute="top" id="J4I-Hm-u2F"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="centerY" secondItem="Ali-og-zAB" secondAttribute="centerY" id="Jiq-dg-QQb"/>
-                                            <constraint firstAttribute="trailing" secondItem="EPL-F9-v4X" secondAttribute="trailing" constant="7" id="KA6-qM-AMr"/>
                                             <constraint firstItem="Ali-og-zAB" firstAttribute="leading" secondItem="dWA-yA-ceb" secondAttribute="trailing" constant="24" id="KcV-ts-0ne"/>
                                             <constraint firstItem="dWA-yA-ceb" firstAttribute="leading" secondItem="Bye-xI-AfK" secondAttribute="leading" id="L9Y-Zf-9bA"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="top" secondItem="krS-YT-PPP" secondAttribute="top" id="Ml9-ct-osF"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="top" secondItem="7vy-wc-Ej5" secondAttribute="top" id="QOv-IV-8ys"/>
+                                            <constraint firstItem="IPn-cr-ZAP" firstAttribute="top" secondItem="EPL-F9-v4X" secondAttribute="bottom" constant="1" id="Pg4-kz-Xwf"/>
+                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="top" secondItem="7vy-wc-Ej5" secondAttribute="bottom" constant="2" id="R1S-q8-2g5"/>
+                                            <constraint firstItem="7vy-wc-Ej5" firstAttribute="leading" secondItem="Ali-og-zAB" secondAttribute="trailing" constant="23" id="UrJ-M5-awA"/>
                                             <constraint firstItem="CrT-tv-GRQ" firstAttribute="leading" secondItem="yDo-3i-fh6" secondAttribute="leading" constant="8" id="VZz-DK-Ju3"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="leading" secondItem="7vy-wc-Ej5" secondAttribute="trailing" constant="1" id="aTj-en-Vd3"/>
+                                            <constraint firstItem="7vy-wc-Ej5" firstAttribute="top" secondItem="Ali-og-zAB" secondAttribute="top" id="ekJ-qb-xQE"/>
+                                            <constraint firstItem="7vy-wc-Ej5" firstAttribute="top" secondItem="dWA-yA-ceb" secondAttribute="top" id="hfR-Dk-I7u"/>
                                             <constraint firstItem="7vy-wc-Ej5" firstAttribute="top" secondItem="yDo-3i-fh6" secondAttribute="top" constant="8" id="jox-Iv-meu"/>
-                                            <constraint firstItem="Bye-xI-AfK" firstAttribute="top" secondItem="EPL-F9-v4X" secondAttribute="bottom" constant="4" id="ko5-26-eCv"/>
-                                            <constraint firstItem="IPn-cr-ZAP" firstAttribute="top" secondItem="EPL-F9-v4X" secondAttribute="bottom" constant="4" id="oCL-iJ-G0l"/>
                                             <constraint firstItem="dWA-yA-ceb" firstAttribute="leading" secondItem="CrT-tv-GRQ" secondAttribute="leading" id="oqY-hP-9Pp"/>
                                             <constraint firstItem="CrT-tv-GRQ" firstAttribute="top" secondItem="Bye-xI-AfK" secondAttribute="bottom" constant="12" id="p2T-wb-crK"/>
                                             <constraint firstItem="CrT-tv-GRQ" firstAttribute="top" secondItem="IPn-cr-ZAP" secondAttribute="bottom" constant="12" id="pqS-07-XlZ"/>
                                             <constraint firstItem="RPt-8J-nWe" firstAttribute="leading" secondItem="krS-YT-PPP" secondAttribute="trailing" constant="24" id="qWI-ih-Vtd"/>
                                             <constraint firstItem="IPn-cr-ZAP" firstAttribute="leading" secondItem="Bye-xI-AfK" secondAttribute="trailing" id="tRU-cq-Jg7"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="top" secondItem="Ali-og-zAB" secondAttribute="top" id="uhs-7e-yXE"/>
-                                            <constraint firstItem="EPL-F9-v4X" firstAttribute="centerY" secondItem="RPt-8J-nWe" secondAttribute="centerY" id="vwi-Zc-lhZ"/>
+                                            <constraint firstItem="7vy-wc-Ej5" firstAttribute="top" secondItem="RPt-8J-nWe" secondAttribute="top" id="u3Y-vx-FC7"/>
                                             <constraint firstItem="RPt-8J-nWe" firstAttribute="leading" secondItem="Ali-og-zAB" secondAttribute="trailing" id="w9b-Ya-CPo"/>
                                         </constraints>
                                     </view>
@@ -1133,7 +1125,9 @@
                             <constraint firstItem="JSd-G1-GTm" firstAttribute="top" secondItem="i50-BM-R7Z" secondAttribute="topMargin" constant="94" id="nae-Ge-Fgb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Review" id="i2z-oy-ZwY"/>
+                    <navigationItem key="navigationItem" title="Review" id="i2z-oy-ZwY">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="0to-Ss-6yt"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="Star1" destination="dWA-yA-ceb" id="esU-8K-wb4"/>

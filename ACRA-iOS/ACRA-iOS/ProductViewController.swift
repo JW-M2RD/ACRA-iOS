@@ -329,6 +329,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             
             for product in self.products {
                 if DestViewController.similarProducts.count < 11 && product.asin != self.selectedAsinProduct{
+                    
                     DestViewController.similarProducts.append(product)
                 }
             }
