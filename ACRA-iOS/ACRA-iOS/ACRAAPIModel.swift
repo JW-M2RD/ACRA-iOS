@@ -25,7 +25,6 @@ class APIModel: NSObject {
         
     }
     
-    
     func getReviews (escape:String, completionHandler: @escaping(Bool) -> () ) {
         
         var urlRequest = URLRequest(url: URL(string: "\(baseURL)asin_search?asin=\(escape)")!)
@@ -124,11 +123,19 @@ class APIModel: NSObject {
                             
                             var str_key = ""
                             var dis_key = ""
+                            var first_write = true
                             for word in key {
-                                str_key += word + "_"
-                                dis_key += "\"" + word + "\" "
+                                if first_write {
+                                    str_key += word
+                                    dis_key += word
+                                    first_write = false
+                                }
+                                else {
+                                    str_key += "_" + word
+                                    dis_key += ", " + word
+                                }
+                                
                             }
-                            str_key.remove(at: str_key.index(before: str_key.endIndex))
                             
                             let uids = phrase_dict[str_key] as! [String]
                             for uid in uids {

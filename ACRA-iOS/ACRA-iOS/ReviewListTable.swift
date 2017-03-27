@@ -62,7 +62,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationTitle.title = "Review List (" + self.selectedCategory + ")"
+        self.navigationTitle.title = self.selectedCategory
         setMenuToHidden()
         sectionData = [0:s1Data, 1:s2Data]
         
@@ -91,6 +91,15 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         backgroundButton.alpha = 0
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "Back"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = self.selectedCategory
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

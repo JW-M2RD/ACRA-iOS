@@ -65,24 +65,28 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backBarButtonItem?.title = "Back"
         // Set the prompt(text above title) in navigation bar
         self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
         
         scrollView.delegate = self;
         
+        //Set the text according to the category
         setupToolbar()
         
+        //Add all the data to the view
         populateViewWithData()
     
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: reviewText.frame.size.height + 100)
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: reviewText.frame.size.height + titleText.frame.size.height + 100)
         scrollView.addSubview(contentView);
         
     }
     
+    //Function to set the text of the button in toolbar according to the selected category
     private func setupToolbar() {
         misclassifiedButton.title = "This Is Not Related To " + self.reviewCategoryName
         
@@ -111,10 +115,15 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
     }
     
     func sendMissclassified() {
+        let alertAfterCompletion = UIAlertController(title: "Thank you for the feedback!",
+                                                     message: "Your feedback is on its way. Thank you for helping us make ACRA even better.",
+                                                     preferredStyle: UIAlertControllerStyle.alert)
+        alertAfterCompletion.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        self.present(alertAfterCompletion, animated: true, completion: nil)
+
         APIModel.sharedInstance.storeMisclassifiedGet(uid: review.uid) { (success:Bool) in
             if success {
                 print("Successfully sent missclassified review")
-                
             } else {
                 print("missclassified review broke")
             }

@@ -28,6 +28,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     var similarProducts = [Product]()
     var similarAsinProduct = String()
     var similarProductName = String()
+    var products = Products()
 //    var commonPhrases = [String]()
     
     var commonPhrases = PhraseCategories()
@@ -38,18 +39,26 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.titleView.title = "Review Category"
         
         // Set the prompt(text above title) in navigation bar
-        self.navigationItem.prompt = selectedProductTitle.substring(to: selectedProductTitle.index(selectedProductTitle.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: selectedProductTitle.characters.count)))
+        updateTitlePrompt(nameOfProduct: self.selectedProductTitle)
         
+        //remove the footer lines
         categoryTableView.tableFooterView = UIView()
-        
         commonTableView.tableFooterView = UIView()
         
         categories = ["Product Quality", "Non Product Quality"]
         print("Review Category View: " + self.selectedAsin)
-        
 
-        
-        APIModel.sharedInstance.getReviews(escape: self.selectedAsin) { (success:Bool) in
+        //ReviewAPI call when the page is loaded first time
+        getReviewAPI(selectedAsinAPI: self.selectedAsin)
+    }
+    
+    func updateTitlePrompt (nameOfProduct: String) {
+        self.navigationItem.prompt = nameOfProduct.substring(to: nameOfProduct.index(nameOfProduct.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: nameOfProduct.characters.count)))
+        self.selectedProductTitle = nameOfProduct
+    }
+    
+    func getReviewAPI(selectedAsinAPI: String){
+        APIModel.sharedInstance.getReviews(escape: selectedAsinAPI) { (success:Bool) in
             if success {
                 print("Successfully got reviews")
                 DispatchQueue.main.async {
@@ -68,17 +77,10 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
                         self.reviews.addReview(review: review)
                     }
                     
-//                    for obj in PhraseCategories.sharedPhraseCategories.phraseCategories {
-//                        var phraseString = ""
-//                        for word in obj.phrases {
-//                            phraseString += "\"" + word + "\" "
-//                        }
-//                        self.commonPhrases.append(phraseString)
-//                    }
-                    
                     self.commonPhrases = PhraseCategories.sharedPhraseCategories
                     self.categoryTableView.reloadData()
                     self.commonTableView.reloadData()
+                    self.similarCollectionView.reloadData()
                 }
                 
             } else {
@@ -86,9 +88,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             }
             
         }
-        
-
-        
     }
     
     func get_image(_ urlString:String) -> UIImage {
@@ -108,7 +107,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             return categories.count
         }
         else if (tableView == commonTableView){
-//            return commonPhrases.count
             return commonPhrases.phraseCategories.count
         }
         else{
@@ -163,8 +161,22 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             print("didSeclect CollectionView: ", self.similarProducts[indexPath.row].asin)
             self.similarAsinProduct = self.similarProducts[indexPath.row].asin
             self.similarProductName = self.similarProducts[indexPath.row].title
-            //self.performSegue(withIdentifier: "SimilarToCategory", sender: self)
             
+            // Update title of the page when item clicked
+            updateTitlePrompt(nameOfProduct: self.similarProducts[indexPath.row].title)
+            
+            //remove the reviews when clicked again
+            self.reviews.clearReviews()
+            
+            //updating the selected ASIN to the selected ASIN of similar product.
+            self.selectedAsin = self.similarProducts[indexPath.row].asin
+            
+            //call to review API to update our reviews to according to selected ASIN
+            getReviewAPI(selectedAsinAPI: self.similarProducts[indexPath.row].asin)
+            
+            //call to create new similar products collection view accordingly
+            createSimilarProducts(selected: self.selectedAsin)
+      
         }
     }
     
@@ -173,9 +185,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    
-            return 43
-        
+        return 43
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -209,30 +219,17 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             let selectedRow = commonTableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = commonPhrases.phraseCategories[selectedRow!].phrases
             DestViewController.selectedProductTitle = self.selectedProductTitle
-            //DestViewController.reviews = self.commonPhrases.phraseCategories[selectedRow!].uids
+          //DestViewController.reviews = self.commonPhrases.phraseCategories[selectedRow!].uids
         }
-        
-        
-        //if (segue.identifier == "SimilarToCategory"){
-         //   let DestViewControllerSim: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController
-        
-        //print("prepare CollectionView: ", self.similarAsinProduct)
-            //DestViewControllerSim.selectedAsin = self.similarAsinProduct
-           // DestViewControllerSim.selectedProductTitle = self.similarProductName
-            
-            //print("SimilarAsin: " + self.similarAsinProduct)
-            //print("SimilarProductName" + self.similarProductName)
-            
-            //print("Segue in Similar")
-            //print("Prouct View Controller: " + DestViewControllerSim.selectedAsin)
-        //}
-        //else {
-            //let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
-            //let selectedRow = categoryTableView.indexPathForSelectedRow?.row
-            //DestViewController.selectedCategory = categories[selectedRow!]
-            //DestViewController.reviews = self.reviews
-            //DestViewController.selectedProductTitle = self.selectedProductTitle
-        //}
+    }
+    
+    func createSimilarProducts (selected : String) {
+        self.similarProducts.removeAll()
+        for product in self.products.products {
+            if self.similarProducts.count < 11 && product.asin != selected{
+                self.similarProducts.append(product)
+            }
+        }
     }
     
 //    func getReviewData
