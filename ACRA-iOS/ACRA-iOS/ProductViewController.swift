@@ -141,8 +141,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("")
-        print("viewdidload")
         
         setMenuToHidden()
         sortTableView.backgroundColor = UIColor (red: CGFloat(237/255.0), green: CGFloat(250/255.0), blue: CGFloat(255/255.0), alpha: 1.0)
@@ -158,7 +156,6 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         APIModel.sharedInstance.getProducts(escape: escapedString!) { (success:Bool) in
             if success {
                 print("Successfully got products")
-                print("entered successfully got products")
                 DispatchQueue.main.async {
                     for product in Products.sharedProducts.products {
                         self.products.append(product)
@@ -190,7 +187,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("num of rows in sec")
+//        print("num of rows in sec")
         if(tableView == productTableView) {
             if(self.products.count == 0){
                 return 0
@@ -216,7 +213,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cell for row at")
+//        print("cell for row at")
         if(tableView == productTableView) {
             let cell = self.productTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         

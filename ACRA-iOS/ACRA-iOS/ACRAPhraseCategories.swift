@@ -27,4 +27,13 @@ class PhraseCategories : NSObject {
     func clearPhraseCategories() {
         phraseCategories.removeAll()
     }
+    
+    func addReview(review: Review) {
+        for phrase in phraseCategories {
+            if phrase.uids.contains(review.uid) {
+                print("Got review in Local Database!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                phrase.addReview(review: review)
+            }
+        }
+    }
 }

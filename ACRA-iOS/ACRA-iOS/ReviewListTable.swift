@@ -45,10 +45,10 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     var menuShowing = false
 
     var SearchLabel = String()
-//    var database = Database()
     var reviews = Reviews()
     var selectedCategory = String()
     var selectedProductTitle = String ()
+    var phraseCategory: PhraseCategory! = nil
 //    var sortByTitles = ["Newest","Oldest"]
     
     let sectionImages: [UIImage] = [#imageLiteral(resourceName: "Sorting"), #imageLiteral(resourceName: "Date")]
@@ -78,6 +78,8 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         reviewListTableView.tableFooterView = UIView()
         listSortTableView.tableFooterView = UIView()
         
+//        print(self.phraseCategory.phrases)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,10 +105,14 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(tableView == reviewListTableView){
+        if(tableView == reviewListTableView) {
+//            if self.selectedCategory != nil {
+//                
+//            }
+            
             if (self.selectedCategory == "Product Quality") {
                 tableView.backgroundView = nil
-            
+                
                 switch self.positiveSegmentedController.selectedSegmentIndex {
                 case 0:
                     if(self.reviews.rePosReviews.count == 0){
@@ -124,7 +130,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                     break
                 }
             }
-            else {
+            else if self.selectedCategory == "Non Product Quality" {
                 tableView.backgroundView = nil
                 
                 switch self.positiveSegmentedController.selectedSegmentIndex {
@@ -144,11 +150,36 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                     break
                 }
             }
+            else {
+                if self.phraseCategory != nil {
+                    tableView.backgroundView = nil
+                    
+                    switch self.positiveSegmentedController.selectedSegmentIndex {
+                    case 0:
+                        if(self.phraseCategory.posReviews.count == 0){
+                            setDogImg()
+                            return 0
+                        }
+                        return self.phraseCategory.posReviews.count
+                    case 1:
+                        if(self.phraseCategory.negReviews.count == 0){
+                            setDogImg()
+                            return 0
+                        }
+                        return self.phraseCategory.negReviews.count
+                    default:
+                        break
+                    }
+                }
+            }
             return 0
+            
         }
         else {
             return (sectionData[section]?.count)!
         }
+        
+//        return 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -164,11 +195,13 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         if(tableView == reviewListTableView){
 
             let cell = self.reviewListTableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewListCell
-        
-        
+            
+//            if self.selectedCategory != nil {
+////                print("Display Quality Review")
+//                
+//            }
             if self.selectedCategory == "Product Quality" {
-            
-            
+                
                 switch self.positiveSegmentedController.selectedSegmentIndex {
                 case 0:
                     cell.titleText.text = self.reviews.rePosReviews[indexPath.row].summary
@@ -181,9 +214,9 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 default:
                     break
                 }
-            
+                
             }
-            else {
+            else if self.selectedCategory == "Non Product Quality" {
                 // None product quality
                 switch self.positiveSegmentedController.selectedSegmentIndex {
                 case 0:
@@ -198,6 +231,24 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                     break
                 }
             }
+            else {
+                if self.phraseCategory != nil {
+                    print("Display Common Phrase")
+                    switch self.positiveSegmentedController.selectedSegmentIndex {
+                    case 0:
+                        cell.titleText.text = self.phraseCategory.posReviews[indexPath.row].summary
+                        cell.reviewer.text = self.phraseCategory.posReviews[indexPath.row].reviewerName
+                        cell.ReviewText.text = self.phraseCategory.posReviews[indexPath.row].reviewText
+                    case 1:
+                        cell.titleText.text = self.phraseCategory.negReviews[indexPath.row].summary
+                        cell.reviewer.text = self.phraseCategory.negReviews[indexPath.row].reviewerName
+                        cell.ReviewText.text = self.phraseCategory.negReviews[indexPath.row].reviewText
+                    default:
+                        break
+                    }
+                }
+            }
+            
             setMenuToHidden()
             return cell
         }
@@ -253,7 +304,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 break
             }
         }
-        else{
+        else if self.selectedCategory == "Non Product Quality"{
             DestViewController.reviewCategoryName = self.selectedCategory
             
             switch self.positiveSegmentedController.selectedSegmentIndex {
@@ -261,6 +312,18 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 DestViewController.review = self.reviews.irPosReviews[selectedRow!]
             case 1:
                 DestViewController.review = self.reviews.irNegReviews[selectedRow!]
+            default:
+                break
+            }
+        }
+        else {
+            DestViewController.reviewCategoryName = self.selectedCategory
+            
+            switch self.positiveSegmentedController.selectedSegmentIndex {
+            case 0:
+                DestViewController.review = self.phraseCategory.posReviews[selectedRow!]
+            case 1:
+                DestViewController.review = self.phraseCategory.negReviews[selectedRow!]
             default:
                 break
             }
@@ -277,11 +340,17 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                         self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
                         self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
                         self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                        
+                        self.phraseCategory.posReviews = self.phraseCategory.posReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                        self.phraseCategory.negReviews = self.phraseCategory.negReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
                     case 1:
                         self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
                         self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
                         self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
                         self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                        
+                        self.phraseCategory.posReviews = self.phraseCategory.posReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                        self.phraseCategory.negReviews = self.phraseCategory.negReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
                     default:
                         break
                     }

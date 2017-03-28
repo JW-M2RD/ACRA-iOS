@@ -60,39 +60,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.selectedProductTitle = nameOfProduct
     }
     
-    func getReviewAPI(selectedAsinAPI: String){
-        APIModel.sharedInstance.getReviews(escape: selectedAsinAPI) { (success:Bool) in
-            if success {
-                print("Successfully got reviews")
-                DispatchQueue.main.async {
-                    for review in Reviews.sharedReviews.rePosReviews {
-                        
-                        self.reviews.addReview(review: review)
-                    }
-                    for review in Reviews.sharedReviews.reNegReviews {
-                        
-                        self.reviews.addReview(review: review)
-                    }
-                    for review in Reviews.sharedReviews.irPosReviews {
-                        self.reviews.addReview(review: review)
-                    }
-                    for review in Reviews.sharedReviews.irNegReviews {
-                        self.reviews.addReview(review: review)
-                    }
-                    
-                    self.commonPhrases = PhraseCategories.sharedPhraseCategories
-                    self.categoryTableView.reloadData()
-                    self.commonTableView.reloadData()
-                    self.similarCollectionView.reloadData()
-                }
-                
-            } else {
-                print("Product API call broke")
-            }
-            
-        }
-    }
-    
     func get_image(_ urlString:String) -> UIImage {
         let strurl = NSURL(string: urlString)!
         let dtinternet = NSData(contentsOf:strurl as URL)!
@@ -104,7 +71,6 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         // Dispose of any resources that can be recreated.
     }
 
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == categoryTableView) {
             return categories.count
@@ -222,6 +188,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             let selectedRow = commonTableView.indexPathForSelectedRow?.row
             DestViewController.selectedCategory = commonPhrases.phraseCategories[selectedRow!].phrases
             DestViewController.selectedProductTitle = self.selectedProductTitle
+            DestViewController.phraseCategory = self.commonPhrases.phraseCategories[selectedRow!]
           //DestViewController.reviews = self.commonPhrases.phraseCategories[selectedRow!].uids
         }
     }
@@ -236,7 +203,38 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.similarProducts = self.similarProducts.sorted{$0.displayProductQualityNumber > $1.displayProductQualityNumber}
     }
     
-//    func getReviewData
+    func getReviewAPI(selectedAsinAPI: String){
+        APIModel.sharedInstance.getReviews(escape: selectedAsinAPI) { (success:Bool) in
+            if success {
+                print("Successfully got reviews")
+                DispatchQueue.main.async {
+                    for review in Reviews.sharedReviews.rePosReviews {
+                        
+                        self.reviews.addReview(review: review)
+                    }
+                    for review in Reviews.sharedReviews.reNegReviews {
+                        
+                        self.reviews.addReview(review: review)
+                    }
+                    for review in Reviews.sharedReviews.irPosReviews {
+                        self.reviews.addReview(review: review)
+                    }
+                    for review in Reviews.sharedReviews.irNegReviews {
+                        self.reviews.addReview(review: review)
+                    }
+                    
+                    self.commonPhrases = PhraseCategories.sharedPhraseCategories
+                    self.categoryTableView.reloadData()
+                    self.commonTableView.reloadData()
+                    self.similarCollectionView.reloadData()
+                }
+                
+            } else {
+                print("Product API call broke")
+            }
+            
+        }
+    }
     
 }
 

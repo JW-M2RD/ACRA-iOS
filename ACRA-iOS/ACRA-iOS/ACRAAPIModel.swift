@@ -35,7 +35,7 @@ class APIModel: NSObject {
         sessionManager.request(urlRequest).responseJSON { response in
             guard response.result.isSuccess else {
                 // we failed for some reason
-                print("Error \(response.result.error)")
+                print("Error \(String(describing: response.result.error))")
                 completionHandler(false)
                 return
             }
@@ -49,6 +49,71 @@ class APIModel: NSObject {
                     
                     let review_json = json["reviews"] as! NSDictionary
                     let common_phrase_json = json["common_phrases"] as! NSDictionary
+                    
+                    
+                    if let common_phrases = common_phrase_json["Items"] as? [NSDictionary] {
+                        let common_phrase_dict = common_phrases[0]
+                        
+                        let asin = common_phrase_dict["asin"] as! String
+                        let keys = common_phrase_dict["keys"] as! [[String]]
+                        let phrase_dict = common_phrase_dict["phrase_dict"] as! NSDictionary
+                        
+                        //                        for key in keys {
+                        //                            var str_key = ""
+                        //                            for word in key {
+                        //                                str_key += word + "_"
+                        //                            }
+                        //                            str_key.remove(at: str_key.index(before: str_key.endIndex))
+                        //
+                        //                            let uids = phrase_dict[str_key] as! [String]
+                        //
+                        //                            let phrase_category = PhraseCategory()
+                        //                            phrase_category.asin = asin
+                        //                            phrase_category.phrases = key
+                        //
+                        //                            for uid in uids {
+                        //                                phrase_category.uids.insert(uid)
+                        //                            }
+                        //
+                        //                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phrase_category)
+                        //                        }
+                        
+                        // assign asin
+                        PhraseCategories.sharedPhraseCategories.asin = asin
+                        
+                        for key in keys {
+                            let phraseCategory = PhraseCategory()
+                            
+                            var str_key = ""
+                            var dis_key = ""
+                            var first_write = true
+                            for word in key {
+                                if first_write {
+                                    str_key += word
+                                    dis_key += word
+                                    first_write = false
+                                }
+                                else {
+                                    str_key += "_" + word
+                                    dis_key += ", " + word
+                                }
+                                
+                            }
+                            
+                            let uids = phrase_dict[str_key] as! [String]
+                            for uid in uids {
+                                phraseCategory.uids.append(uid)
+                            }
+                            
+                            //                            phraseCategory.asin = str_key
+                            phraseCategory.phrases = dis_key
+                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phraseCategory)
+                            
+                        }
+                    }
+                    else {
+                        completionHandler(false)
+                    }
                     
                     //Get num Reivews
                     let numReviews = review_json["Count"] as! Int
@@ -81,6 +146,7 @@ class APIModel: NSObject {
                             newReview.summary = summary
                             
                             Reviews.sharedReviews.addReview(review: newReview)
+                            PhraseCategories.sharedPhraseCategories.addReview(review: newReview)
                         }
                         
                     }
@@ -88,69 +154,7 @@ class APIModel: NSObject {
                         completionHandler(false)
                     }
                     
-                    if let common_phrases = common_phrase_json["Items"] as? [NSDictionary] {
-                        let common_phrase_dict = common_phrases[0]
-                        
-                        let asin = common_phrase_dict["asin"] as! String
-                        let keys = common_phrase_dict["keys"] as! [[String]]
-                        let phrase_dict = common_phrase_dict["phrase_dict"] as! NSDictionary
-                        
-//                        for key in keys {
-//                            var str_key = ""
-//                            for word in key {
-//                                str_key += word + "_"
-//                            }
-//                            str_key.remove(at: str_key.index(before: str_key.endIndex))
-//                            
-//                            let uids = phrase_dict[str_key] as! [String]
-//                            
-//                            let phrase_category = PhraseCategory()
-//                            phrase_category.asin = asin
-//                            phrase_category.phrases = key
-//                            
-//                            for uid in uids {
-//                                phrase_category.uids.insert(uid)
-//                            }
-//                            
-//                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phrase_category)
-//                        }
-                        
-                        // assign asin
-                        PhraseCategories.sharedPhraseCategories.asin = asin
-                        
-                        for key in keys {
-                            let phraseCategory = PhraseCategory()
-                            
-                            var str_key = ""
-                            var dis_key = ""
-                            var first_write = true
-                            for word in key {
-                                if first_write {
-                                    str_key += word
-                                    dis_key += word
-                                    first_write = false
-                                }
-                                else {
-                                    str_key += "_" + word
-                                    dis_key += ", " + word
-                                }
-                                
-                            }
-                            
-                            let uids = phrase_dict[str_key] as! [String]
-                            for uid in uids {
-                                phraseCategory.uids.append(uid)
-                            }
-                            
-//                            phraseCategory.asin = str_key
-                            phraseCategory.phrases = dis_key
-                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phraseCategory)
-                            
-                        }
-                    }
-                    else {
-                        completionHandler(false)
-                    }
+                    
                     
                     
                     
@@ -170,7 +174,7 @@ class APIModel: NSObject {
         sessionManager.request(urlRequest).responseJSON { response in
             guard response.result.isSuccess else {
                 // we failed for some reason
-                print("Error \(response.result.error)")
+                print("Error \(String(describing: response.result.error))")
                 completionHandler(false)
                 return
             }
@@ -295,7 +299,7 @@ class APIModel: NSObject {
         sessionManager.request(urlRequest).responseJSON { response in
             guard response.result.isSuccess else {
                 // we failed for some reason
-                print("Error \(response.result.error)")
+                print("Error \(String(describing: response.result.error))")
                 completionHandler(false)
                 return
             }

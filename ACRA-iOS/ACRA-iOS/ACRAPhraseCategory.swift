@@ -16,8 +16,23 @@ class PhraseCategory: NSObject {
     
     var phrases: String! = nil
     var uids = [String]()
+    var posReviews = [Review]()
+    var negReviews = [Review]()
     
     override init() {
         super.init()
+    }
+    
+    func addReview(review: Review) {
+        if review.overall >= 3 {
+            if !posReviews.contains(review) {
+                posReviews.append(review)
+            }
+        }
+        if review.overall <= 2 {
+            if !negReviews.contains(review) {
+                negReviews.append(review)
+            }
+        }
     }
 }
