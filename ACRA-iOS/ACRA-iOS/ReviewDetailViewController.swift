@@ -76,6 +76,10 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
         
         //Add all the data to the view
         populateViewWithData()
+        
+        if (self.reviewCategoryName != "Product Quality") && (self.reviewCategoryName != "Non Product Quality") {
+            misclassifiedToolbar.isHidden = true
+        }
     
     }
     
