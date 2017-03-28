@@ -702,16 +702,24 @@
                                     <outlet property="delegate" destination="VHF-rc-PEY" id="Vac-7p-KmP"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hjW-Gc-YdT">
+                                <rect key="frame" x="169" y="308" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hjW-Gc-YdT" firstAttribute="centerX" secondItem="0Pv-cY-yTO" secondAttribute="centerX" id="3aN-ck-HWl"/>
                             <constraint firstItem="hce-ii-ucX" firstAttribute="leading" secondItem="0Pv-cY-yTO" secondAttribute="leading" id="4xM-FF-xed"/>
                             <constraint firstItem="Zrk-gD-3gA" firstAttribute="leading" secondItem="0Pv-cY-yTO" secondAttribute="leading" id="6QX-zT-BhF"/>
                             <constraint firstAttribute="trailing" secondItem="hce-ii-ucX" secondAttribute="trailing" id="8ln-Fk-03W"/>
                             <constraint firstItem="51L-83-tLw" firstAttribute="top" secondItem="hce-ii-ucX" secondAttribute="bottom" constant="61" id="AAd-A2-nBB"/>
                             <constraint firstItem="hce-ii-ucX" firstAttribute="top" secondItem="Zrk-gD-3gA" secondAttribute="bottom" constant="1" id="FdY-Kx-uz8"/>
                             <constraint firstAttribute="trailing" secondItem="51L-83-tLw" secondAttribute="trailing" id="K8O-dK-YGg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hjW-Gc-YdT" secondAttribute="trailing" constant="153" id="Mhg-mH-LL6"/>
+                            <constraint firstItem="hjW-Gc-YdT" firstAttribute="leading" secondItem="0Pv-cY-yTO" secondAttribute="leadingMargin" constant="153" id="Pay-Sc-siY"/>
                             <constraint firstItem="OA7-2u-UGU" firstAttribute="top" secondItem="51L-83-tLw" secondAttribute="bottom" id="Qal-i3-s1m"/>
+                            <constraint firstItem="OA7-2u-UGU" firstAttribute="top" secondItem="hjW-Gc-YdT" secondAttribute="bottom" constant="322" id="U30-lS-aeT"/>
                             <constraint firstItem="51L-83-tLw" firstAttribute="leading" secondItem="0Pv-cY-yTO" secondAttribute="leading" id="mkx-GT-znQ"/>
                             <constraint firstAttribute="trailing" secondItem="Zrk-gD-3gA" secondAttribute="trailing" id="oMn-xd-aj5"/>
                             <constraint firstItem="Zrk-gD-3gA" firstAttribute="top" secondItem="lph-Vd-xUK" secondAttribute="bottom" id="zgi-WY-7dB"/>
@@ -721,6 +729,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="0UX-kr-e8M"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorCP" destination="hjW-Gc-YdT" id="P16-o4-dtk"/>
                         <outlet property="categoryTableView" destination="Zrk-gD-3gA" id="XCK-Gp-Vdg"/>
                         <outlet property="commonTableView" destination="hce-ii-ucX" id="W6O-Xh-jyA"/>
                         <outlet property="similarCollectionView" destination="51L-83-tLw" id="crQ-kt-4n0"/>
