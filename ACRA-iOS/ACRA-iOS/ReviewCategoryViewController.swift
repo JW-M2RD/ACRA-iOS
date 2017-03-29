@@ -17,6 +17,10 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var similarCollectionView: UICollectionView!
     @IBOutlet weak var titleView: UINavigationItem!
+    
+    @IBOutlet weak var activityIndicatorCP: UIActivityIndicatorView!
+    
+    
     var categories = [String]()
     
     var selectedAsin = String()
@@ -33,6 +37,21 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
     
     var commonPhrases = PhraseCategories()
     
+    func startLoadingAnimation() {
+        categoryTableView.isHidden = true
+        commonTableView.isHidden = true
+        similarCollectionView.isHidden = true
+        activityIndicatorCP.startAnimating()
+    }
+    
+    func stopLoadingAnimation() {
+        categoryTableView.isHidden = false
+        commonTableView.isHidden = false
+        similarCollectionView.isHidden = false
+        activityIndicatorCP.stopAnimating()
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the title in navigation bar
@@ -44,6 +63,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         //remove the footer lines
         categoryTableView.tableFooterView = UIView()
         commonTableView.tableFooterView = UIView()
+        
+        startLoadingAnimation()
         
         categories = ["Product Quality", "Non Product Quality"]
         print("Review Category View: " + self.selectedAsin)
@@ -105,6 +126,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
 //            cellCP.detailTextLabel?.text = String(commonPhrases.phraseCategories[indexPath.row].uids.count)
             cellCP.detailTextLabel?.text = String(commonPhrases.phraseCategories[indexPath.row].negReviews.count + commonPhrases.phraseCategories[indexPath.row].posReviews.count)
             
+            stopLoadingAnimation()
+            
             return cellCP
         }
         
@@ -140,6 +163,9 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             
             //updating the selected ASIN to the selected ASIN of similar product.
             self.selectedAsin = self.similarProducts[indexPath.row].asin
+            
+            
+            startLoadingAnimation()
             
             //call to review API to update our reviews to according to selected ASIN
             getReviewAPI(selectedAsinAPI: self.similarProducts[indexPath.row].asin)
