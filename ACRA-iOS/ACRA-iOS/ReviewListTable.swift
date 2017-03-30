@@ -39,6 +39,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         menuShowing = !menuShowing
 
     }
+    @IBOutlet weak var messageDisplay: UITextField!
 
 
   
@@ -117,12 +118,14 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 case 0:
                     if(self.reviews.rePosReviews.count == 0){
                         setDogImg()
+                        self.messageDisplay.isHidden = false
                         return 0
                     }
                     return self.reviews.rePosReviews.count
                 case 1:
                     if(self.reviews.reNegReviews.count == 0){
                         setDogImg()
+                        self.messageDisplay.isHidden = false
                         return 0
                     }
                     return self.reviews.reNegReviews.count
@@ -137,12 +140,14 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 case 0:
                     if(self.reviews.irPosReviews.count == 0){
                         setDogImg()
+                        self.messageDisplay.isHidden = false
                         return 0
                     }
                     return self.reviews.irPosReviews.count
                 case 1:
                     if(self.reviews.irNegReviews.count == 0){
                         setDogImg()
+                        self.messageDisplay.isHidden = false
                         return 0
                     }
                     return self.reviews.irNegReviews.count
@@ -158,12 +163,14 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                     case 0:
                         if(self.phraseCategory.posReviews.count == 0){
                             setDogImg()
+                            self.messageDisplay.isHidden = false
                             return 0
                         }
                         return self.phraseCategory.posReviews.count
                     case 1:
                         if(self.phraseCategory.negReviews.count == 0){
                             setDogImg()
+                            self.messageDisplay.isHidden = false
                             return 0
                         }
                         return self.phraseCategory.negReviews.count
@@ -336,21 +343,30 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 if(indexPath.section == 1){
                     switch indexPath.row {
                     case 0:
-                        self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
-                        self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
-                        self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
-                        self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
                         
-                        self.phraseCategory.posReviews = self.phraseCategory.posReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
-                        self.phraseCategory.negReviews = self.phraseCategory.negReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                        if (self.selectedCategory == "Product Quality") || (self.selectedCategory == "Non Product Quality") {
+                            self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                            self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                            self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                            self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                        }
+                        else {
+                            self.phraseCategory.posReviews = self.phraseCategory.posReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                            self.phraseCategory.negReviews = self.phraseCategory.negReviews.sorted{$0.unixReviewTime > $1.unixReviewTime}
+                        }
                     case 1:
-                        self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
-                        self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
-                        self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
-                        self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
                         
-                        self.phraseCategory.posReviews = self.phraseCategory.posReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
-                        self.phraseCategory.negReviews = self.phraseCategory.negReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                        if (self.selectedCategory == "Product Quality") || (self.selectedCategory == "Non Product Quality") {
+                            self.reviews.irNegReviews = self.reviews.irNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                            self.reviews.irPosReviews = self.reviews.irPosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                            self.reviews.reNegReviews = self.reviews.reNegReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                            self.reviews.rePosReviews = self.reviews.rePosReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                        }
+                        else {
+                            self.phraseCategory.posReviews = self.phraseCategory.posReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                            self.phraseCategory.negReviews = self.phraseCategory.negReviews.sorted{$0.unixReviewTime < $1.unixReviewTime}
+                        }
+                        
                     default:
                         break
                     }
