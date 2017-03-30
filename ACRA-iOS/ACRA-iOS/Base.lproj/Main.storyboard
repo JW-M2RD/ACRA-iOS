@@ -232,10 +232,10 @@
                                 <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sorry, No Products Found." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-zg-ijQ">
-                                <rect key="frame" x="94" y="86" width="192" height="30"/>
+                                <rect key="frame" x="94" y="86" width="185" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="192" id="lus-Qv-ZaK"/>
+                                    <constraint firstAttribute="width" constant="185" id="lus-Qv-ZaK"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -400,7 +400,7 @@
                             <constraint firstItem="EmK-ej-RJh" firstAttribute="top" secondItem="XVb-P1-z9y" secondAttribute="bottom" id="cYw-nn-uje"/>
                             <constraint firstAttribute="trailing" secondItem="EmK-ej-RJh" secondAttribute="trailing" id="egG-MO-aT4"/>
                             <constraint firstItem="Inm-4h-h5R" firstAttribute="centerX" secondItem="Eni-cN-Wlx" secondAttribute="centerX" id="fM8-Fr-c8Y"/>
-                            <constraint firstItem="eRc-zg-ijQ" firstAttribute="centerX" secondItem="Eni-cN-Wlx" secondAttribute="centerX" constant="2.5" id="geU-TA-DbZ"/>
+                            <constraint firstItem="eRc-zg-ijQ" firstAttribute="centerX" secondItem="Eni-cN-Wlx" secondAttribute="centerX" constant="-1" id="geU-TA-DbZ"/>
                             <constraint firstAttribute="trailing" secondItem="N9i-HG-bsq" secondAttribute="trailing" id="hwL-2p-5hV"/>
                         </constraints>
                     </view>
@@ -954,10 +954,10 @@
                                 </connections>
                             </tableView>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.44999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sorry, No Reviews Found." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfi-aO-23G">
-                                <rect key="frame" x="91" y="122" width="192" height="30"/>
+                                <rect key="frame" x="91" y="122" width="179" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="192" id="jew-3S-7SR"/>
+                                    <constraint firstAttribute="width" constant="179" id="jew-3S-7SR"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -974,7 +974,7 @@
                             <constraint firstItem="hJ6-8G-5Wj" firstAttribute="top" secondItem="n4h-PR-mcT" secondAttribute="bottom" id="LFg-uZ-Kyv"/>
                             <constraint firstItem="HeP-Cb-Q4n" firstAttribute="centerX" secondItem="BY1-E7-GGJ" secondAttribute="centerX" id="Lcn-E6-5w1"/>
                             <constraint firstItem="Ian-lq-mgI" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leading" id="SdG-YX-KFX"/>
-                            <constraint firstItem="Lfi-aO-23G" firstAttribute="centerX" secondItem="XPE-AY-MIc" secondAttribute="centerX" id="Syd-Yd-KdX"/>
+                            <constraint firstItem="Lfi-aO-23G" firstAttribute="centerX" secondItem="XPE-AY-MIc" secondAttribute="centerX" constant="-7" id="Syd-Yd-KdX"/>
                             <constraint firstItem="BY1-E7-GGJ" firstAttribute="trailing" secondItem="XPE-AY-MIc" secondAttribute="trailingMargin" constant="9" id="TYY-U3-MVC"/>
                             <constraint firstItem="BY1-E7-GGJ" firstAttribute="top" secondItem="60H-tt-Oqr" secondAttribute="bottom" constant="8" id="bOX-vW-JRU"/>
                             <constraint firstItem="BY1-E7-GGJ" firstAttribute="leading" secondItem="XPE-AY-MIc" secondAttribute="leadingMargin" constant="-9" id="eG3-h6-C0b"/>
