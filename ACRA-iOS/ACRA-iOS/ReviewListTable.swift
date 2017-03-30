@@ -39,6 +39,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         menuShowing = !menuShowing
 
     }
+    @IBOutlet weak var messageDisplay: UITextField!
 
 
   
@@ -117,12 +118,14 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 case 0:
                     if(self.reviews.rePosReviews.count == 0){
                         setDogImg()
+                        self.messageDisplay.isHidden = false
                         return 0
                     }
                     return self.reviews.rePosReviews.count
                 case 1:
                     if(self.reviews.reNegReviews.count == 0){
                         setDogImg()
+                        self.messageDisplay.isHidden = false
                         return 0
                     }
                     return self.reviews.reNegReviews.count
@@ -137,12 +140,14 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                 case 0:
                     if(self.reviews.irPosReviews.count == 0){
                         setDogImg()
+                        self.messageDisplay.isHidden = false
                         return 0
                     }
                     return self.reviews.irPosReviews.count
                 case 1:
                     if(self.reviews.irNegReviews.count == 0){
                         setDogImg()
+                        self.messageDisplay.isHidden = false
                         return 0
                     }
                     return self.reviews.irNegReviews.count
@@ -158,12 +163,14 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                     case 0:
                         if(self.phraseCategory.posReviews.count == 0){
                             setDogImg()
+                            self.messageDisplay.isHidden = false
                             return 0
                         }
                         return self.phraseCategory.posReviews.count
                     case 1:
                         if(self.phraseCategory.negReviews.count == 0){
                             setDogImg()
+                            self.messageDisplay.isHidden = false
                             return 0
                         }
                         return self.phraseCategory.negReviews.count

@@ -31,6 +31,7 @@ class PhraseCategory: NSObject {
         }
         if review.overall <= 2 {
             if !negReviews.contains(review) {
+                print("got neg Reviw")
                 negReviews.append(review)
             }
         }
