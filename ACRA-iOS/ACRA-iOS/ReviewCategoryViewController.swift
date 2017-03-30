@@ -123,7 +123,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
             let cellCP = tableView.dequeueReusableCell(withIdentifier: "CellCommon", for: indexPath)
 
             cellCP.textLabel?.text = commonPhrases.phraseCategories[indexPath.row].phrases
-            cellCP.detailTextLabel?.text = String(commonPhrases.phraseCategories[indexPath.row].uids.count)
+//            cellCP.detailTextLabel?.text = String(commonPhrases.phraseCategories[indexPath.row].uids.count)
+            cellCP.detailTextLabel?.text = String(commonPhrases.phraseCategories[indexPath.row].negReviews.count + commonPhrases.phraseCategories[indexPath.row].posReviews.count)
             
             stopLoadingAnimation()
             
