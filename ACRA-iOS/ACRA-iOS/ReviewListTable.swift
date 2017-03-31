@@ -121,6 +121,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                         self.messageDisplay.isHidden = false
                         return 0
                     }
+                    self.messageDisplay.isHidden = true
                     return self.reviews.rePosReviews.count
                 case 1:
                     if(self.reviews.reNegReviews.count == 0){
@@ -128,6 +129,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                         self.messageDisplay.isHidden = false
                         return 0
                     }
+                    self.messageDisplay.isHidden = true
                     return self.reviews.reNegReviews.count
                 default:
                     break
@@ -143,6 +145,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                         self.messageDisplay.isHidden = false
                         return 0
                     }
+                    self.messageDisplay.isHidden = true
                     return self.reviews.irPosReviews.count
                 case 1:
                     if(self.reviews.irNegReviews.count == 0){
@@ -150,6 +153,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                         self.messageDisplay.isHidden = false
                         return 0
                     }
+                    self.messageDisplay.isHidden = true
                     return self.reviews.irNegReviews.count
                 default:
                     break
@@ -166,6 +170,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                             self.messageDisplay.isHidden = false
                             return 0
                         }
+                        self.messageDisplay.isHidden = true
                         return self.phraseCategory.posReviews.count
                     case 1:
                         if(self.phraseCategory.negReviews.count == 0){
@@ -173,6 +178,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
                             self.messageDisplay.isHidden = false
                             return 0
                         }
+                        self.messageDisplay.isHidden = true
                         return self.phraseCategory.negReviews.count
                     default:
                         break
