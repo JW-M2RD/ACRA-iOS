@@ -25,6 +25,8 @@ class APIModel: NSObject {
         
     }
     
+    //get review from server
+    // server return xml, alamofire will parser xml as dictionary 
     func getReviews (escape:String, completionHandler: @escaping(Bool) -> () ) {
         
         var urlRequest = URLRequest(url: URL(string: "\(baseURL)asin_search?asin=\(escape)")!)
@@ -41,11 +43,11 @@ class APIModel: NSObject {
             }
             
             //clear review obj
+            Reviews.sharedReviews.clearReviews()
+            PhraseCategories.sharedPhraseCategories.clearPhraseCategories()
             
             if let result = response.result.value {
                 if let json = result as? NSDictionary {
-                    Reviews.sharedReviews.clearReviews()
-                    PhraseCategories.sharedPhraseCategories.clearPhraseCategories()
                     
                     let review_json = json["reviews"] as! NSDictionary
                     let common_phrase_json = json["common_phrases"] as! NSDictionary
@@ -58,27 +60,6 @@ class APIModel: NSObject {
                         let keys = common_phrase_dict["keys"] as! [[String]]
                         let phrase_dict = common_phrase_dict["phrase_dict"] as! NSDictionary
                         
-                        //                        for key in keys {
-                        //                            var str_key = ""
-                        //                            for word in key {
-                        //                                str_key += word + "_"
-                        //                            }
-                        //                            str_key.remove(at: str_key.index(before: str_key.endIndex))
-                        //
-                        //                            let uids = phrase_dict[str_key] as! [String]
-                        //
-                        //                            let phrase_category = PhraseCategory()
-                        //                            phrase_category.asin = asin
-                        //                            phrase_category.phrases = key
-                        //
-                        //                            for uid in uids {
-                        //                                phrase_category.uids.insert(uid)
-                        //                            }
-                        //
-                        //                            PhraseCategories.sharedPhraseCategories.addPhraseCategory(category: phrase_category)
-                        //                        }
-                        
-                        // assign asin
                         PhraseCategories.sharedPhraseCategories.asin = asin
                         
                         for key in keys {
@@ -242,50 +223,7 @@ class APIModel: NSObject {
             }
         }
     }
-    /*
-    Commenting out until we can get POST to work
-    func storeMisclassified(uid: String, completionHandler: @escaping(Bool) -> ()) {
-        let parameters: Parameters = [
-            "uid": uid
-        ]
-        
-        var urlRequest = URLRequest(url: URL(string: "\(baseURL)misclassified?uid=\(uid)")!)
-        
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        
-        //add params
-        do {
-            try urlRequest.httpBody = JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        } catch {
-            print(error)
-        }
-        
-        //make request
-        sessionManager.request(urlRequest).validate(statusCode: 200..<300).responseJSON { response in
-            
-            print(response.request)
-            print(response.response)
-            print(response.data)
-            print(response.result)
-            
-            if response.result.isSuccess {
-                completionHandler(true)
-                
-                print("breakpoint")
-                
-                return
-            } else {
-                // we failed for some reason
-                print("Error \(response.result.error)")
-                completionHandler(false)
-                return
-            }
-           
-        }
-    } //end store misclassified
- */
+
     
     
     func storeMisclassifiedGet(uid: String, completionHandler: @escaping(Bool) -> ()) {

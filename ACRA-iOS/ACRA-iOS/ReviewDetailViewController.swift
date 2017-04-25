@@ -118,6 +118,7 @@ class ReviewDetailViewController: UIViewController, UIScrollViewDelegate{
         // Dispose of any resoureces that can be recreated
     }
     
+    // call missclassified api mode, alart box will double check user's operation
     func sendMissclassified() {
         let alertAfterCompletion = UIAlertController(title: "Thank you for the feedback!",
                                                      message: "Your feedback is on its way. Thank you for helping us make ACRA even better.",

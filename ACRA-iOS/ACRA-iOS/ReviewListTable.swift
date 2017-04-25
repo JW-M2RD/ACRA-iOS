@@ -298,6 +298,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    // based on selected category index to get review detail information
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        if (segue.identifier == "ReviewCategory"){
         
@@ -343,7 +344,7 @@ class ReviewListTable: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
     }
     
-    
+    // display review based on sort rule. 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             if (tableView == listSortTableView) {
                 if(indexPath.section == 1){

@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+// Call API mode first to load data
+// data can be stored into a Products object
+
 class ProductViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Properties
@@ -79,6 +82,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         return finishedLoading
     }
     
+    //display product's star image based on rating
     func getStarImage(starNumber: Double, forRating rating: Double) -> UIImage {
         if rating >= starNumber {
             return fullStarImage
@@ -89,32 +93,25 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    // set sort menu hidden
     func setMenuToHidden() {
         trailingConstraint.constant = -180
         menuShowing = false
         backgroundButton.alpha = 0
     }
     
+    // when no product found, set dog image as background
     func setDogImg (viewName: UITableView) {
         let image = UIImage(named: "dog")
         let noDataImage = UIImageView(image: image)
         viewName.backgroundView = noDataImage
     }
 
-    
+    // delay 2 second for product result untill get data from server
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //Products.sharedProducts.clearProducts()
         
-        //if(self.finishedLoading == true){
-        //    setDogImg(viewName: productTableView)
-        //    activityIndicator.stopAnimating()
-            //activityIndicator.hidesWhenStopped = true
-        //}
-       // if(self.productTableView.numberOfRows(inSection: 0) > 0){
-       //     activityIndicator.stopAnimating()
-            //activityIndicator.hidesWhenStopped = true
-        //}
         viewApperBool = true
         if(self.getFinishedLoading()==true){
             print("stop animation")
@@ -150,9 +147,14 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         sortTableView.layer.masksToBounds = true
        
         sectionData = [0:s1Data, 1:s2Data, 2:s3Data]
+        
+        //clear previous products
+        Products.sharedProducts.clearProducts()
 
         let escapedString = self.SearchLabel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         activityIndicator.startAnimating()
+        
+        // call api to get data and push into local database
         APIModel.sharedInstance.getProducts(escape: escapedString!) { (success:Bool) in
             if success {
                 print("Successfully got products")
@@ -175,6 +177,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         sortTableView.tableFooterView = UIView()
     }
     
+    //load image based on given url
     func get_image(_ urlString:String) -> UIImage {
         let strurl = NSURL(string: urlString)!
         let dtinternet = NSData(contentsOf:strurl as URL)!
@@ -186,6 +189,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    // return the number of products got from server, if 0 set dog image
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        print("num of rows in sec")
         if(tableView == productTableView) {
@@ -212,6 +216,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    //load product cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        print("cell for row at")
         if(tableView == productTableView) {
@@ -258,6 +263,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             setMenuToHidden()
         }
         
+        // sort menu
         if(tableView == sortTableView) {
             if(indexPath.section == 1) {
                 switch indexPath.row {
@@ -288,6 +294,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    // display sort menu
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if (tableView == sortTableView){
             let cellHeader = sortTableView.dequeueReusableCell(withIdentifier: "HeaderCell\(section)") as! HeaderCellProductSort
@@ -317,6 +324,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     
+    // pass selected product item to review controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ProductToCategory"){
             let DestViewController: ReviewCategoryViewController = segue.destination as! ReviewCategoryViewController

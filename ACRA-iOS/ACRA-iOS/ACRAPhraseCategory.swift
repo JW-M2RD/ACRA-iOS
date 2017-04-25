@@ -36,4 +36,10 @@ class PhraseCategory: NSObject {
             }
         }
     }
+    
+    func clearReviews() {
+        uids.removeAll()
+        posReviews.removeAll()
+        negReviews.removeAll()
+    }
 }

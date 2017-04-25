@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //MARK: Properties
@@ -76,11 +77,13 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.similarProducts = self.similarProducts.sorted{$0.displayProductQualityNumber > $1.displayProductQualityNumber}
     }
     
+    // display appriorate product name as title
     func updateTitlePrompt (nameOfProduct: String) {
         self.navigationItem.prompt = nameOfProduct.substring(to: nameOfProduct.index(nameOfProduct.startIndex, offsetBy: CoreDataHelper.setOffSet(titleCount: nameOfProduct.characters.count)))
         self.selectedProductTitle = nameOfProduct
     }
     
+    // load image
     func get_image(_ urlString:String) -> UIImage {
         let strurl = NSURL(string: urlString)!
         let dtinternet = NSData(contentsOf:strurl as URL)!
@@ -137,6 +140,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         return similarProducts.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let similarCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellSimilar", for: indexPath) as! SimilarProductCell
         
@@ -149,6 +153,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         return similarCell
     }
     
+    // get selected similiar items from collectionview
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == similarCollectionView {
             print("didSeclect CollectionView: ", self.similarProducts[indexPath.row].asin)
@@ -184,6 +189,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         return 43
     }
     
+    // list category of reviews and common phrase
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if(tableView == categoryTableView){
             let cellHeader = categoryTableView.dequeueReusableCell(withIdentifier: "HeaderCatCell")
@@ -202,6 +208,8 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    
+    // passing selected information to next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "CategoryToList"){
             let DestViewController: ReviewListTable = segue.destination as! ReviewListTable
@@ -220,6 +228,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    // based on local database create a list of similiar products withtou current selected product
     func createSimilarProducts (selected : String) {
         self.similarProducts.removeAll()
         for product in self.products.products {
@@ -230,6 +239,7 @@ class ReviewCategoryViewController: UIViewController, UITableViewDataSource, UIT
         self.similarProducts = self.similarProducts.sorted{$0.displayProductQualityNumber > $1.displayProductQualityNumber}
     }
     
+    // get review based on selected product's asin and push into different review array 
     func getReviewAPI(selectedAsinAPI: String){
         APIModel.sharedInstance.getReviews(escape: selectedAsinAPI) { (success:Bool) in
             if success {

@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 
+// Display Search View
+
 class ViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: Properties
@@ -36,7 +38,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //MARK: Actions
     
     
-    
+    // Search button function
+    // will pass search string to product result view
     @IBAction func searchButton(_ sender: UIButton) {
          //escaping string to send in an HTTP request
         let escapedString = searchInput.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
