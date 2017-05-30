@@ -20,11 +20,15 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
   
     var menuShowing = false
     
+    //IBAction to handle the  animation of the sort menu when button is clicked.
     @IBAction func sortMenuTrigger(_ sender: Any) {
         if(menuShowing) {
+            //setting the trailing constant to -180. For hiding the menu.
             trailingConstraint.constant = -180
+            // Animation effect of 0.4 seconds
             UIView.animate(withDuration: 0.4, animations: {
                 self.view.layoutIfNeeded()
+                //setting the background button alpha to 0 so that user can use the tableview behind it.
                 self.backgroundButton.alpha = 0
             })
         }
@@ -32,6 +36,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             trailingConstraint.constant = 0
             UIView.animate(withDuration: 0.4, animations: {
                 self.view.layoutIfNeeded()
+                //setting the background button alpha to 0.5 so that button gets activated when menu is showing.
                 self.backgroundButton.alpha = 0.5
             })
         }
@@ -67,17 +72,22 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     //Thanks to Icons8 for the Rating icon: https://icons8.com/web-app/11674/Rating
     let sectionImages: [UIImage] = [#imageLiteral(resourceName: "Sorting"), #imageLiteral(resourceName: "Price Tag"), #imageLiteral(resourceName: "Rating")]
     
+    //section headers
     let sections: [String] = ["Sort By", "Price", "Rating"]
+    
+    //Data for sections headers
     let s1Data: [String] = []
     let s2Data: [String] = ["High to Low", "Low to High"]
     let s3Data: [String] = ["High to Low", "Low to High"]
     
     var sectionData: [Int: [String]] = [:]
     
+    // function to set when the loading is finished for loading animation
     func setFinishedLoading(setTo: Bool){
         finishedLoading = setTo
     }
     
+    // function to get the loading to check if it is finished or not for loading animation
     func getFinishedLoading() -> Bool{
         return finishedLoading
     }
@@ -191,7 +201,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // return the number of products got from server, if 0 set dog image
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("num of rows in sec")
+
         if(tableView == productTableView) {
             if(self.products.count == 0){
                 return 0
@@ -206,11 +216,12 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             return (sectionData[section]?.count)!
         }
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         if(tableView == sortTableView){
             return sections.count
         }
+        //when the table is other than the sorting menu table we do not nead header so return 1
         else {
             return 1
         }
@@ -225,6 +236,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.photo.image = get_image(self.products[indexPath.row].image_url)
             cell.name.text = self.products[indexPath.row].title
             cell.price.text = self.products[indexPath.row].price_string
+            // sets the star rating image according to the rating  provided.
             if let productRating = self.products[indexPath.row].rating {
                 cell.star1.image = getStarImage(starNumber: 1, forRating: productRating)
                 cell.star2.image = getStarImage(starNumber: 2, forRating: productRating)
@@ -232,12 +244,14 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.star4.image = getStarImage(starNumber: 4, forRating: productRating)
                 cell.star5.image = getStarImage(starNumber: 5, forRating: productRating)
             }
+            // rounded value of rating for displaying the rating next to star rating.
             let rounded_rating = Double(round(100*(self.products[indexPath.row].rating))/100)
             cell.ratingValue.text = "(" + String(rounded_rating) + ")"
             setFinishedLoading(setTo: true)
             
             return cell
         }
+        //Sort menu
         else {
             var cell2 = tableView.dequeueReusableCell(withIdentifier: "SortCell")
             
@@ -306,7 +320,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-    
+    // function to set the heght for header
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(tableView == sortTableView) {
             if(section==0){
