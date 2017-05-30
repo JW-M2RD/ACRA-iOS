@@ -301,7 +301,7 @@
 				TargetAttributes = {
 					EBE5AD321E4841E200E22C3C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6975J8AN47;
+						DevelopmentTeam = 2MU5RRNWNL;
 						ProvisioningStyle = Automatic;
 					};
 					EBE5AD461E4841E200E22C3C = {
@@ -589,7 +589,7 @@
 			baseConfigurationReference = 8A2AE8A1F4346E21302E3BEE /* Pods-ACRA-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6975J8AN47;
+				DEVELOPMENT_TEAM = 2MU5RRNWNL;
 				INFOPLIST_FILE = "ACRA-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spring2017amazon.msu;
@@ -604,7 +604,7 @@
 			baseConfigurationReference = DFBBC06BAB78A9CC8E7CEAC6 /* Pods-ACRA-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6975J8AN47;
+				DEVELOPMENT_TEAM = 2MU5RRNWNL;
 				INFOPLIST_FILE = "ACRA-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spring2017amazon.msu;
